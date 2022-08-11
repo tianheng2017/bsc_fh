@@ -27,10 +27,25 @@
                         <div class="form-tips">建议尺寸：100*100像素，支持jpg，jpeg，png格式</div>
                     </div>
                 </el-form-item>
-                <el-form-item label="分红钱包" prop="fh_wallet">
+                <el-form-item label="分红钱包地址" prop="fh_wallet" required>
                     <div class="w-80">
-                        <el-input v-model="formData.fh_wallet" placeholder="请输入分红钱包" maxlength="34" show-word-limit>
+                        <el-input v-model="formData.fh_wallet" placeholder="请输入分红钱包" maxlength="42" show-word-limit>
                         </el-input>
+                        <div class="form-tips">每次更换请填写未使用的新钱包，否者可能采集到旧记录</div>
+                    </div>
+                </el-form-item>
+                <el-form-item label="参与所需代币" prop="required_coin" required>
+                    <div class="w-80">
+                        <el-input v-model="formData.required_coin" placeholder="请输入参与所需代币数量" type="number">
+                        </el-input>
+                        <div class="form-tips">快照时，代币高于此数量的钱包才会参与分红</div>
+                    </div>
+                </el-form-item>
+                <el-form-item label="持币分红比例" prop="cbfh_bl" required>
+                    <div class="w-80">
+                        <el-input v-model="formData.cbfh_bl" placeholder="请输入持币分红比例" type="number">
+                        </el-input>
+                        <div class="form-tips">总100%，填写持币分红比例，其余的则是推广分红比例</div>
                     </div>
                 </el-form-item>
             </el-form>
@@ -53,7 +68,9 @@ const formData = reactive({
     web_favicon: '', // 网站图标
     web_logo: '', // 网站logo
     login_image: '', // 登录页广告图
-    fh_wallet: '',  //分红钱包
+    fh_wallet: '',  //分红钱包地址
+    required_coin: '', //参与所需代币数量
+    cbfh_bl: '', // 持币分红所占百分比
 })
 
 // 表单验证
@@ -64,7 +81,28 @@ const rules = {
             message: '请输入网站名称',
             trigger: ['blur']
         }
-    ]
+    ],
+    fh_wallet: [
+        {
+            required: true,
+            message: '请输入分红钱包地址',
+            trigger: ['blur']
+        }
+    ],
+    required_coin: [
+        {
+            required: true,
+            message: '请输入参与所需代币数量',
+            trigger: ['blur']
+        }
+    ],
+    cbfh_bl: [
+        {
+            required: true,
+            message: '请输入持币分红比例',
+            trigger: ['blur']
+        }
+    ],
 }
 
 // 获取备案信息

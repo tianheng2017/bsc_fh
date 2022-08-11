@@ -22,6 +22,17 @@ use think\Model;
 class BaseModel extends Model
 {
     /**
+     * 资金日志对照
+     */
+    public static $mtype = [
+        1       =>  '持币分红获得BNB',
+        2       =>  '推广分红获得BNB',
+        3       =>  '提取BNB',
+        4       =>  '提取成功',
+        5       =>  '提取驳回',
+    ];
+
+    /**
      * @notes 公共处理图片,补全路径
      * @param $value
      * @return string

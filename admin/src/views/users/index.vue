@@ -1,11 +1,7 @@
 <template>
     <div>
         <el-card class="!border-none mb-4" shadow="never">
-            <el-form
-                class="mb-[-16px]"
-                :model="queryParams"
-                inline
-            >
+            <el-form class="mb-[-16px]" :model="queryParams" inline>
                 <el-form-item label="钱包地址" prop="address">
                     <el-input class="w-56" v-model="queryParams.address" clearable placeholder="请输入钱包地址" />
                 </el-form-item>
@@ -39,19 +35,14 @@
                     <el-table-column label="ID" prop="id" />
                     <el-table-column label="钱包地址" prop="address" />
                     <el-table-column label="上级ID" prop="fid" />
-                    <el-table-column label="快照BNB余额" prop="amount1" />
+                    <el-table-column label="代币余额(快照)" prop="amount1" />
                     <el-table-column label="BNB收益" prop="amount2" />
                     <el-table-column label="已分红次数" prop="count" />
                     <el-table-column label="注册时间" prop="create_time" />
 
                     <el-table-column label="操作" width="120" fixed="right">
                         <template #default="{ row }">
-                             <el-button
-                                v-perms="['users/edit']"
-                                type="primary"
-                                link
-                                @click="handleEdit(row)"
-                            >
+                            <el-button v-perms="['users/edit']" type="primary" link @click="handleEdit(row)">
                                 编辑
                             </el-button>
                             <!-- <el-button
@@ -103,7 +94,7 @@ const handleSelectionChange = (val: any[]) => {
 
 // 字典数据
 const dictData = reactive<Record<string, any[]>>({
-    
+
 })
 
 // 获取字典数据
