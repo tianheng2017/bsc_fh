@@ -28,6 +28,7 @@ class WebSettingValidate extends BaseValidate
         'login_image' => 'require',
         'fh_wallet' =>  'require|checkWallet',
         'required_coin' =>  'require|number',
+        'cbfh_bl'       =>  'require|egt:0|elt:100',
     ];
 
     protected $message = [
@@ -39,6 +40,9 @@ class WebSettingValidate extends BaseValidate
         'fh_wallet.require' =>  '请填写分红钱包地址',
         'required_coin.require' =>  '请填写参与所需代币',
         'required_coin.number'  =>  '参与所需代币必须为数字',
+        'cbfh_bl.require'       =>  '请填写持币分红比例',
+        'cbfh_bl.egt'       =>  '持币分红比例不能低于0',
+        'cbfh_bl.elt'       =>  '持币分红比例不能高于100%',
     ];
 
     protected $scene = [

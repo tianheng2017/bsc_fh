@@ -40,6 +40,7 @@ class WebSettingLogic extends BaseLogic
             'login_image' => FileService::getFileUrl(ConfigService::get('website', 'login_image')),
             'fh_wallet' => ConfigService::get('website', 'fh_wallet'),
             'required_coin' => ConfigService::get('website', 'required_coin'),
+            'cbfh_bl' => ConfigService::get('website', 'cbfh_bl'),
         ];
     }
 
@@ -62,6 +63,7 @@ class WebSettingLogic extends BaseLogic
         ConfigService::set('website', 'login_image', $login);
         ConfigService::set('website', 'fh_wallet', $params['fh_wallet']);
         ConfigService::set('website', 'required_coin', $params['required_coin']);
+        ConfigService::set('website', 'cbfh_bl', $params['cbfh_bl']);
     }
 
 
