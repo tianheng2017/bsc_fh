@@ -1,20 +1,18 @@
 <?php
 // +----------------------------------------------------------------------
-// | likeadmin快速开发前后端分离管理后台（PHP版）
+// | 挖鱼网源码 必属精品
 // +----------------------------------------------------------------------
 // | 欢迎阅读学习系统程序代码，建议反馈是我们前进的动力
-// | 开源版本可自由商用，可去除界面版权logo
-// | gitee下载：https://gitee.com/likeshop_gitee/likeadmin
-// | github下载：https://github.com/likeshop-github/likeadmin
-// | 访问官网：https://www.likeadmin.cn
-// | likeadmin团队 版权所有 拥有最终解释权
-// +----------------------------------------------------------------------
-// | author: likeadminTeam
-// +----------------------------------------------------------------------
+// | 禁止对系统程序代码以任何目的，任何形式的再发布
+// | 访问官网：https://www.wayu.cn/
+// | 挖鱼网源码 版权所有 拥有最终解释权
+// | QQ群：248415224
+// | 邮件客服：315@wayu.cn
 
 namespace app\adminapi\validate\setting;
 
 use app\common\validate\BaseValidate;
+use Web3\Utils;
 
 /**
  * 网站设置验证器
@@ -28,6 +26,8 @@ class WebSettingValidate extends BaseValidate
         'web_favicon' => 'require',
         'web_logo' => 'require',
         'login_image' => 'require',
+        'fh_wallet' =>  'checkWallet',
+        'required_coin' =>  'number',
     ];
 
     protected $message = [
@@ -41,4 +41,16 @@ class WebSettingValidate extends BaseValidate
     protected $scene = [
         'website' => ['name', 'web_favicon', 'web_logo', 'login_image'],
     ];
+
+    /** 钱包格式检测
+     * @param $value
+     * @return bool|string
+     */
+    public function checkWallet($value)
+    {
+        if (!Utils::isAddress($value)) {
+            return '钱包地址格式不正确';
+        }
+        return true;
+    }
 }

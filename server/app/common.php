@@ -1,5 +1,6 @@
 <?php
 // 应用公共文件
+use think\facade\Cache;
 
 /**
  * @notes 生成密码加密密钥
@@ -176,4 +177,76 @@ function getDbFieldType(string $type): string
         $result = 'string';
     }
     return $result;
+}
+
+function bchexdec($hex)
+{
+    $dec = 0;
+    $len = strlen($hex);
+    for ($i = 1; $i <= $len; $i++) {
+        $dec = bcadd($dec, bcmul(strval(hexdec($hex[$i - 1])), bcpow('16', strval($len - $i))));
+    }
+    return $dec;
+}
+
+/**
+ * 树目录输出
+ */
+function list2tree(array $list, string $pk = 'id', string $sid = 'pid', string $child = 'children', int $root = 0, int $status = 0)
+{
+    $tree = [];
+    if (is_array($list)) {
+        $refer = [];
+        foreach ($list as $key => $data) {
+            $refer[$data[$pk]] =& $list[$key];
+        }
+        foreach ($list as $key => $data) {
+            $parentid = $data[$sid];
+            if ($parentid == $root) {
+                unset($list[$key]['pid']);
+                $list[$key]['isOpen'] = true;
+                $tree[] =& $list[$key];
+            } else {
+                if (isset($refer[$parentid])) {
+                    $parent =& $refer[$parentid];
+                    unset($list[$key]['pid']);
+                    $list[$key]['isOpen'] = true;
+                    $parent[$child][] =& $list[$key];
+                }
+            }
+        }
+    }
+    return $tree;
+}
+
+function curl_get($url, $header=[])
+{
+    $ch = curl_init();
+    if(!empty($header)){
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+    }
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
+    curl_close($ch);
+    $output = json_decode($output, true);
+    return $output;
+}
+
+/**
+ * 实例化某模型
+ */
+function model($model)
+{
+    $data = 'app\\common\\model\\' . ucwords(strtolower($model));
+    return new $data;
+}
+
+function getAllAddress() {
+    return Cache::remember('all_address', function(){
+        return \app\common\model\Users::column('address');
+    });
 }
