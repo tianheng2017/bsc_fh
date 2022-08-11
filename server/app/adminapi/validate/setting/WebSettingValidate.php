@@ -46,7 +46,10 @@ class WebSettingValidate extends BaseValidate
     ];
 
     protected $scene = [
-        'website' => ['name', 'web_favicon', 'web_logo', 'login_image', 'fh_wallet', 'required_coin'],
+        'website' => [
+            'name', 'web_favicon', 'web_logo', 'login_image',
+            'fh_wallet', 'required_coin', 'cbfh_bl'
+        ],
     ];
 
     /** 钱包格式检测
