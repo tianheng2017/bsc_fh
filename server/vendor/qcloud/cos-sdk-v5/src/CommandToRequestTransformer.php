@@ -236,6 +236,24 @@ class CommandToRequestTransformer {
 
         public function cosDomain2CiTransformer(CommandInterface $command, $request) {
             $action = $command->getName();
+            if(key_exists($action, array( 'DescribeMediaBuckets' => 1, ))) {
+                $origin_host = "ci.{$this->config['region']}.myqcloud.com";
+                $host = $origin_host;
+                if ($this->config['ip'] != null) {
+                    $host = $this->config['ip'];
+                    if ($this->config['port'] != null) {
+                        $host = $this->config['ip'] . ":" . $this->config['port'];
+                    }
+                }
+
+                $path = $this->config['schema'].'://'. $host . $request->getUri()->getPath();
+                $uri = new Uri( $path );
+                $query = $request->getUri()->getQuery();
+                $uri = $uri->withQuery( $query );
+                $request = $request->withUri( $uri );
+                $request = $request->withHeader( 'Host', $origin_host );
+                return $request;
+            }
             $ciActions = array(
                 'DetectText' => 1,
                 'CreateMediaTranscodeJobs' => 1,
@@ -263,6 +281,21 @@ class CommandToRequestTransformer {
                 'DescribeMediaVoiceSeparateJob' => 1,
                 'DetectWebpage' => 1,
                 'GetDetectWebpageResult' => 1,
+                'DescribeMediaQueues' => 1,
+                'UpdateMediaQueue' => 1,
+                'CreateMediaSmartCoverJobs' => 1,
+                'CreateMediaVideoProcessJobs' => 1,
+                'CreateMediaVideoMontageJobs' => 1,
+                'CreateMediaAnimationJobs' => 1,
+                'CreateMediaPicProcessJobs' => 1,
+                'CreateMediaSegmentJobs' => 1,
+                'CreateMediaVideoTagJobs' => 1,
+                'CreateMediaSuperResolutionJobs' => 1,
+                'CreateMediaSDRtoHDRJobs' => 1,
+                'CreateMediaDigitalWatermarkJobs' => 1,
+                'CreateMediaExtractDigitalWatermarkJobs' => 1,
+                'DetectLiveVideo' => 1,
+                'CancelLiveVideoAuditing' => 1,
             );
             if (key_exists($action, $ciActions)) {
                 $bucketname = $command['Bucket'];

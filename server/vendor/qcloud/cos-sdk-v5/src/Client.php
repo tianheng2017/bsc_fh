@@ -121,10 +121,27 @@ use GuzzleHttp\Psr7;
  * @method object DescribeMediaVoiceSeparateJob(array $args) 查询指定的人声分离任务
  * @method object DetectWebpage(array $args) 提交网页审核任务
  * @method object GetDetectWebpageResult(array $args) 查询网页审核任务结果
+ * @method object DescribeMediaBuckets(array $args) 查询媒体处理开通状态
+ * @method object GetPrivateM3U8(array $args) 获取私有 M3U8 ts 资源的下载授权
+ * @method object DescribeMediaQueues(array $args) 搜索媒体处理队列
+ * @method object UpdateMediaQueue(array $args) 更新媒体处理队列
+ * @method object CreateMediaSmartCoverJobs(array $args) 提交智能封面任务
+ * @method object CreateMediaVideoProcessJobs(array $args) 提交视频增强任务
+ * @method object CreateMediaVideoMontageJobs(array $args) 提交精彩集锦任务
+ * @method object CreateMediaAnimationJobs(array $args) 提交动图任务
+ * @method object CreateMediaPicProcessJobs(array $args) 提交图片处理任务
+ * @method object CreateMediaSegmentJobs(array $args) 提交转封装任务
+ * @method object CreateMediaVideoTagJobs(array $args) 提交视频标签任务
+ * @method object CreateMediaSuperResolutionJobs(array $args) 提交超分辨率任务
+ * @method object CreateMediaSDRtoHDRJobs(array $args) 提交 SDR to HDR 任务
+ * @method object CreateMediaDigitalWatermarkJobs(array $args) 嵌入数字水印任务(添加水印)
+ * @method object CreateMediaExtractDigitalWatermarkJobs(array $args) 提取数字水印任务(提取水印)
+ * @method object DetectLiveVideo(array $args) 直播流审核
+ * @method object CancelLiveVideoAuditing(array $args) 取消直播流审核
  * @see \Qcloud\Cos\Service::getService()
  */
 class Client extends GuzzleClient {
-    const VERSION = '2.5.3';
+    const VERSION = '2.5.6';
 
     public $httpClient;
     
@@ -169,7 +186,7 @@ class Client extends GuzzleClient {
 			return $request->withHeader('User-Agent', $this->cosConfig['userAgent']);
         }));
         if ($this->cosConfig['anonymous'] != true) {
-            $handler->push($this::handleSignature($this->cosConfig['secretId'], $this->cosConfig['secretKey'], $this->cosConfig['signHost']));
+            $handler->push($this::handleSignature($this->cosConfig['secretId'], $this->cosConfig['secretKey'], $this->cosConfig));
         }
         if ($this->cosConfig['token'] != null) {
             $handler->push(Middleware::mapRequest(function (RequestInterface $request) {
@@ -199,7 +216,8 @@ class Client extends GuzzleClient {
         if (empty($this->cosConfig['region'])   &&
             empty($this->cosConfig['domain'])   &&
             empty($this->cosConfig['endpoint']) &&
-            empty($this->cosConfig['ip'])) {
+            empty($this->cosConfig['ip'])       &&
+            !$this->cosConfig['allow_accelerate']) {
             $message = 'Region is empty';
         }
         //检查Secret
@@ -476,9 +494,9 @@ class Client extends GuzzleClient {
     }
 
 
-    public static function handleSignature($secretId, $secretKey, $signHost) {
-            return function (callable $handler) use ($secretId, $secretKey, $signHost) {
-                    return new SignatureMiddleware($handler, $secretId, $secretKey, $signHost);
+    public static function handleSignature($secretId, $secretKey, $options) {
+            return function (callable $handler) use ($secretId, $secretKey, $options) {
+                    return new SignatureMiddleware($handler, $secretId, $secretKey, $options);
             };
     }
 

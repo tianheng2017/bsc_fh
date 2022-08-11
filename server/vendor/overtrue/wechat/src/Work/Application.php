@@ -36,8 +36,11 @@ use EasyWeChat\Work\MiniProgram\Application as MiniProgram;
  * @property \EasyWeChat\Work\Chat\Client                           $chat
  * @property \EasyWeChat\Work\ExternalContact\Client                $external_contact
  * @property \EasyWeChat\Work\ExternalContact\ContactWayClient      $contact_way
+ * @property \EasyWeChat\Work\ExternalContact\GroupChatWayClient    $group_chat_way
  * @property \EasyWeChat\Work\ExternalContact\StatisticsClient      $external_contact_statistics
  * @property \EasyWeChat\Work\ExternalContact\MessageClient         $external_contact_message
+ * @property \EasyWeChat\Work\ExternalContact\InterceptClient       $intercept
+ * @property \EasyWeChat\Work\ExternalContact\ProductClient         $product
  * @property \EasyWeChat\Work\GroupRobot\Client                     $group_robot
  * @property \EasyWeChat\Work\GroupRobot\Messenger                  $group_robot_messenger
  * @property \EasyWeChat\Work\Calendar\Client                       $calendar
@@ -51,6 +54,7 @@ use EasyWeChat\Work\MiniProgram\Application as MiniProgram;
  * @property \EasyWeChat\Work\Kf\ServicerClient                     $kf_servicer
  * @property \EasyWeChat\Work\Kf\MessageClient                      $kf_message
  * @property \EasyWeChat\Work\GroupWelcomeTemplate\Client           $group_welcome_templage
+ * @property \EasyWeChat\Work\Wedrive\Wedrive                       $wedrive
  *
  * @method mixed getCallbackIp()
  */
@@ -84,6 +88,7 @@ class Application extends ServiceContainer
         Mobile\ServiceProvider::class,
         Kf\ServiceProvider::class,
         GroupWelcomeTemplate\ServiceProvider::class,
+        Wedrive\ServiceProvider::class,
     ];
 
     /**
