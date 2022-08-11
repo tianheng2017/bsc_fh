@@ -1,27 +1,10 @@
 <template>
     <div class="edit-popup">
-        <popup
-            ref="popupRef"
-            :title="popupTitle"
-            :async="true"
-            width="550px"
-            :clickModalClose="true"
-            @confirm="handleSubmit"
-            @close="handleClose"
-        >
-            <el-form
-                class="ls-form"
-                ref="formRef"
-                :rules="rules"
-                :model="formData"
-                label-width="84px"
-            >
+        <popup ref="popupRef" :title="popupTitle" :async="true" width="550px" :clickModalClose="true"
+            @confirm="handleSubmit" @close="handleClose">
+            <el-form class="ls-form" ref="formRef" :rules="rules" :model="formData" label-width="84px">
                 <el-form-item label="字典类型">
-                    <el-input
-                        :model-value="formData.type_value"
-                        placeholder="请输入字典类型"
-                        disabled
-                    />
+                    <el-input :model-value="formData.type_value" placeholder="请输入字典类型" disabled />
                 </el-form-item>
                 <el-form-item label="数据名称" prop="name">
                     <el-input v-model="formData.name" placeholder="请输入数据名称" />
@@ -68,7 +51,7 @@ const formData = reactive({
     sort: 0,
     status: 1,
     remark: '',
-    type_id: query.id
+    id: query.id
 })
 
 const rules = {

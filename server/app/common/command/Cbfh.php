@@ -11,6 +11,7 @@
 
 namespace app\common\command;
 
+use app\common\model\MoneyLog;
 use app\common\model\TransferLog;
 use app\common\model\Users;
 use app\common\service\ConfigService;
@@ -76,6 +77,7 @@ class Cbfh extends Command
             // 资金入账
             Users::changeAmount($v['id'], 1, $reward);
             // 资金日志
+            MoneyLog::addLog($v['id'], 0, $reward, 1);
         }
 
         // 记录本次持币分红时间
