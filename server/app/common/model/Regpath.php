@@ -140,7 +140,7 @@ class Regpath extends BaseModel
             // 去重
             $children_uids = array_unique($children_uids);
 
-            // 团队业绩按正在众筹中的金额累计计算
+            // 团队业绩按BNB余额计算
             $all_amount = Users::whereIn('id', $children_uids)->sum('amount1');
             $arr[] = [
                 'uid'           =>  $v,

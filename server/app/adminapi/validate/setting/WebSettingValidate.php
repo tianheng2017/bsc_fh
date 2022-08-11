@@ -36,6 +36,7 @@ class WebSettingValidate extends BaseValidate
         'web_favicon.require' => '请上传网站图标',
         'web_logo.require' => '请上传网站logo',
         'login_image.require' => '请上传登录页广告图',
+        'required_coin.number'  =>  '参与所需代币必须为数字',
     ];
 
     protected $scene = [
