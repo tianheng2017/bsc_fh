@@ -11,6 +11,7 @@
 
 namespace app\common\model;
 
+use app\common\service\ConfigService;
 use think\Exception;
 use think\facade\Cache;
 use think\facade\Db;
@@ -124,6 +125,17 @@ class Users extends BaseModel
     public static function selectAmount(int $uid, int $type = 1)
     {
         return self::where('id', $uid)->value('amount'.$type);
+    }
+
+    /** 获取全网持币总量
+     * @return float 持币总量
+     */
+    public static function getAllValidAmount1()
+    {
+        // 参与所需代币
+        $required_coin = (float)ConfigService::get('website', 'required_coin');
+
+        return self::where('amount1', '>=', $required_coin)->sum('amount1');
     }
 
 }

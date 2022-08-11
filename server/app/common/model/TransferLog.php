@@ -25,4 +25,12 @@ class TransferLog extends BaseModel
 
     protected $name = 'transfer_log';
 
+    /**查询今日转入金额
+     * @return float 金额
+     */
+    public static function getTodayInAmount()
+    {
+        return self::whereDay('block_time')->sum('amount');
+    }
+
 }

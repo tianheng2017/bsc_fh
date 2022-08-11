@@ -11,6 +11,7 @@
 
 namespace app\common\model;
 
+use app\common\service\ConfigService;
 use think\facade\Db;
 
 
@@ -130,17 +131,24 @@ class Regpath extends BaseModel
         $zhi_uids = self::getLevelUids($uid, 1);
         if (empty($zhi_uids)) return [0, 0];
 
+        // 参与所需代币
+        $required_coin = (float)ConfigService::get('website', 'required_coin');
+
         // 分别查询各个直推的伞下业绩
         $arr = [];
         foreach ($zhi_uids as $v) {
             // 查询伞下会员
-            $children_uids = self::getAllChilds($v);
+            $all_uids = self::getAllChilds($v);
+            // 查询伞下有效会员
+            $children_uids = Users::whereIn('id', $all_uids)
+                ->where('amount1','>=', $required_coin)
+                ->column('id');
             // 包括直推自己
             array_push($children_uids, $v);
             // 去重
             $children_uids = array_unique($children_uids);
 
-            // 团队业绩按BNB余额计算
+            // 团队业绩按代币余额计算
             $all_amount = Users::whereIn('id', $children_uids)->sum('amount1');
             $arr[] = [
                 'uid'           =>  $v,
