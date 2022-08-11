@@ -86,7 +86,7 @@ class Cbfh extends Command
         // 记录本次持币分红时间
         ConfigService::set('other', 'last_cbfh_time', time());
 
-        $output->writeln('本次分红完毕，一共分红'.$num.'人，资金：'.$wait_amount);
+        $output->writeln('今日持币分红完毕，一共：'.$num.' 人，分红：'.$wait_amount.' BNB');
         return true;
     }
 }
