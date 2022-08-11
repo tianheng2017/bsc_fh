@@ -7,5 +7,7 @@ return [
     'commands' => [
         // 定时任务
         'crontab' => 'app\common\command\Crontab',
+        // 持币分红
+        'cbfh' => 'app\common\command\Cbfh',
     ],
 ];

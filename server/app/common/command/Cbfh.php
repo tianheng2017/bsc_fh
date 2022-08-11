@@ -71,16 +71,22 @@ class Cbfh extends Command
         $all_amount = array_sum(array_column($users, 'amount1'));
 
         // 加权分红
-        foreach ($users as $k => $v) {
+        $num = 0;
+        foreach ($users as $v) {
             // 计算我的加权分红金额
             $reward = round($wait_amount * $v['amount1'] / $all_amount, 4);
             // 资金入账
             Users::changeAmount($v['id'], 1, $reward);
             // 资金日志
             MoneyLog::addLog($v['id'], 0, $reward, 1);
+            // 登记
+            $num++;
         }
 
         // 记录本次持币分红时间
         ConfigService::set('other', 'last_cbfh_time', time());
+
+        $output->writeln('本次分红完毕，一共分红'.$num.'人，资金：'.$wait_amount);
+        return true;
     }
 }
