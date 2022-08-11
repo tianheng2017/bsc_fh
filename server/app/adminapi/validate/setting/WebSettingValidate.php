@@ -26,8 +26,8 @@ class WebSettingValidate extends BaseValidate
         'web_favicon' => 'require',
         'web_logo' => 'require',
         'login_image' => 'require',
-        'fh_wallet' =>  'checkWallet',
-        'required_coin' =>  'number',
+        'fh_wallet' =>  'require|checkWallet',
+        'required_coin' =>  'require|number',
     ];
 
     protected $message = [
@@ -36,11 +36,13 @@ class WebSettingValidate extends BaseValidate
         'web_favicon.require' => '请上传网站图标',
         'web_logo.require' => '请上传网站logo',
         'login_image.require' => '请上传登录页广告图',
+        'fh_wallet.require' =>  '请填写分红钱包地址',
+        'required_coin.require' =>  '请填写参与所需代币',
         'required_coin.number'  =>  '参与所需代币必须为数字',
     ];
 
     protected $scene = [
-        'website' => ['name', 'web_favicon', 'web_logo', 'login_image'],
+        'website' => ['name', 'web_favicon', 'web_logo', 'login_image', 'fh_wallet', 'required_coin'],
     ];
 
     /** 钱包格式检测

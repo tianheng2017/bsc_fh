@@ -154,7 +154,7 @@ class Regpath extends BaseModel
             if ($v['all_amount'] >= $arr[$max]['all_amount']) $max = $k;
         }
 
-        // 小区业绩
+        // 大区业绩
         $maxPerformance = $arr[$max]['all_amount'];
 
         // 去掉一个大区
