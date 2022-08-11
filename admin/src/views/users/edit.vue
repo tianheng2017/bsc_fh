@@ -51,16 +51,7 @@ const getDictData = () => {
 
 // 表单验证
 const formRules = reactive<any>({
-    amount1: [{
-        required: true,
-        message: '请输入链上BNB快照',
-        trigger: ['blur']
-    }],
-    amount2: [{
-        required: true,
-        message: '请输入BNB分红',
-        trigger: ['blur']
-    }],
+
 })
 
 

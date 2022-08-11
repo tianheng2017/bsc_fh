@@ -16,16 +16,16 @@ namespace app\adminapi\lists;
 
 
 use app\adminapi\lists\BaseAdminDataLists;
-use app\common\model\Users;
+use app\common\model\TransferLog;
 use app\common\lists\ListsSearchInterface;
 
 
 /**
- * Users列表
- * Class UsersLists
+ * TransferLog列表
+ * Class TransferLogLists
  * @package app\adminapi\lists
  */
-class UsersLists extends BaseAdminDataLists implements ListsSearchInterface
+class TransferLogLists extends BaseAdminDataLists implements ListsSearchInterface
 {
 
 
@@ -33,12 +33,12 @@ class UsersLists extends BaseAdminDataLists implements ListsSearchInterface
      * @notes 设置搜索条件
      * @return \string[][]
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public function setSearch(): array
     {
         return [
-            '=' => ['address', 'fid'],
+            '=' => ['tx', 'symbol', 'from_address', 'to_address', 'amount', 'state', 'block_time'],
         ];
     }
 
@@ -50,12 +50,12 @@ class UsersLists extends BaseAdminDataLists implements ListsSearchInterface
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public function lists(): array
     {
-        return Users::where($this->searchWhere)
-            ->field(['id', 'address', 'fid', 'amount1', 'amount2', 'count', 'create_time'])
+        return TransferLog::where($this->searchWhere)
+            ->field(['id', 'tx', 'symbol', 'from_address', 'to_address', 'amount', 'state', 'block_time', 'create_time'])
             ->limit($this->limitOffset, $this->limitLength)
             ->order(['id' => 'desc'])
             ->select()
@@ -67,11 +67,11 @@ class UsersLists extends BaseAdminDataLists implements ListsSearchInterface
      * @notes 获取数量
      * @return int
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public function count(): int
     {
-        return Users::where($this->searchWhere)->count();
+        return TransferLog::where($this->searchWhere)->count();
     }
 
 }

@@ -17,17 +17,17 @@ namespace app\adminapi\controller;
 
 
 use app\adminapi\controller\BaseAdminController;
-use app\adminapi\lists\UsersLists;
-use app\adminapi\logic\UsersLogic;
-use app\adminapi\validate\UsersValidate;
+use app\adminapi\lists\TransferLogLists;
+use app\adminapi\logic\TransferLogLogic;
+use app\adminapi\validate\TransferLogValidate;
 
 
 /**
- * Users控制器
- * Class UsersController
+ * TransferLog控制器
+ * Class TransferLogController
  * @package app\adminapi\controller
  */
-class UsersController extends BaseAdminController
+class TransferLogController extends BaseAdminController
 {
 
 
@@ -35,11 +35,11 @@ class UsersController extends BaseAdminController
      * @notes 获取列表
      * @return \think\response\Json
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public function lists()
     {
-        return $this->dataLists(new UsersLists());
+        return $this->dataLists(new TransferLogLists());
     }
 
 
@@ -47,16 +47,16 @@ class UsersController extends BaseAdminController
      * @notes 添加
      * @return \think\response\Json
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public function add()
     {
-        $params = (new UsersValidate())->post()->goCheck('add');
-        $result = UsersLogic::add($params);
+        $params = (new TransferLogValidate())->post()->goCheck('add');
+        $result = TransferLogLogic::add($params);
         if (true === $result) {
             return $this->success('添加成功', [], 1, 1);
         }
-        return $this->fail(UsersLogic::getError());
+        return $this->fail(TransferLogLogic::getError());
     }
 
 
@@ -64,16 +64,16 @@ class UsersController extends BaseAdminController
      * @notes 编辑
      * @return \think\response\Json
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public function edit()
     {
-        $params = (new UsersValidate())->post()->goCheck();
-        $result = UsersLogic::edit($params);
+        $params = (new TransferLogValidate())->post()->goCheck();
+        $result = TransferLogLogic::edit($params);
         if (true === $result) {
             return $this->success('编辑成功', [], 1, 1);
         }
-        return $this->fail(UsersLogic::getError());
+        return $this->fail(TransferLogLogic::getError());
     }
 
 
@@ -81,12 +81,12 @@ class UsersController extends BaseAdminController
      * @notes 删除
      * @return \think\response\Json
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public function delete()
     {
-        $params = (new UsersValidate())->post()->goCheck('delete');
-        UsersLogic::delete($params);
+        $params = (new TransferLogValidate())->post()->goCheck('delete');
+        TransferLogLogic::delete($params);
         return $this->success('删除成功', [], 1, 1);
     }
 
@@ -95,12 +95,12 @@ class UsersController extends BaseAdminController
      * @notes 获取详情
      * @return \think\response\Json
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public function detail()
     {
-        $params = (new UsersValidate())->goCheck('detail');
-        $result = UsersLogic::detail($params);
+        $params = (new TransferLogValidate())->goCheck('detail');
+        $result = TransferLogLogic::detail($params);
         return $this->data($result);
     }
 

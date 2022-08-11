@@ -19,11 +19,11 @@ use app\common\validate\BaseValidate;
 
 
 /**
- * Users验证器
- * Class UsersValidate
+ * TransferLog验证器
+ * Class TransferLogValidate
  * @package app\adminapi\validate
  */
-class UsersValidate extends BaseValidate
+class TransferLogValidate extends BaseValidate
 {
 
 
@@ -31,7 +31,7 @@ class UsersValidate extends BaseValidate
      * @notes 设置搜索条件
      * @return \string[][]
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     protected $rule = [
         'id' => 'require',
@@ -40,9 +40,9 @@ class UsersValidate extends BaseValidate
 
     /**
      * @notes 添加场景
-     * @return UsersValidate
+     * @return TransferLogValidate
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public function sceneAdd()
     {
@@ -52,9 +52,9 @@ class UsersValidate extends BaseValidate
 
     /**
      * @notes 删除场景
-     * @return UsersValidate
+     * @return TransferLogValidate
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public function sceneDelete()
     {
@@ -64,9 +64,9 @@ class UsersValidate extends BaseValidate
 
     /**
      * @notes 详情场景
-     * @return UsersValidate
+     * @return TransferLogValidate
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public function sceneDetail()
     {

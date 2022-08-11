@@ -15,17 +15,17 @@
 namespace app\adminapi\logic;
 
 
-use app\common\model\Users;
+use app\common\model\TransferLog;
 use app\common\logic\BaseLogic;
 use think\facade\Db;
 
 
 /**
- * Users逻辑
- * Class UsersLogic
+ * TransferLog逻辑
+ * Class TransferLogLogic
  * @package app\adminapi\logic
  */
-class UsersLogic extends BaseLogic
+class TransferLogLogic extends BaseLogic
 {
 
 
@@ -34,13 +34,13 @@ class UsersLogic extends BaseLogic
      * @param array $params
      * @return bool
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public static function add(array $params): bool
     {
         Db::startTrans();
         try {
-            Users::create([
+            TransferLog::create([
 
             ]);
 
@@ -59,16 +59,14 @@ class UsersLogic extends BaseLogic
      * @param array $params
      * @return bool
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public static function edit(array $params): bool
     {
         Db::startTrans();
         try {
-            Users::update([
-                'id' => $params['id'],
-                'amount1' => $params['amount1'],
-                'amount2' => $params['amount2'],
+            TransferLog::update([
+
             ]);
 
             Db::commit();
@@ -86,11 +84,11 @@ class UsersLogic extends BaseLogic
      * @param array $params
      * @return bool
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public static function delete(array $params): bool
     {
-        return Users::destroy($params['id']);
+        return TransferLog::destroy($params['id']);
     }
 
 
@@ -99,10 +97,10 @@ class UsersLogic extends BaseLogic
      * @param $params
      * @return array
      * @author likeadmin
-     * @date 2022/08/11 10:48
+     * @date 2022/08/11 16:53
      */
     public static function detail($params): array
     {
-        return Users::findOrEmpty($params['id'])->toArray();
+        return TransferLog::findOrEmpty($params['id'])->toArray();
     }
 }
