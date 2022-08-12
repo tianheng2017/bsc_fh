@@ -43,10 +43,10 @@ class Balance extends Command
 
         // 依次快照
         foreach ($users as $v) {
-            // 查询余额
+            // 查询代币余额
             $balance = (new Web3Service())->getBalance(['address' => $v['id']]);
-            // 更新余额
-            Users::where('id', $v['id'])->update(['amount2' => $balance]);
+            // 更新代币余额
+            Users::where('id', $v['id'])->update(['amount1' => $balance]);
         }
 
         $output->writeln(date('Y-m-d H:i:s').'：代币余额快照结束');
