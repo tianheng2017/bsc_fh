@@ -4,6 +4,7 @@ namespace app\common\service;
 
 use think\Exception;
 use Web3\Web3;
+use Web3\Contract;
 use Web3\Providers\HttpProvider;
 use Web3\RequestManagers\HttpRequestManager;
 use Web3\Utils;
@@ -88,13 +89,12 @@ class Web3Service
      */
     public float $price;
 
-    public function __construct($name = '')
+    public function __construct()
     {
-        $this->provider = config('bsc.provider');
+        $this->provider = ConfigService::get('website', 'scan_node');
         $this->gas = config('bsc.gas');
         $this->heightGas = config('bsc.heightGas');
         $this->chainId = config('bsc.chainId');
-        // 默认USDT合约地址和ABI
         $this->contract = config('bsc.contract');
         $this->abi = config('bsc.abi');
         $this->decimals = config('bsc.decimals');
@@ -102,22 +102,21 @@ class Web3Service
     }
 
     /**
-     * @notes 查询BNB余额
+     * @notes 查询代币余额
      * @param array $data 数据
      * @return String
      */
     public function getBalance(array $data): string
     {
         try {
-            $this->web3->eth->getBalance($data['address'] ,function ($err, $balance) {
+            $contractAbi = new Contract($this->provider, $this->abi);
+            $contractAbi->at($this->contract)->call('balanceOf', $data['address'], function ($err, $balance) use ($data) {
                 if ($err !== null) throw new Exception('查询余额失败：'.$err->getMessage());
-                $this->balance = bcdiv(bchexdec(Utils::toHex($balance[0])), bcpow(10, 18), 18);
+                $this->balance = bcdiv(bchexdec(Utils::toHex($balance[0])), bcpow(10, $this->decimals), $this->decimals);
             });
             return $this->balance;
         } catch (\Exception $e) {
             return 0;
         }
     }
-
-    // .......
 }
