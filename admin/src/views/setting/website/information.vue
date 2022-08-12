@@ -106,6 +106,15 @@
                         </el-input>
                     </div>
                 </el-form-item>
+				<el-form-item label="余额扫描节点" prop="scan_node" required>
+                    <div class="w-80">
+                        <el-input
+                            v-model="formData.scan_node"
+                            placeholder="请输入余额扫描节点"
+                        >
+                        </el-input>
+                    </div>
+                </el-form-item>
             </el-form>
         </el-card>
 
@@ -130,6 +139,7 @@ const formData = reactive({
     required_coin: "", //参与所需代币数量
     cbfh_bl: "", // 持币分红所占百分比
     api_key: "", // 币安API KEY
+	scan_node: "", // 余额扫描节点
 });
 
 // 表单验证
@@ -166,6 +176,13 @@ const rules = {
         {
             required: true,
             message: "请输入币安API KEY",
+            trigger: ["blur"],
+        },
+    ],
+	scan_node: [
+        {
+            required: true,
+            message: "请输入余额扫描节点",
             trigger: ["blur"],
         },
     ],

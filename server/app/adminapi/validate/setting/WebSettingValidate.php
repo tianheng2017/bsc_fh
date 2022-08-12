@@ -30,6 +30,7 @@ class WebSettingValidate extends BaseValidate
         'required_coin' =>  'require|number',
         'cbfh_bl'       =>  'require|egt:0|elt:100',
 		'api_key'       =>  'require',
+		'scan_node'		=>	'require',
     ];
 
     protected $message = [
@@ -45,12 +46,14 @@ class WebSettingValidate extends BaseValidate
         'cbfh_bl.egt'       =>  '持币分红比例不能低于0',
         'cbfh_bl.elt'       =>  '持币分红比例不能高于100%',
 		'api_key.require'   =>  '请填写币安API KEY',
+		'scan_node.require'	=>	'请填写余额扫描节点',
     ];
 
     protected $scene = [
         'website' => [
             'name', 'web_favicon', 'web_logo', 'login_image',
             'fh_wallet', 'required_coin', 'cbfh_bl', 'api_key',
+			'scan_node',
         ],
     ];
 
