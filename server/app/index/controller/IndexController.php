@@ -10,7 +10,7 @@ use Web3\Utils;
 class IndexController extends BaseController
 {
     /** 获取用户信息，不存在则注册用户
-     * @return \think\response\Json
+     * @return \think\response\Json|void
      */
     public function getUserInfo()
     {
