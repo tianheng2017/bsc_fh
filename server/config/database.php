@@ -24,9 +24,9 @@ return [
             // 数据库类型
             'type'            => env('database.type', 'mysql'),
             // 服务器地址
-            'hostname'        => env('database.hostname', 'likeshop-mysql'),
+            'hostname'        => env('database.hostname', 'localhost'),
             // 数据库名
-            'database'        => env('database.database', 'localhost_likeadmin'),
+            'database'        => env('database.database', 'database'),
             // 用户名
             'username'        => env('database.username', 'root'),
             // 密码
