@@ -11,15 +11,11 @@
 
 namespace app\common\command;
 
-use app\common\model\MoneyLog;
-use app\common\model\TransferLog;
 use app\common\model\Users;
-use app\common\service\ConfigService;
 use app\common\service\Web3Service;
 use think\console\Command;
 use think\console\Input;
 use think\console\Output;
-use think\facade\Db;
 
 /**
  * 代币余额快照
