@@ -41,6 +41,7 @@ class WebSettingLogic extends BaseLogic
             'fh_wallet' => ConfigService::get('website', 'fh_wallet'),
             'required_coin' => ConfigService::get('website', 'required_coin'),
             'cbfh_bl' => ConfigService::get('website', 'cbfh_bl'),
+			'api_key' => ConfigService::get('website', 'api_key'),
         ];
     }
 
@@ -64,6 +65,7 @@ class WebSettingLogic extends BaseLogic
         ConfigService::set('website', 'fh_wallet', $params['fh_wallet']);
         ConfigService::set('website', 'required_coin', $params['required_coin']);
         ConfigService::set('website', 'cbfh_bl', $params['cbfh_bl']);
+		ConfigService::set('website', 'api_key', $params['api_key']);
     }
 
 
