@@ -46,15 +46,15 @@ class MoneyLogController extends BaseAdminController
      * @author likeadmin
      * @date 2022/08/12 07:44
      */
-    public function add()
-    {
-        $params = (new MoneyLogValidate())->post()->goCheck('add');
-        $result = MoneyLogLogic::add($params);
-        if (true === $result) {
-            return $this->success('添加成功', [], 1, 1);
-        }
-        return $this->fail(MoneyLogLogic::getError());
-    }
+    // public function add()
+    // {
+        // $params = (new MoneyLogValidate())->post()->goCheck('add');
+        // $result = MoneyLogLogic::add($params);
+        // if (true === $result) {
+            // return $this->success('添加成功', [], 1, 1);
+        // }
+        // return $this->fail(MoneyLogLogic::getError());
+    // }
 
 
     /**
@@ -63,15 +63,15 @@ class MoneyLogController extends BaseAdminController
      * @author likeadmin
      * @date 2022/08/12 07:44
      */
-    public function edit()
-    {
-        $params = (new MoneyLogValidate())->post()->goCheck();
-        $result = MoneyLogLogic::edit($params);
-        if (true === $result) {
-            return $this->success('编辑成功', [], 1, 1);
-        }
-        return $this->fail(MoneyLogLogic::getError());
-    }
+    // public function edit()
+    // {
+        // $params = (new MoneyLogValidate())->post()->goCheck();
+        // $result = MoneyLogLogic::edit($params);
+        // if (true === $result) {
+            // return $this->success('编辑成功', [], 1, 1);
+        // }
+        // return $this->fail(MoneyLogLogic::getError());
+    // }
 
 
     /**
@@ -80,12 +80,12 @@ class MoneyLogController extends BaseAdminController
      * @author likeadmin
      * @date 2022/08/12 07:44
      */
-    public function delete()
-    {
-        $params = (new MoneyLogValidate())->post()->goCheck('delete');
-        MoneyLogLogic::delete($params);
-        return $this->success('删除成功', [], 1, 1);
-    }
+    // public function delete()
+    // {
+        // $params = (new MoneyLogValidate())->post()->goCheck('delete');
+        // MoneyLogLogic::delete($params);
+        // return $this->success('删除成功', [], 1, 1);
+    // }
 
 
     /**

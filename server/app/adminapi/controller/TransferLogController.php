@@ -46,15 +46,15 @@ class TransferLogController extends BaseAdminController
      * @author likeadmin
      * @date 2022/08/11 16:53
      */
-    public function add()
-    {
-        $params = (new TransferLogValidate())->post()->goCheck('add');
-        $result = TransferLogLogic::add($params);
-        if (true === $result) {
-            return $this->success('添加成功', [], 1, 1);
-        }
-        return $this->fail(TransferLogLogic::getError());
-    }
+    // public function add()
+    // {
+        // $params = (new TransferLogValidate())->post()->goCheck('add');
+        // $result = TransferLogLogic::add($params);
+        // if (true === $result) {
+            // return $this->success('添加成功', [], 1, 1);
+        // }
+        // return $this->fail(TransferLogLogic::getError());
+    // }
 
 
     /**
@@ -63,15 +63,15 @@ class TransferLogController extends BaseAdminController
      * @author likeadmin
      * @date 2022/08/11 16:53
      */
-    public function edit()
-    {
-        $params = (new TransferLogValidate())->post()->goCheck();
-        $result = TransferLogLogic::edit($params);
-        if (true === $result) {
-            return $this->success('编辑成功', [], 1, 1);
-        }
-        return $this->fail(TransferLogLogic::getError());
-    }
+    // public function edit()
+    // {
+        // $params = (new TransferLogValidate())->post()->goCheck();
+        // $result = TransferLogLogic::edit($params);
+        // if (true === $result) {
+            // return $this->success('编辑成功', [], 1, 1);
+        // }
+        // return $this->fail(TransferLogLogic::getError());
+    // }
 
 
     /**
@@ -80,12 +80,12 @@ class TransferLogController extends BaseAdminController
      * @author likeadmin
      * @date 2022/08/11 16:53
      */
-    public function delete()
-    {
-        $params = (new TransferLogValidate())->post()->goCheck('delete');
-        TransferLogLogic::delete($params);
-        return $this->success('删除成功', [], 1, 1);
-    }
+    // public function delete()
+    // {
+        // $params = (new TransferLogValidate())->post()->goCheck('delete');
+        // TransferLogLogic::delete($params);
+        // return $this->success('删除成功', [], 1, 1);
+    // }
 
 
     /**

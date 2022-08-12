@@ -1,10 +1,23 @@
 <template>
     <div class="dict-type">
         <el-card class="!border-none" shadow="never">
-            <el-page-header class="mb-4" content="数据管理" @back="$router.back()" />
-            <el-form ref="formRef" class="mb-[-16px]" :model="queryParams" inline>
+            <el-page-header
+                class="mb-4"
+                content="数据管理"
+                @back="$router.back()"
+            />
+            <el-form
+                ref="formRef"
+                class="mb-[-16px]"
+                :model="queryParams"
+                inline
+            >
                 <el-form-item label="字典名称">
-                    <el-select class="w-56" v-model="queryParams.type_id" @change="getLists">
+                    <el-select
+                        class="w-56"
+                        v-model="queryParams.type_id"
+                        @change="getLists"
+                    >
                         <el-option
                             v-for="item in options.dict_type"
                             :label="item.name"
@@ -24,7 +37,9 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="resetPage">查询</el-button>
+                    <el-button type="primary" @click="resetPage"
+                        >查询</el-button
+                    >
                     <el-button @click="resetParams">重置</el-button>
                 </el-form-item>
             </el-form>
@@ -39,7 +54,7 @@
                     <template #icon>
                         <icon name="el-icon-Plus" />
                     </template>
-                    添加数据
+                    添加
                 </el-button>
                 <el-button
                     v-perms="['setting.dict.dict_data/delete']"
@@ -62,15 +77,27 @@
                     >
                         <el-table-column type="selection" width="55" />
                         <el-table-column label="ID" prop="id" />
-                        <el-table-column label="数据名称" prop="name" min-width="120" />
-                        <el-table-column label="数据值" prop="value" min-width="120" />
+                        <el-table-column
+                            label="数据名称"
+                            prop="name"
+                            min-width="120"
+                        />
+                        <el-table-column
+                            label="数据值"
+                            prop="value"
+                            min-width="120"
+                        />
                         <el-table-column label="状态">
                             <template v-slot="{ row }">
                                 <el-tag v-if="row.status == 1">正常</el-tag>
                                 <el-tag v-else type="danger">停用</el-tag>
                             </template>
                         </el-table-column>
-                        <el-table-column label="备注" prop="remark" min-width="120" />
+                        <el-table-column
+                            label="备注"
+                            prop="remark"
+                            min-width="120"
+                        />
                         <el-table-column label="排序" prop="sort" />
                         <el-table-column label="操作" width="120" fixed="right">
                             <template #default="{ row }">
@@ -99,68 +126,79 @@
                 </div>
             </div>
         </el-card>
-        <edit-popup v-if="showEdit" ref="editRef" @success="getLists" @close="showEdit = false" />
+        <edit-popup
+            v-if="showEdit"
+            ref="editRef"
+            @success="getLists"
+            @close="showEdit = false"
+        />
     </div>
 </template>
 
 <script lang="ts" setup>
-import { dictDataDelete, dictDataLists, dictTypeLists } from '@/api/setting/dict'
-import { usePaging } from '@/hooks/usePaging'
-import feedback from '@/utils/feedback'
-import EditPopup from './edit.vue'
-const { query } = useRoute()
-const showEdit = ref(false)
-const editRef = shallowRef<InstanceType<typeof EditPopup>>()
+import {
+    dictDataDelete,
+    dictDataLists,
+    dictTypeLists,
+} from "@/api/setting/dict";
+import { usePaging } from "@/hooks/usePaging";
+import feedback from "@/utils/feedback";
+import EditPopup from "./edit.vue";
+const { query } = useRoute();
+const showEdit = ref(false);
+const editRef = shallowRef<InstanceType<typeof EditPopup>>();
 
 const queryParams = reactive({
-    type: '',
+    type: "",
     type_id: Number(query.id),
-    name: '',
-    status: ''
-})
+    name: "",
+    status: "",
+});
 
 const options = reactive({
-    dict_type: [] as any[]
-})
+    dict_type: [] as any[],
+});
 
 const { pager, getLists, resetPage, resetParams } = usePaging({
     fetchFun: dictDataLists,
-    params: queryParams
-})
+    params: queryParams,
+});
 
-const selectData = ref<any[]>([])
+const selectData = ref<any[]>([]);
 
 const handleSelectionChange = (val: any[]) => {
-    selectData.value = val.map(({ id }) => id)
-}
+    selectData.value = val.map(({ id }) => id);
+};
 
 const handleAdd = async () => {
-    showEdit.value = true
-    await nextTick()
-    const type = options.dict_type.find((item) => item.id == queryParams.type_id)
+    showEdit.value = true;
+    await nextTick();
+    const type = options.dict_type.find(
+        (item) => item.id == queryParams.type_id
+    );
     editRef.value?.setFormData({
-        type_value: type?.type
-    })
-    editRef.value?.open('add')
-}
+        type_value: type?.type,
+    });
+    editRef.value?.open("add");
+};
 
 const handleEdit = async (data: any) => {
-    showEdit.value = true
-    await nextTick()
-    editRef.value?.open('edit')
-    editRef.value?.setFormData(data)
-}
+    showEdit.value = true;
+    await nextTick();
+    editRef.value?.open("edit");
+    editRef.value?.setFormData(data);
+};
 
 const handleDelete = async (id: any[] | number) => {
-    await feedback.confirm('确定要删除？')
-    await dictDataDelete({ id })
-    getLists()
-}
+    await feedback.confirm("确定要删除？");
+    await dictDataDelete({ id });
+    getLists();
+};
 
 const getOptions = async () => {
-    const data: any = await dictTypeLists({ page_type: 0 })
-    options.dict_type = data.lists
-}
-getOptions()
-getLists()
+    const data: any = await dictTypeLists({ page_type: 0 });
+    options.dict_type = data.lists;
+};
+getOptions();
+getLists();
 </script>

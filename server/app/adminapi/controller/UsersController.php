@@ -46,15 +46,15 @@ class UsersController extends BaseAdminController
      * @author likeadmin
      * @date 2022/08/11 10:48
      */
-    public function add()
-    {
-        $params = (new UsersValidate())->post()->goCheck('add');
-        $result = UsersLogic::add($params);
-        if (true === $result) {
-            return $this->success('添加成功', [], 1, 1);
-        }
-        return $this->fail(UsersLogic::getError());
-    }
+    // public function add()
+    // {
+        // $params = (new UsersValidate())->post()->goCheck('add');
+        // $result = UsersLogic::add($params);
+        // if (true === $result) {
+            // return $this->success('添加成功', [], 1, 1);
+        // }
+        // return $this->fail(UsersLogic::getError());
+    // }
 
 
     /**
@@ -63,15 +63,15 @@ class UsersController extends BaseAdminController
      * @author likeadmin
      * @date 2022/08/11 10:48
      */
-    public function edit()
-    {
-        $params = (new UsersValidate())->post()->goCheck();
-        $result = UsersLogic::edit($params);
-        if (true === $result) {
-            return $this->success('编辑成功', [], 1, 1);
-        }
-        return $this->fail(UsersLogic::getError());
-    }
+    // public function edit()
+    // {
+        // $params = (new UsersValidate())->post()->goCheck();
+        // $result = UsersLogic::edit($params);
+        // if (true === $result) {
+            // return $this->success('编辑成功', [], 1, 1);
+        // }
+        // return $this->fail(UsersLogic::getError());
+    // }
 
 
     /**
@@ -80,12 +80,12 @@ class UsersController extends BaseAdminController
      * @author likeadmin
      * @date 2022/08/11 10:48
      */
-    public function delete()
-    {
-        $params = (new UsersValidate())->post()->goCheck('delete');
-        UsersLogic::delete($params);
-        return $this->success('删除成功', [], 1, 1);
-    }
+    // public function delete()
+    // {
+        // $params = (new UsersValidate())->post()->goCheck('delete');
+        // UsersLogic::delete($params);
+        // return $this->success('删除成功', [], 1, 1);
+    // }
 
 
     /**
