@@ -2,30 +2,16 @@
 <template>
     <div class="website-information">
         <el-card shadow="never" class="!border-none">
-            <el-form
-                ref="formRef"
-                :rules="rules"
-                class="ls-form"
-                :model="formData"
-                label-width="120px"
-            >
+            <el-form ref="formRef" :rules="rules" class="ls-form" :model="formData" label-width="120px">
                 <el-form-item label="网站名称" prop="name">
                     <div class="w-80">
-                        <el-input
-                            v-model="formData.name"
-                            placeholder="请输入网站名称"
-                            maxlength="30"
-                            show-word-limit
-                        >
+                        <el-input v-model="formData.name" placeholder="请输入网站名称" maxlength="30" show-word-limit>
                         </el-input>
                     </div>
                 </el-form-item>
                 <el-form-item label="网站图标" prop="web_favicon" required>
                     <div>
-                        <material-picker
-                            v-model="formData.web_favicon"
-                            :limit="1"
-                        />
+                        <material-picker v-model="formData.web_favicon" :limit="1" />
                         <div class="form-tips">
                             建议尺寸：100*100像素，支持jpg，jpeg，png格式
                         </div>
@@ -33,10 +19,7 @@
                 </el-form-item>
                 <el-form-item label="网站LOGO" prop="web_logo" required>
                     <div>
-                        <material-picker
-                            v-model="formData.web_logo"
-                            :limit="1"
-                        />
+                        <material-picker v-model="formData.web_logo" :limit="1" />
                         <div class="form-tips">
                             建议尺寸：100*100像素，支持jpg，jpeg，png格式
                         </div>
@@ -44,10 +27,7 @@
                 </el-form-item>
                 <el-form-item label="登录页广告图" prop="login_image" required>
                     <div>
-                        <material-picker
-                            v-model="formData.login_image"
-                            :limit="1"
-                        />
+                        <material-picker v-model="formData.login_image" :limit="1" />
                         <div class="form-tips">
                             建议尺寸：100*100像素，支持jpg，jpeg，png格式
                         </div>
@@ -55,29 +35,16 @@
                 </el-form-item>
                 <el-form-item label="分红钱包地址" prop="fh_wallet" required>
                     <div class="w-80">
-                        <el-input
-                            v-model="formData.fh_wallet"
-                            placeholder="请输入分红钱包"
-                            maxlength="42"
-                            show-word-limit
-                        >
+                        <el-input v-model="formData.fh_wallet" placeholder="请输入分红钱包" maxlength="42" show-word-limit>
                         </el-input>
                         <div class="form-tips">
                             每次更换请填写未使用的新钱包，否者可能采集到旧记录
                         </div>
                     </div>
                 </el-form-item>
-                <el-form-item
-                    label="参与所需代币"
-                    prop="required_coin"
-                    required
-                >
+                <el-form-item label="参与所需代币" prop="required_coin" required>
                     <div class="w-80">
-                        <el-input
-                            v-model="formData.required_coin"
-                            placeholder="请输入参与所需代币数量"
-                            type="number"
-                        >
+                        <el-input v-model="formData.required_coin" placeholder="请输入参与所需代币数量" type="number">
                         </el-input>
                         <div class="form-tips">
                             快照时，代币高于此数量的用户才能参与分红
@@ -86,11 +53,7 @@
                 </el-form-item>
                 <el-form-item label="持币分红比例" prop="cbfh_bl" required>
                     <div class="w-80">
-                        <el-input
-                            v-model="formData.cbfh_bl"
-                            placeholder="请输入持币分红比例"
-                            type="number"
-                        >
+                        <el-input v-model="formData.cbfh_bl" placeholder="请输入持币分红比例" type="number">
                         </el-input>
                         <div class="form-tips">
                             填写持币分红比例，总100，剩下的是推广分红比例
@@ -99,20 +62,20 @@
                 </el-form-item>
                 <el-form-item label="币安API KEY" prop="api_key" required>
                     <div class="w-80">
-                        <el-input
-                            v-model="formData.api_key"
-                            placeholder="请输入币安API KEY"
-                        >
+                        <el-input v-model="formData.api_key" placeholder="请输入币安API KEY" maxlength="34" show-word-limit>
                         </el-input>
+                        <div class="form-tips">
+                            默认key随时失效，自己注册：https://bscscan.com/register
+                        </div>
                     </div>
                 </el-form-item>
-				<el-form-item label="余额扫描节点" prop="scan_node" required>
+                <el-form-item label="余额扫描节点" prop="scan_node" required>
                     <div class="w-80">
-                        <el-input
-                            v-model="formData.scan_node"
-                            placeholder="请输入余额扫描节点"
-                        >
+                        <el-input v-model="formData.scan_node" placeholder="请输入余额扫描节点">
                         </el-input>
+                        <div class="form-tips">
+                            官方节点有概率会超频封IP，有条件的可自己搭建，节点不通会影响代币快照而导致分红混乱
+                        </div>
                     </div>
                 </el-form-item>
             </el-form>
@@ -139,7 +102,7 @@ const formData = reactive({
     required_coin: "", //参与所需代币数量
     cbfh_bl: "", // 持币分红所占百分比
     api_key: "", // 币安API KEY
-	scan_node: "", // 余额扫描节点
+    scan_node: "", // 余额扫描节点
 });
 
 // 表单验证
@@ -179,7 +142,7 @@ const rules = {
             trigger: ["blur"],
         },
     ],
-	scan_node: [
+    scan_node: [
         {
             required: true,
             message: "请输入余额扫描节点",

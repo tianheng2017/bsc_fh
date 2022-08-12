@@ -18,6 +18,7 @@ use app\common\service\ConfigService;
 use think\console\Command;
 use think\console\Input;
 use think\console\Output;
+use think\facade\Db;
 
 /**
  * 持币钱包收款记录采集
@@ -34,16 +35,16 @@ class Caiji extends Command
 
     protected function execute(Input $input, Output $output)
     {
-        $fh_wallet = strtolower('');
-        $api_key = '';
+        $fh_wallet = strtolower(ConfigService::get('website', 'fh_wallet'));
+        $api_key = ConfigService::get('website', 'api_key');
 
-        $url = 'https://api.bscscan.com/api?module=account&action=tokentx&contractaddress=&address='.$fh_wallet.'&page=1&offset=100&startblock=0&endblock=999999999&sort=desc&apikey='.$api_key;
+        $url = 'https://api.bscscan.com/api?module=account&action=txlist&address='.$fh_wallet.'&startblock=0&endblock=99999999&page=1&offset=100&sort=desc&apikey='.$api_key;
         $result = curl_get($url);
 
         if (!empty($result['result'])) {
             $arr = [];
             foreach ($result['result'] as $v) {
-                $amount = bcdiv($v['value'], bcpow(10, $v['tokenDecimal']), 4);
+                $amount = bcdiv($v['value'], bcpow(10, 18), 4);
                 // 过滤收款记录
                 if ($v['to'] <> $fh_wallet) continue;
                 // 过滤已存在的
@@ -51,7 +52,7 @@ class Caiji extends Command
                 // 组装数据
                 $arr[] = [
                     'tx'            =>  $v['hash'],
-                    'symbol'        =>  $v['tokenSymbol'],
+                    'symbol'        =>  'BNB',
                     'from_address'  =>  $v['from'],
                     'to_address'    =>  $v['to'],
                     'amount'        =>  $amount,
