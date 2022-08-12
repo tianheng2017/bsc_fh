@@ -45,5 +45,8 @@ class GetBalance extends Command
         }
 
         // 依次快照
+        foreach ($users as $v) {
+
+        }
     }
 }

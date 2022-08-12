@@ -115,7 +115,7 @@ class Web3Service
             });
             return $this->balance;
         } catch (\Exception $e) {
-            throw new Exception($e->getMessage());
+            return 0;
         }
     }
 
