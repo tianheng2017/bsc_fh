@@ -3,11 +3,9 @@
 // | 控制台配置
 // +----------------------------------------------------------------------
 return [
-    // 指令定义
     'commands' => [
-        // 定时任务
         'crontab' => 'app\common\command\Crontab',
-        // 持币分红
         'cbfh' => 'app\common\command\Cbfh',
+        'tgfh' => 'app\common\command\Tgfh',
     ],
 ];

@@ -139,12 +139,12 @@ class Regpath extends BaseModel
         foreach ($zhi_uids as $v) {
             // 查询伞下会员
             $all_uids = self::getAllChilds($v);
-            // 查询伞下有效会员
+            // 包括直推自己
+            array_push($all_uids, $v);
+            // 过滤有效会员
             $children_uids = Users::whereIn('id', $all_uids)
                 ->where('amount1','>=', $required_coin)
                 ->column('id');
-            // 包括直推自己
-            array_push($children_uids, $v);
             // 去重
             $children_uids = array_unique($children_uids);
 
@@ -169,7 +169,7 @@ class Regpath extends BaseModel
         unset($arr[$max]);
         if (empty($arr)) return [0, $maxPerformance];
 
-        // 小区业绩
+        // 小区总业绩
         $minPerformance = array_sum(array_column($arr, 'all_amount'));
 
         return [$minPerformance, $maxPerformance];

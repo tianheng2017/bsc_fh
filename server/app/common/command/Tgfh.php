@@ -12,6 +12,7 @@
 namespace app\common\command;
 
 use app\common\model\MoneyLog;
+use app\common\model\Regpath;
 use app\common\model\TransferLog;
 use app\common\model\Users;
 use app\common\service\ConfigService;
@@ -20,24 +21,23 @@ use think\console\Input;
 use think\console\Output;
 
 /**
- * 持币分红
- * Class Cbfh
+ * 推广分红
+ * Class Tgfh
  * @package app\command
  */
-class Cbfh extends Command
+class Tgfh extends Command
 {
     protected function configure()
     {
-        $this->setName('cbfh')
-            ->setDescription('持币分红');
+        $this->setName('tgfh')->setDescription('推广分红');
     }
 
     protected function execute(Input $input, Output $output)
     {
-        // 上次持币分红时间
-        $last_cbfh_time = (int)ConfigService::get('other', 'last_cbfh_time');
-        if ($last_cbfh_time >= strtotime(date('Y-m-d'))) {
-            $output->writeln('今日已经执行过持币分红了');
+        // 上次推广分红时间
+        $last_tgfh_time = (int)ConfigService::get('other', 'last_tgfh_time');
+        if ($last_tgfh_time >= strtotime(date('Y-m-d'))) {
+            $output->writeln('今日已经执行过推广分红了');
             return false;
         }
 
@@ -47,48 +47,49 @@ class Cbfh extends Command
             $output->writeln('今日无BNB转入');
             return false;
         }
-        // 获取持币分红比例
+
+        // 获取推广分红比例
         $cbfh_bl = (float)ConfigService::get('website', 'cbfh_bl');
-        if ($cbfh_bl <= 0) {
-            $output->writeln('持币分红比例必须大于0');
+        $tgfh_bl = 100 - $cbfh_bl;
+        if ($tgfh_bl <= 0) {
+            $output->writeln('推广分红比例必须大于0');
             return false;
         }
 
         // 参与所需代币
         $required_coin = (float)ConfigService::get('website', 'required_coin');
-        // 查询分红有效用户(满足参与所需代币)
-        $users = Users::where('amount1', '>=', $required_coin)
-            ->field('id,amount1')
-            ->select();
-        if (empty($users)) {
+
+        // 全网业绩
+        $all_yj = Users::where('amount1', '>=', $required_coin)->sum('amount1');
+        // 查询有效用户(满足参与所需代币)
+        $user_ids = Users::where('amount1', '>=', $required_coin)
+            ->column('id');
+        if (empty($user_ids)) {
             $output->writeln('暂无满足分红条件的用户');
             return false;
         }
 
-        // 计算待分红金额
-        $wait_amount = $amount * $cbfh_bl / 100;
-        // 计算全体代币总额
-        $all_amount = array_sum(array_column($users, 'amount1'));
-
         // 加权分红
         $num = 0;
-        foreach ($users as $v) {
-            // 计算我的加权分红
-            $reward = round($wait_amount * $v['amount1'] / $all_amount, 4);
+        foreach ($user_ids as $v) {
+            // 大小区业绩
+            $performance = Regpath::getPerformance($v);
+            // 推广分红
+            $reward = round(($performance[0] / $all_yj) * $amount * $tgfh_bl / 100,4);
             if ($reward > 0) {
                 // 资金入账
-                Users::changeAmount($v['id'], 2, $reward);
+                Users::changeAmount($v, 2, $reward);
                 // 资金日志
-                MoneyLog::addLog($v['id'], 0, $reward, 1);
+                MoneyLog::addLog($v, 0, $reward, 2);
                 // 登记
                 $num++;
             }
         }
 
-        // 记录本次持币分红时间
-        ConfigService::set('other', 'last_cbfh_time', time());
+        // 记录本次推广分红时间
+        ConfigService::set('other', 'last_tgfh_time', time());
 
-        $output->writeln('今日持币分红完毕，一共：'.$num.' 人，分红：'.$wait_amount.' BNB');
+        $output->writeln('今日推广分红完毕，一共：'.$num.' 人，分红：'.$reward.' BNB');
         return true;
     }
 }
