@@ -37,14 +37,14 @@ class Tgfh extends Command
         // 上次推广分红时间
         $last_tgfh_time = (int)ConfigService::get('other', 'last_tgfh_time');
         if ($last_tgfh_time >= strtotime(date('Y-m-d'))) {
-            $output->writeln('今日已经执行过推广分红了');
+            $output->writeln(date('Y-m-d H:i:s').'：今日已经执行过推广分红了');
             return false;
         }
 
         // 获取今日BNB转入数量
         $amount = TransferLog::getTodayInAmount();
         if ($amount <= 0) {
-            $output->writeln('今日无BNB转入');
+            $output->writeln(date('Y-m-d H:i:s').'：今日无BNB转入');
             return false;
         }
 
@@ -52,7 +52,7 @@ class Tgfh extends Command
         $cbfh_bl = (float)ConfigService::get('website', 'cbfh_bl');
         $tgfh_bl = 100 - $cbfh_bl;
         if ($tgfh_bl <= 0) {
-            $output->writeln('推广分红比例必须大于0');
+            $output->writeln(date('Y-m-d H:i:s').'：推广分红比例必须大于0');
             return false;
         }
 
@@ -65,7 +65,7 @@ class Tgfh extends Command
         $user_ids = Users::where('amount1', '>=', $required_coin)
             ->column('id');
         if (empty($user_ids)) {
-            $output->writeln('暂无满足分红条件的用户');
+            $output->writeln(date('Y-m-d H:i:s').'：暂无满足分红条件的用户');
             return false;
         }
 
@@ -89,7 +89,7 @@ class Tgfh extends Command
         // 记录本次推广分红时间
         ConfigService::set('other', 'last_tgfh_time', time());
 
-        $output->writeln('今日推广分红完毕，一共：'.$num.' 人，分红：'.$reward.' BNB');
+        $output->writeln(date('Y-m-d H:i:s').'：推广分红完毕，一共：'.$num.' 人，共分红：'.$reward.' BNB');
         return true;
     }
 }

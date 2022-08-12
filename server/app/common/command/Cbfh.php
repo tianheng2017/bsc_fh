@@ -37,20 +37,20 @@ class Cbfh extends Command
         // 上次持币分红时间
         $last_cbfh_time = (int)ConfigService::get('other', 'last_cbfh_time');
         if ($last_cbfh_time >= strtotime(date('Y-m-d'))) {
-            $output->writeln('今日已经执行过持币分红了');
+            $output->writeln(date('Y-m-d H:i:s').'：今日已经执行过持币分红了');
             return false;
         }
 
         // 获取今日BNB转入数量
         $amount = TransferLog::getTodayInAmount();
         if ($amount <= 0) {
-            $output->writeln('今日无BNB转入');
+            $output->writeln(date('Y-m-d H:i:s').'：今日无BNB转入');
             return false;
         }
         // 获取持币分红比例
         $cbfh_bl = (float)ConfigService::get('website', 'cbfh_bl');
         if ($cbfh_bl <= 0) {
-            $output->writeln('持币分红比例必须大于0');
+            $output->writeln(date('Y-m-d H:i:s').'：持币分红比例必须大于0');
             return false;
         }
 
@@ -61,7 +61,7 @@ class Cbfh extends Command
             ->field('id,amount1')
             ->select();
         if (empty($users)) {
-            $output->writeln('暂无满足分红条件的用户');
+            $output->writeln(date('Y-m-d H:i:s').'：暂无满足分红条件的用户');
             return false;
         }
 
@@ -88,7 +88,7 @@ class Cbfh extends Command
         // 记录本次持币分红时间
         ConfigService::set('other', 'last_cbfh_time', time());
 
-        $output->writeln('今日持币分红完毕，一共：'.$num.' 人，分红：'.$wait_amount.' BNB');
+        $output->writeln(date('Y-m-d H:i:s').'：持币分红完毕，一共：'.$num.' 人，共分红：'.$wait_amount.' BNB');
         return true;
     }
 }
