@@ -8,5 +8,6 @@ return [
         'cbfh' => 'app\common\command\Cbfh',
         'tgfh' => 'app\common\command\Tgfh',
         'caiji' => 'app\common\command\Caiji',
+        'balance'   =>  'app\common\command\Balance',
     ],
 ];

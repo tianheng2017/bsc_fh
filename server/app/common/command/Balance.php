@@ -15,6 +15,7 @@ use app\common\model\MoneyLog;
 use app\common\model\TransferLog;
 use app\common\model\Users;
 use app\common\service\ConfigService;
+use app\common\service\Web3Service;
 use think\console\Command;
 use think\console\Input;
 use think\console\Output;
@@ -22,14 +23,14 @@ use think\facade\Db;
 
 /**
  * 代币余额快照
- * Class GetBalance
+ * Class Balance
  * @package app\command
  */
-class GetBalance extends Command
+class Balance extends Command
 {
     protected function configure()
     {
-        $this->setName('get_balance')
+        $this->setName('balance')
             ->setDescription('代币余额快照');
     }
 
@@ -46,7 +47,13 @@ class GetBalance extends Command
 
         // 依次快照
         foreach ($users as $v) {
-
+            // 查询余额
+            $balance = (new Web3Service())->getBalance(['address' => $v['id']]);
+            // 更新余额
+            Users::where('id', $v['id'])->update(['amount2' => $balance]);
         }
+
+        $output->writeln(date('Y-m-d H:i:s').'：代币余额快照结束');
+        return true;
     }
 }
