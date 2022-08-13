@@ -30,7 +30,6 @@ class ConfigLogic
         $config = [
             // 文件域名
             'oss_domain' => FileService::getFileUrl(),
-
             // 网站名称
             'web_name' => ConfigService::get('website', 'name'),
             // 网站图标
@@ -39,12 +38,11 @@ class ConfigLogic
             'web_logo' => FileService::getFileUrl(ConfigService::get('website', 'web_logo')),
             // 登录页
             'login_image' => FileService::getFileUrl(ConfigService::get('website', 'login_image')),
-
             // 版权信息
             'copyright_config' => ConfigService::get('copyright', 'config', []),
+            // BSC主网节点
+            'scan_node' =>  ConfigService::get('website', 'scan_node',''),
         ];
         return $config;
     }
-
-
 }
