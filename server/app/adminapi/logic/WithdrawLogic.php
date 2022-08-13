@@ -23,8 +23,6 @@ use think\facade\Db;
  */
 class WithdrawLogic extends BaseLogic
 {
-
-
     /**
      * @notes 审核
      * @param array $params
