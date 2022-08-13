@@ -38,8 +38,9 @@ class WithdrawLogic extends BaseLogic
             }
 
             Withdraw::update([
-                'status'=>  $params['status'],
-                'remark'=>  $params['remark'],
+                'status'    =>  $params['status'],
+                'remark'    =>  $params['remark'],
+                'cl_time'   =>  time(),
             ], [
                 'id'    =>  $params['id'],
             ]);
