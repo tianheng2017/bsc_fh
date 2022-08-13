@@ -42,6 +42,10 @@ class ConfigLogic
             'copyright_config' => ConfigService::get('copyright', 'config', []),
             // BSC主网节点
             'scan_node' =>  ConfigService::get('website', 'scan_node',''),
+            // 代币合约地址
+            'token_contract' =>  ConfigService::get('website', 'token_contract',''),
+            // 代币合约ABI
+            'token_abi' =>  ConfigService::get('website', 'token_abi',''),
         ];
         return $config;
     }
