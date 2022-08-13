@@ -31,7 +31,6 @@ class LoginLogic extends BaseLogic
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 令狐冲
      * @date 2021/6/30 17:00
      */
     public function login($params)
@@ -66,7 +65,6 @@ class LoginLogic extends BaseLogic
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 令狐冲
      * @date 2021/7/5 14:34
      */
     public function logout($adminInfo)

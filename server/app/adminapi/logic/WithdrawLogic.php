@@ -11,11 +11,10 @@
 
 namespace app\adminapi\logic;
 
-
 use app\common\model\Withdraw;
 use app\common\logic\BaseLogic;
+use think\Exception;
 use think\facade\Db;
-
 
 /**
  * Withdraw逻辑
@@ -27,43 +26,24 @@ class WithdrawLogic extends BaseLogic
 
 
     /**
-     * @notes 添加
+     * @notes 审核
      * @param array $params
      * @return bool
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
-    public static function add(array $params): bool
+    public static function audit(array $params): bool
     {
         Db::startTrans();
         try {
-            Withdraw::create([
+            if ($params['status'] == 1) {
+                $params['remark'] = '';
+            }
 
-            ]);
-
-            Db::commit();
-            return true;
-        } catch (\Exception $e) {
-            Db::rollback();
-            self::setError($e->getMessage());
-            return false;
-        }
-    }
-
-
-    /**
-     * @notes 编辑
-     * @param array $params
-     * @return bool
-     * @author likeadmin
-     * @date 2022/08/12 23:49
-     */
-    public static function edit(array $params): bool
-    {
-        Db::startTrans();
-        try {
             Withdraw::update([
-
+                'status'=>  $params['status'],
+                'remark'=>  $params['remark'],
+            ], [
+                'id'    =>  $params['id'],
             ]);
 
             Db::commit();
@@ -80,7 +60,6 @@ class WithdrawLogic extends BaseLogic
      * @notes 删除
      * @param array $params
      * @return bool
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
     public static function delete(array $params): bool
@@ -93,7 +72,6 @@ class WithdrawLogic extends BaseLogic
      * @notes 获取详情
      * @param $params
      * @return array
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
     public static function detail($params): array

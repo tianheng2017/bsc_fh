@@ -32,7 +32,6 @@ class RoleLogic extends BaseLogic
      * @notes 添加角色
      * @param array $params
      * @return bool
-     * @author 段誉
      * @date 2021/12/29 11:50
      */
     public static function add(array $params): bool
@@ -73,7 +72,6 @@ class RoleLogic extends BaseLogic
      * @notes 编辑角色
      * @param array $params
      * @return bool
-     * @author 段誉
      * @date 2021/12/29 14:16
      */
     public static function edit(array $params): bool
@@ -115,7 +113,6 @@ class RoleLogic extends BaseLogic
      * @notes 删除角色
      * @param int $id
      * @return bool
-     * @author 段誉
      * @date 2021/12/29 14:16
      */
     public static function delete(int $id)
@@ -133,7 +130,6 @@ class RoleLogic extends BaseLogic
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 段誉
      * @date 2021/12/29 14:17
      */
     public static function detail(int $id): array

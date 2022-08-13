@@ -46,7 +46,6 @@ class ListsValidate extends BaseValidate
      * @param $rule
      * @param $data
      * @return bool
-     * @author 令狐冲
      * @date 2021/7/30 15:13
      */
     public function pageSizeMax($value, $rule, $data)

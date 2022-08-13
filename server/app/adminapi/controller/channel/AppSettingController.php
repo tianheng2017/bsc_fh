@@ -25,7 +25,6 @@ class AppSettingController extends BaseAdminController
     /**
      * @notes 获取App设置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:24
      */
     public function getConfig()
@@ -38,7 +37,6 @@ class AppSettingController extends BaseAdminController
     /**
      * @notes App设置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:25
      */
     public function setConfig()

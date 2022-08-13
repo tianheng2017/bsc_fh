@@ -33,7 +33,6 @@ class Dept extends BaseModel
      * @param $value
      * @param $data
      * @return string
-     * @author 段誉
      * @date 2022/5/25 18:03
      */
     public function getStatusDescAttr($value, $data)

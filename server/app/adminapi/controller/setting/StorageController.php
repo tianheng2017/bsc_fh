@@ -29,7 +29,6 @@ class StorageController extends BaseAdminController
     /**
      * @notes 获取存储引擎列表
      * @return Json
-     * @author 段誉
      * @date 2022/4/20 16:13
      */
     public function lists()
@@ -41,7 +40,6 @@ class StorageController extends BaseAdminController
     /**
      * @notes 存储配置信息
      * @return Json
-     * @author 段誉
      * @date 2022/4/20 16:19
      */
     public function detail()
@@ -54,7 +52,6 @@ class StorageController extends BaseAdminController
     /**
      * @notes 设置存储参数
      * @return Json
-     * @author 段誉
      * @date 2022/4/20 16:19
      */
     public function setup()
@@ -71,7 +68,6 @@ class StorageController extends BaseAdminController
     /**
      * @notes 切换存储引擎
      * @return Json
-     * @author 段誉
      * @date 2022/4/20 16:19
      */
     public function change()

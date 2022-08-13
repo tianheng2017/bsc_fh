@@ -28,7 +28,6 @@ class WebSettingLogic extends BaseLogic
     /**
      * @notes 获取网站信息
      * @return array
-     * @author 段誉
      * @date 2021/12/28 15:43
      */
     public static function getWebsiteInfo(): array
@@ -50,7 +49,6 @@ class WebSettingLogic extends BaseLogic
     /**
      * @notes 设置网站信息
      * @param array $params
-     * @author 段誉
      * @date 2021/12/28 15:43
      */
     public static function setWebsiteInfo(array $params)
@@ -74,7 +72,6 @@ class WebSettingLogic extends BaseLogic
     /**
      * @notes 获取版权备案
      * @return array
-     * @author 段誉
      * @date 2021/12/28 16:09
      */
     public static function getCopyright() : array
@@ -87,7 +84,6 @@ class WebSettingLogic extends BaseLogic
      * @notes 设置版权备案
      * @param array $params
      * @return bool
-     * @author 段誉
      * @date 2022/8/8 16:33
      */
     public static function setCopyright(array $params)

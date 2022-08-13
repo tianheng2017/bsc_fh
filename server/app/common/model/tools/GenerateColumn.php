@@ -26,7 +26,6 @@ class GenerateColumn extends BaseModel
     /**
      * @notes 关联table表
      * @return \think\model\relation\BelongsTo
-     * @author 段誉
      * @date 2022/6/15 18:59
      */
     public function generateTable()

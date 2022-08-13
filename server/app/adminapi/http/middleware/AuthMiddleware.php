@@ -31,7 +31,6 @@ class AuthMiddleware
      * @param $request
      * @param \Closure $next
      * @return mixed
-     * @author 令狐冲
      * @date 2021/7/2 19:29
      */
     public function handle($request, \Closure $next)
@@ -73,7 +72,6 @@ class AuthMiddleware
      * @notes 格式化URL
      * @param array $data
      * @return array|string[]
-     * @author 段誉
      * @date 2022/7/7 15:39
      */
     public function formatUrl(array $data)

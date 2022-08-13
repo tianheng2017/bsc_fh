@@ -30,7 +30,6 @@ class LoginController extends BaseAdminController
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 令狐冲
      */
     public function account()
     {
@@ -44,7 +43,6 @@ class LoginController extends BaseAdminController
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 令狐冲
      * @date 2021/7/8 00:36
      */
     public function logout()

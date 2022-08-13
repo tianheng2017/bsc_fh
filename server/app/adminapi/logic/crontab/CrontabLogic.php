@@ -26,7 +26,6 @@ class CrontabLogic extends BaseLogic
      * @notes 添加定时任务
      * @param $params
      * @return bool
-     * @author 段誉
      * @date 2022/3/29 14:41
      */
     public static function add($params)
@@ -50,7 +49,6 @@ class CrontabLogic extends BaseLogic
      * @notes 查看定时任务详情
      * @param $params
      * @return array
-     * @author 段誉
      * @date 2022/3/29 14:41
      */
     public static function detail($params)
@@ -68,7 +66,6 @@ class CrontabLogic extends BaseLogic
      * @notes 编辑定时任务
      * @param $params
      * @return bool
-     * @author 段誉
      * @date 2022/3/29 14:42
      */
     public static function edit($params)
@@ -91,7 +88,6 @@ class CrontabLogic extends BaseLogic
      * @notes 删除定时任务
      * @param $params
      * @return bool
-     * @author 段誉
      * @date 2022/3/29 14:42
      */
     public static function delete($params)
@@ -111,7 +107,6 @@ class CrontabLogic extends BaseLogic
      * @notes 操作定时任务
      * @param $params
      * @return bool
-     * @author 段誉
      * @date 2022/3/29 14:42
      */
     public static function operate($params)
@@ -143,7 +138,6 @@ class CrontabLogic extends BaseLogic
      * @notes 获取规则执行时间
      * @param $params
      * @return array|string
-     * @author 段誉
      * @date 2022/3/29 14:42
      */
     public static function expression($params)

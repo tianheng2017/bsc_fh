@@ -32,7 +32,6 @@ class AdminTokenService
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 令狐冲
      * @date 2021/7/2 20:25
      */
     public static function setToken($adminId, $terminal, $multipointLogin = 1)
@@ -76,7 +75,6 @@ class AdminTokenService
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 令狐冲
      * @date 2021/7/5 14:25
      */
     public static function overtimeToken($token)
@@ -100,7 +98,6 @@ class AdminTokenService
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 令狐冲
      * @date 2021/7/5 14:31
      */
     public static function expireToken($token)

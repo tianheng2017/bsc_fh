@@ -23,7 +23,6 @@ class ConfigService
      * @param $name
      * @param $value
      * @return mixed
-     * @author 段誉
      * @date 2021/12/27 15:00
      */
     public static function set(string $type, string $name, $value)

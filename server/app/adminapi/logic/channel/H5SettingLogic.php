@@ -23,7 +23,6 @@ class H5SettingLogic extends BaseLogic
     /**
      * @notes 获取H5设置
      * @return array
-     * @author 段誉
      * @date 2022/3/29 10:34
      */
     public static function getConfig()
@@ -39,7 +38,6 @@ class H5SettingLogic extends BaseLogic
     /**
      * @notes H5设置
      * @param $params
-     * @author 段誉
      * @date 2022/3/29 10:34
      */
     public static function setConfig($params)

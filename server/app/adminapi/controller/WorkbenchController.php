@@ -24,7 +24,6 @@ class WorkbenchController extends BaseAdminController
     /**
      * @notes 工作台
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/29 17:01
      */
     public function index()

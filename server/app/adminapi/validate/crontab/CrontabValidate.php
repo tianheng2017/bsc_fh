@@ -47,7 +47,6 @@ class CrontabValidate extends BaseValidate
     /**
      * @notes 添加定时任务场景
      * @return CrontabValidate
-     * @author 段誉
      * @date 2022/3/29 14:39
      */
     public function sceneAdd()
@@ -59,7 +58,6 @@ class CrontabValidate extends BaseValidate
     /**
      * @notes 查看定时任务详情场景
      * @return CrontabValidate
-     * @author 段誉
      * @date 2022/3/29 14:39
      */
     public function sceneDetail()
@@ -71,7 +69,6 @@ class CrontabValidate extends BaseValidate
     /**
      * @notes 编辑定时任务
      * @return CrontabValidate
-     * @author 段誉
      * @date 2022/3/29 14:39
      */
     public function sceneEdit()
@@ -83,7 +80,6 @@ class CrontabValidate extends BaseValidate
     /**
      * @notes 删除定时任务场景
      * @return CrontabValidate
-     * @author 段誉
      * @date 2022/3/29 14:40
      */
     public function sceneDelete()
@@ -95,7 +91,6 @@ class CrontabValidate extends BaseValidate
     /**
      * @notes CrontabValidate
      * @return CrontabValidate
-     * @author 段誉
      * @date 2022/3/29 14:40
      */
     public function sceneOperate()
@@ -107,7 +102,6 @@ class CrontabValidate extends BaseValidate
     /**
      * @notes 获取规则执行时间场景
      * @return CrontabValidate
-     * @author 段誉
      * @date 2022/3/29 14:40
      */
     public function sceneExpression()
@@ -122,7 +116,6 @@ class CrontabValidate extends BaseValidate
      * @param $rule
      * @param $data
      * @return bool|string
-     * @author 段誉
      * @date 2022/3/29 14:40
      */
     public function checkExpression($value, $rule, $data)

@@ -28,7 +28,6 @@ class GeneratorEnum
      * @notes 获取模板类型描述
      * @param bool $value
      * @return string|string[]
-     * @author 段誉
      * @date 2022/6/14 11:24
      */
     public static function getTemplateTypeDesc($value = true)

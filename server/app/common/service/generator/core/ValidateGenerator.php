@@ -26,7 +26,6 @@ class ValidateGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 替换变量
      * @return mixed|void
-     * @author 段誉
      * @date 2022/6/22 18:18
      */
     public function replaceVariables()
@@ -71,7 +70,6 @@ class ValidateGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 验证规则
      * @return mixed|string
-     * @author 段誉
      * @date 2022/6/22 18:18
      */
     public function getRuleContent()
@@ -90,7 +88,6 @@ class ValidateGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取命名空间模板内容
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:18
      */
     public function getNameSpaceContent()
@@ -105,7 +102,6 @@ class ValidateGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取类描述
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:18
      */
     public function getClassCommentContent()
@@ -122,7 +118,6 @@ class ValidateGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取包名
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:18
      */
     public function getPackageNameContent()
@@ -134,7 +129,6 @@ class ValidateGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取文件生成到模块的文件夹路径
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:18
      */
     public function getModuleGenerateDir()
@@ -151,7 +145,6 @@ class ValidateGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取文件生成到runtime的文件夹路径
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:18
      */
     public function getRuntimeGenerateDir()
@@ -169,7 +162,6 @@ class ValidateGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 生成的文件名
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:19
      */
     public function getGenerateName()
@@ -181,7 +173,6 @@ class ValidateGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 文件信息
      * @return array
-     * @author 段誉
      * @date 2022/6/23 15:57
      */
     public function fileInfo(): array

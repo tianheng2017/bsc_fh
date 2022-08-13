@@ -77,7 +77,6 @@ class MenuValidate extends BaseValidate
     /**
      * @notes 添加场景
      * @return MenuValidate
-     * @author 段誉
      * @date 2022/6/29 18:26
      */
     public function sceneAdd()
@@ -89,7 +88,6 @@ class MenuValidate extends BaseValidate
     /**
      * @notes 详情场景
      * @return MenuValidate
-     * @author 段誉
      * @date 2022/6/29 18:27
      */
     public function sceneDetail()
@@ -101,7 +99,6 @@ class MenuValidate extends BaseValidate
     /**
      * @notes 删除场景
      * @return MenuValidate
-     * @author 段誉
      * @date 2022/6/29 18:27
      */
     public function sceneDelete()
@@ -114,7 +111,6 @@ class MenuValidate extends BaseValidate
     /**
      * @notes 更新状态场景
      * @return MenuValidate
-     * @author 段誉
      * @date 2022/7/6 17:04
      */
     public function sceneStatus()
@@ -129,7 +125,6 @@ class MenuValidate extends BaseValidate
      * @param $rule
      * @param $data
      * @return bool|string
-     * @author 段誉
      * @date 2022/6/29 18:24
      */
     protected function checkUniqueName($value, $rule, $data)
@@ -157,7 +152,6 @@ class MenuValidate extends BaseValidate
      * @param $rule
      * @param $data
      * @return bool|string
-     * @author 段誉
      * @date 2022/6/30 9:40
      */
     protected function checkAbleDelete($value, $rule, $data)
@@ -183,7 +177,6 @@ class MenuValidate extends BaseValidate
      * @param $rule
      * @param $data
      * @return bool|string
-     * @author 段誉
      * @date 2022/6/30 9:51
      */
     protected function checkPid($value, $rule, $data)

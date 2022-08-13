@@ -45,7 +45,6 @@ class DictTypeValidate extends BaseValidate
     /**
      * @notes 添加场景
      * @return DictTypeValidate
-     * @author 段誉
      * @date 2022/6/20 16:00
      */
     public function sceneAdd()
@@ -57,7 +56,6 @@ class DictTypeValidate extends BaseValidate
     /**
      * @notes 详情场景
      * @return DictTypeValidate
-     * @author 段誉
      * @date 2022/6/20 16:00
      */
     public function sceneDetail()
@@ -74,7 +72,6 @@ class DictTypeValidate extends BaseValidate
     /**
      * @notes 删除场景
      * @return DictTypeValidate
-     * @author 段誉
      * @date 2022/6/20 16:03
      */
     public function sceneDelete()
@@ -89,7 +86,6 @@ class DictTypeValidate extends BaseValidate
      * @notes 检查字典类型是否存在
      * @param $value
      * @return bool|string
-     * @author 段誉
      * @date 2022/6/20 16:04
      */
     protected function checkDictType($value)
@@ -107,7 +103,6 @@ class DictTypeValidate extends BaseValidate
      * @notes 验证是否可删除
      * @param $value
      * @return bool|string
-     * @author 段誉
      * @date 2022/6/20 16:04
      */
     protected function checkAbleDelete($value)

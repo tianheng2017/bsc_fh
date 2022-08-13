@@ -14,7 +14,6 @@ class OperationLog
      * @param $response
      * @return bool|void
      * @throws \ReflectionException
-     * @author 段誉
      * @date 2022/4/8 17:09
      */
     public function handle($response)

@@ -27,7 +27,6 @@ class CrontabLists extends BaseAdminDataLists
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 段誉
      * @date 2022/3/29 14:30
      */
     public function lists(): array
@@ -48,7 +47,6 @@ class CrontabLists extends BaseAdminDataLists
     /**
      * @notes 定时任务数量
      * @return int
-     * @author 段誉
      * @date 2022/3/29 14:38
      */
     public function count(): int

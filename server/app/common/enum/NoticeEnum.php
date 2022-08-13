@@ -101,7 +101,6 @@ class NoticeEnum
      * @param $sceneId
      * @param false $flag
      * @return string|string[]
-     * @author 段誉
      * @date 2022/3/29 11:33
      */
     public static function getSceneDesc($sceneId, $flag = false)
@@ -136,7 +135,6 @@ class NoticeEnum
      * @param $sceneId
      * @param false $flag
      * @return array|string[]
-     * @author 段誉
      * @date 2022/3/29 11:33
      */
     public static function getVars($sceneId, $flag = false)
@@ -171,7 +169,6 @@ class NoticeEnum
      * @param $sceneId
      * @param false $flag
      * @return array|string[]
-     * @author 段誉
      * @date 2022/3/29 11:33
      */
     public static function getSystemExample($sceneId, $flag = false)
@@ -197,7 +194,6 @@ class NoticeEnum
      * @param $sceneId
      * @param false $flag
      * @return array|string[]
-     * @author 段誉
      * @date 2022/3/29 11:33
      */
     public static function getSmsExample($sceneId, $flag = false)
@@ -232,7 +228,6 @@ class NoticeEnum
      * @param $sceneId
      * @param false $flag
      * @return array|string[]|\string[][]
-     * @author 段誉
      * @date 2022/3/29 11:33
      */
     public static function getOaExample($sceneId, $flag = false)
@@ -298,7 +293,6 @@ class NoticeEnum
      * @param $sceneId
      * @param false $flag
      * @return array|mixed
-     * @author 段誉
      * @date 2022/3/29 11:33
      */
     public static function getMnpExample($sceneId, $flag = false)
@@ -344,7 +338,6 @@ class NoticeEnum
      * @param $type
      * @param $sceneId
      * @return array|string|string[]|\string[][]
-     * @author 段誉
      * @date 2022/3/29 11:33
      */
     public static function getOperationTips($type, $sceneId)

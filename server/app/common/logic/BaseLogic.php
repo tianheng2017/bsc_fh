@@ -38,7 +38,6 @@ class BaseLogic
     /**
      * @notes 获取错误信息
      * @return string
-     * @author 段誉
      * @date 2021/7/21 18:23
      */
     public static function getError() : string
@@ -53,7 +52,6 @@ class BaseLogic
     /**
      * @notes 设置错误信息
      * @param $error
-     * @author 段誉
      * @date 2021/7/21 18:20
      */
     public static function setError($error) : void
@@ -65,7 +63,6 @@ class BaseLogic
     /**
      * @notes 是否存在错误
      * @return bool
-     * @author 段誉
      * @date 2021/7/21 18:32
      */
     public static function hasError() : bool
@@ -77,7 +74,6 @@ class BaseLogic
     /**
      * @notes 设置状态码
      * @param $code
-     * @author 段誉
      * @date 2021/7/28 17:05
      */
     public static function setReturnCode($code) : void
@@ -89,7 +85,6 @@ class BaseLogic
     /**
      * @notes 特殊场景返回指定状态码,默认为0
      * @return int
-     * @author 段誉
      * @date 2021/7/28 15:14
      */
     public static function getReturnCode() : int

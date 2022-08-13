@@ -30,7 +30,6 @@ class LoginMiddleware
      * @param $request
      * @param \Closure $next
      * @return mixed|\think\response\Json
-     * @author 令狐冲
      * @date 2021/7/1 17:33
      */
     public function handle($request, \Closure $next)

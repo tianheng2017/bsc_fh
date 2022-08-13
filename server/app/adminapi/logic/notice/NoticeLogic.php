@@ -27,7 +27,6 @@ class NoticeLogic extends BaseLogic
      * @notes 查看通知设置详情
      * @param $params
      * @return array
-     * @author 段誉
      * @date 2022/3/29 11:34
      */
     public static function detail($params)
@@ -89,7 +88,6 @@ class NoticeLogic extends BaseLogic
      * @notes 通知设置
      * @param $params
      * @return bool
-     * @author 段誉
      * @date 2022/3/29 11:34
      */
     public static function set($params)
@@ -116,7 +114,6 @@ class NoticeLogic extends BaseLogic
      * @notes 校验参数
      * @param $params
      * @throws \Exception
-     * @author 段誉
      * @date 2022/3/29 11:35
      */
     public static function checkSet($params)
@@ -160,7 +157,6 @@ class NoticeLogic extends BaseLogic
      * @notes 校验系统通知参数
      * @param $item
      * @throws \Exception
-     * @author 段誉
      * @date 2022/3/29 11:35
      */
     public static function checkSystem($item)
@@ -175,7 +171,6 @@ class NoticeLogic extends BaseLogic
      * @notes 校验短信通知必填参数
      * @param $item
      * @throws \Exception
-     * @author 段誉
      * @date 2022/3/29 11:35
      */
     public static function checkSms($item)
@@ -190,7 +185,6 @@ class NoticeLogic extends BaseLogic
      * @notes 校验微信模板消息参数
      * @param $item
      * @throws \Exception
-     * @author 段誉
      * @date 2022/3/29 11:35
      */
     public static function checkOa($item)
@@ -205,7 +199,6 @@ class NoticeLogic extends BaseLogic
      * @notes 校验微信小程序提醒必填参数
      * @param $item
      * @throws \Exception
-     * @author 段誉
      * @date 2022/3/29 11:35
      */
     public static function checkMnp($item)

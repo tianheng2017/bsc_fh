@@ -27,7 +27,6 @@ class DictTypeLogic extends BaseLogic
      * @notes 添加字典类型
      * @param array $params
      * @return DictType|\think\Model
-     * @author 段誉
      * @date 2022/6/20 16:08
      */
     public static function add(array $params)
@@ -44,7 +43,6 @@ class DictTypeLogic extends BaseLogic
     /**
      * @notes 编辑字典类型
      * @param array $params
-     * @author 段誉
      * @date 2022/6/20 16:10
      */
     public static function edit(array $params)
@@ -62,7 +60,6 @@ class DictTypeLogic extends BaseLogic
     /**
      * @notes 删除字典类型
      * @param array $params
-     * @author 段誉
      * @date 2022/6/20 16:23
      */
     public static function delete(array $params)
@@ -75,7 +72,6 @@ class DictTypeLogic extends BaseLogic
      * @notes 获取字典详情
      * @param $params
      * @return array
-     * @author 段誉
      * @date 2022/6/20 16:23
      */
     public static function detail($params): array

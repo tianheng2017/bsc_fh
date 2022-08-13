@@ -47,7 +47,6 @@ class LoginValidate extends BaseValidate
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 令狐冲
      * @date 2021/7/2 14:00
      */
     public function password($password, $other, $data)

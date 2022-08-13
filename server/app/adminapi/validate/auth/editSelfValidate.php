@@ -48,7 +48,6 @@ class editSelfValidate extends BaseValidate
      * @param $rule
      * @param $data
      * @return bool|string
-     * @author 段誉
      * @date 2022/4/8 17:40
      */
     public function checkPassword($value, $rule, $data)

@@ -21,7 +21,6 @@ class FileService
      * @param string $uri
      * @param string $type
      * @return string
-     * @author 段誉
      * @date 2021/12/28 15:19
      * @remark
      * 场景一:补全域名路径,仅传参$uri;
@@ -89,7 +88,6 @@ class FileService
      * @param $domain
      * @param $uri
      * @return string
-     * @author 段誉
      * @date 2022/7/11 10:36
      */
     public static function format($domain, $uri)

@@ -30,7 +30,6 @@ class MoneyLogLogic extends BaseLogic
      * @notes 添加
      * @param array $params
      * @return bool
-     * @author likeadmin
      * @date 2022/08/12 07:44
      */
     public static function add(array $params): bool
@@ -55,7 +54,6 @@ class MoneyLogLogic extends BaseLogic
      * @notes 编辑
      * @param array $params
      * @return bool
-     * @author likeadmin
      * @date 2022/08/12 07:44
      */
     public static function edit(array $params): bool
@@ -80,7 +78,6 @@ class MoneyLogLogic extends BaseLogic
      * @notes 删除
      * @param array $params
      * @return bool
-     * @author likeadmin
      * @date 2022/08/12 07:44
      */
     public static function delete(array $params): bool
@@ -93,7 +90,6 @@ class MoneyLogLogic extends BaseLogic
      * @notes 获取详情
      * @param $params
      * @return array
-     * @author likeadmin
      * @date 2022/08/12 07:44
      */
     public static function detail($params): array

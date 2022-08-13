@@ -25,7 +25,6 @@ class OpenSettingController extends BaseAdminController
     /**
      * @notes 获取微信开放平台设置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 11:03
      */
     public function getConfig()
@@ -38,7 +37,6 @@ class OpenSettingController extends BaseAdminController
     /**
      * @notes 微信开放平台设置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 11:03
      */
     public function setConfig()

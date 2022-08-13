@@ -28,7 +28,6 @@ class DictTypeController extends BaseAdminController
     /**
      * @notes 获取字典类型列表
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/20 15:50
      */
     public function lists()
@@ -40,7 +39,6 @@ class DictTypeController extends BaseAdminController
     /**
      * @notes 添加字典类型
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/20 16:24
      */
     public function add()
@@ -54,7 +52,6 @@ class DictTypeController extends BaseAdminController
     /**
      * @notes 编辑字典类型
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/20 16:25
      */
     public function edit()
@@ -68,7 +65,6 @@ class DictTypeController extends BaseAdminController
     /**
      * @notes 删除字典类型
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/20 16:25
      */
     public function delete()
@@ -82,7 +78,6 @@ class DictTypeController extends BaseAdminController
     /**
      * @notes 获取字典详情
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/20 16:25
      */
     public function detail()

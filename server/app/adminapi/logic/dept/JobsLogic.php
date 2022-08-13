@@ -29,7 +29,6 @@ class JobsLogic extends BaseLogic
     /**
      * @notes 新增岗位
      * @param array $params
-     * @author 段誉
      * @date 2022/5/26 9:58
      */
     public static function add(array $params)
@@ -48,7 +47,6 @@ class JobsLogic extends BaseLogic
      * @notes 编辑岗位
      * @param array $params
      * @return bool
-     * @author 段誉
      * @date 2022/5/26 9:58
      */
     public static function edit(array $params) : bool
@@ -73,7 +71,6 @@ class JobsLogic extends BaseLogic
     /**
      * @notes 删除岗位
      * @param array $params
-     * @author 段誉
      * @date 2022/5/26 9:59
      */
     public static function delete(array $params)
@@ -86,7 +83,6 @@ class JobsLogic extends BaseLogic
      * @notes 获取岗位详情
      * @param $params
      * @return array
-     * @author 段誉
      * @date 2022/5/26 9:59
      */
     public static function detail($params) : array

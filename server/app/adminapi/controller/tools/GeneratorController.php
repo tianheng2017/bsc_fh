@@ -31,7 +31,6 @@ class GeneratorController extends BaseAdminController
     /**
      * @notes 获取数据库中所有数据表信息
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/14 10:57
      */
     public function dataTable()
@@ -43,7 +42,6 @@ class GeneratorController extends BaseAdminController
     /**
      * @notes 获取已选择的数据表
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/14 10:57
      */
     public function generateTable()
@@ -55,7 +53,6 @@ class GeneratorController extends BaseAdminController
     /**
      * @notes 选择数据表
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/15 10:09
      */
     public function selectTable()
@@ -72,7 +69,6 @@ class GeneratorController extends BaseAdminController
     /**
      * @notes 生成代码
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/23 19:08
      */
     public function generate()
@@ -89,7 +85,6 @@ class GeneratorController extends BaseAdminController
     /**
      * @notes 下载文件
      * @return \think\response\File|\think\response\Json
-     * @author 段誉
      * @date 2022/6/24 9:51
      */
     public function download()
@@ -106,7 +101,6 @@ class GeneratorController extends BaseAdminController
     /**
      * @notes 预览代码
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/23 19:07
      */
     public function preview()
@@ -123,7 +117,6 @@ class GeneratorController extends BaseAdminController
     /**
      * @notes 同步字段
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/17 15:22
      */
     public function syncColumn()
@@ -140,7 +133,6 @@ class GeneratorController extends BaseAdminController
     /**
      * @notes 编辑表信息
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/20 10:44
      */
     public function edit()
@@ -157,7 +149,6 @@ class GeneratorController extends BaseAdminController
     /**
      * @notes 获取已选择的数据表详情
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/15 19:00
      */
     public function detail()
@@ -171,7 +162,6 @@ class GeneratorController extends BaseAdminController
     /**
      * @notes 删除已选择的数据表信息
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/15 19:00
      */
     public function delete()

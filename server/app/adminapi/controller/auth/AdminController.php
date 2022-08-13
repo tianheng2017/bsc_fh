@@ -28,7 +28,6 @@ class AdminController extends BaseAdminController
     /**
      * @notes 查看管理员列表
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/29 9:55
      */
     public function lists()
@@ -40,7 +39,6 @@ class AdminController extends BaseAdminController
     /**
      * @notes 添加管理员
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/29 10:21
      */
     public function add()
@@ -54,7 +52,6 @@ class AdminController extends BaseAdminController
     /**
      * @notes 编辑管理员
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/29 11:03
      */
     public function edit()
@@ -71,7 +68,6 @@ class AdminController extends BaseAdminController
     /**
      * @notes 删除管理员
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/29 11:03
      */
     public function delete()
@@ -88,7 +84,6 @@ class AdminController extends BaseAdminController
     /**
      * @notes 查看管理员详情
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/29 11:07
      */
     public function detail()
@@ -102,7 +97,6 @@ class AdminController extends BaseAdminController
     /**
      * @notes 获取当前管理员信息
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/31 10:53
      */
     public function mySelf()
@@ -115,7 +109,6 @@ class AdminController extends BaseAdminController
     /**
      * @notes 编辑超级管理员信息
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/4/8 17:54
      */
     public function editSelf()

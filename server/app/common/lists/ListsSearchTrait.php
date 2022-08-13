@@ -24,7 +24,6 @@ trait ListsSearchTrait
      * @notes 搜索条件生成
      * @param $search
      * @return array
-     * @author 令狐冲
      * @date 2021/7/7 19:36
      */
     private function createWhere($search)

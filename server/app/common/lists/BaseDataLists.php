@@ -81,7 +81,6 @@ abstract class BaseDataLists implements ListsInterface
 
     /**
      * @notes 分页参数初始化
-     * @author 令狐冲
      * @date 2021/7/30 23:55
      */
     private function initPage()
@@ -108,7 +107,6 @@ abstract class BaseDataLists implements ListsInterface
     /**
      * @notes 初始化搜索
      * @return array
-     * @author 令狐冲
      * @date 2021/7/31 00:00
      */
     private function initSearch()
@@ -131,7 +129,6 @@ abstract class BaseDataLists implements ListsInterface
     /**
      * @notes 初始化排序
      * @return array|string[]
-     * @author 令狐冲
      * @date 2021/7/31 00:03
      */
     private function initSort()
@@ -149,7 +146,6 @@ abstract class BaseDataLists implements ListsInterface
     /**
      * @notes 导出初始化
      * @return false|\think\response\Json
-     * @author 令狐冲
      * @date 2021/7/31 01:15
      */
     private function initExport()
@@ -205,7 +201,6 @@ abstract class BaseDataLists implements ListsInterface
     /**
      * @notes 不需要分页，可以调用此方法，无需查询第二次
      * @return int
-     * @author 令狐冲
      * @date 2021/7/6 00:34
      */
     public function defaultCount(): int

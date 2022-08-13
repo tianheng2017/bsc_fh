@@ -26,7 +26,6 @@ class UploadController extends BaseAdminController
     /**
      * @notes 上传图片
      * @return Json
-     * @author 段誉
      * @date 2021/12/29 16:27
      */
     public function image()
@@ -43,7 +42,6 @@ class UploadController extends BaseAdminController
     /**
      * @notes 上传视频
      * @return Json
-     * @author 段誉
      * @date 2021/12/29 16:27
      */
     public function video()

@@ -26,7 +26,6 @@ class NoticeController extends BaseAdminController
     /**
      * @notes 查看通知设置列表
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 11:18
      */
     public function settingLists()
@@ -38,7 +37,6 @@ class NoticeController extends BaseAdminController
     /**
      * @notes 查看通知设置详情
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 11:18
      */
     public function detail()
@@ -52,7 +50,6 @@ class NoticeController extends BaseAdminController
     /**
      * @notes 通知设置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 11:18
      */
     public function set()

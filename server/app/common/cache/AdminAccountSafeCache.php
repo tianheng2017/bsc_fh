@@ -34,7 +34,6 @@ class AdminAccountSafeCache extends BaseCache
 
     /**
      * @notes 记录登录错误次数
-     * @author 令狐冲
      * @date 2021/6/30 01:51
      */
     public function record()
@@ -51,7 +50,6 @@ class AdminAccountSafeCache extends BaseCache
     /**
      * @notes 判断是否安全
      * @return bool
-     * @author 令狐冲
      * @date 2021/6/30 01:53
      */
     public function isSafe()
@@ -65,7 +63,6 @@ class AdminAccountSafeCache extends BaseCache
 
     /**
      * @notes 删除该ip记录错误次数
-     * @author 令狐冲
      * @date 2021/6/30 01:55
      */
     public function relieve()

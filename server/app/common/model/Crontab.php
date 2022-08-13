@@ -32,7 +32,6 @@ class Crontab extends BaseModel
      * @notes 类型获取器
      * @param $value
      * @return string
-     * @author 段誉
      * @date 2022/3/29 12:05
      */
     public function getTypeDescAttr($value)
@@ -49,7 +48,6 @@ class Crontab extends BaseModel
      * @notes 状态获取器
      * @param $value
      * @return string
-     * @author 段誉
      * @date 2022/3/29 12:06
      */
     public function getStatusDescAttr($value)
@@ -67,7 +65,6 @@ class Crontab extends BaseModel
      * @notes 最后执行时间获取器
      * @param $value
      * @return string
-     * @author 段誉
      * @date 2022/3/29 12:06
      */
     public function getLastTimeAttr($value)

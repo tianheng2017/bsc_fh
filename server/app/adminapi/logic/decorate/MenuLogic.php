@@ -124,7 +124,6 @@ class MenuLogic extends BaseLogic
     /**
      * @notes 商品分类页面(一级)
      * @return array
-     * @author 段誉
      * @date 2022/3/29 17:34
      */
     public function goodsCategoryPage()

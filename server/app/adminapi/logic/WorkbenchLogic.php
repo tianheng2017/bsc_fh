@@ -28,7 +28,6 @@ class WorkbenchLogic extends BaseLogic
      * @notes 工作套
      * @param $adminInfo
      * @return array
-     * @author 段誉
      * @date 2021/12/29 15:58
      */
     public static function index()
@@ -51,7 +50,6 @@ class WorkbenchLogic extends BaseLogic
     /**
      * @notes 常用功能
      * @return array[]
-     * @author 段誉
      * @date 2021/12/29 16:40
      */
     public static function menu(): array
@@ -104,7 +102,6 @@ class WorkbenchLogic extends BaseLogic
     /**
      * @notes 版本信息
      * @return array
-     * @author 段誉
      * @date 2021/12/29 16:08
      */
     public static function versionInfo(): array
@@ -125,7 +122,6 @@ class WorkbenchLogic extends BaseLogic
     /**
      * @notes 今日数据
      * @return int[]
-     * @author 段誉
      * @date 2021/12/29 16:15
      */
     public static function today(): array
@@ -158,7 +154,6 @@ class WorkbenchLogic extends BaseLogic
     /**
      * @notes 访问数
      * @return array
-     * @author 段誉
      * @date 2021/12/29 16:57
      */
     public static function visitor(): array
@@ -183,7 +178,6 @@ class WorkbenchLogic extends BaseLogic
     /**
      * @notes 服务支持
      * @return array[]
-     * @author 段誉
      * @date 2022/7/18 11:18
      */
     public static function support()

@@ -39,7 +39,6 @@ class RoleValidate extends BaseValidate
     /**
      * @notes 添加场景
      * @return RoleValidate
-     * @author 段誉
      * @date 2021/12/29 15:47
      */
     public function sceneAdd()
@@ -50,7 +49,6 @@ class RoleValidate extends BaseValidate
     /**
      * @notes 详情场景
      * @return RoleValidate
-     * @author 段誉
      * @date 2021/12/29 15:47
      */
     public function sceneDetail()
@@ -61,7 +59,6 @@ class RoleValidate extends BaseValidate
     /**
      * @notes 删除场景
      * @return RoleValidate
-     * @author 段誉
      * @date 2021/12/29 15:48
      */
     public function sceneDel()
@@ -80,7 +77,6 @@ class RoleValidate extends BaseValidate
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 段誉
      * @date 2021/12/29 15:48
      */
     public function checkRole($value, $rule, $data)
@@ -102,7 +98,6 @@ class RoleValidate extends BaseValidate
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 段誉
      * @date 2021/12/29 15:49
      */
     public function checkAdmin($value, $rule, $data)

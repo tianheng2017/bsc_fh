@@ -28,7 +28,6 @@ class StorageLogic extends BaseLogic
     /**
      * @notes 存储引擎列表
      * @return array[]
-     * @author 段誉
      * @date 2022/4/20 16:14
      */
     public static function lists()
@@ -70,7 +69,6 @@ class StorageLogic extends BaseLogic
      * @notes 存储设置详情
      * @param $param
      * @return mixed
-     * @author 段誉
      * @date 2022/4/20 16:15
      */
     public static function detail($param)
@@ -128,7 +126,6 @@ class StorageLogic extends BaseLogic
      * @notes 设置存储参数
      * @param $params
      * @return bool|string
-     * @author 段誉
      * @date 2022/4/20 16:16
      */
     public static function setup($params)
@@ -183,7 +180,6 @@ class StorageLogic extends BaseLogic
     /**
      * @notes 切换状态
      * @param $params
-     * @author 段誉
      * @date 2022/4/20 16:17
      */
     public static function change($params)

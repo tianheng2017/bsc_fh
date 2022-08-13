@@ -29,13 +29,13 @@ class WithdrawLists extends BaseAdminDataLists implements ListsSearchInterface
     /**
      * @notes 设置搜索条件
      * @return \string[][]
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
     public function setSearch(): array
     {
         return [
-            '=' => ['tx', 'address', 'status', 'cl_time'],
+            '=' => ['tx', 'address', 'status', 'cl_time'],
+
         ];
     }
 
@@ -46,7 +46,6 @@ class WithdrawLists extends BaseAdminDataLists implements ListsSearchInterface
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
     public function lists(): array
@@ -63,7 +62,6 @@ class WithdrawLists extends BaseAdminDataLists implements ListsSearchInterface
     /**
      * @notes 获取数量
      * @return int
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
     public function count(): int

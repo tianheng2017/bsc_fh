@@ -24,7 +24,6 @@ class OpenSettingLogic extends BaseLogic
     /**
      * @notes 获取微信开放平台设置
      * @return array
-     * @author 段誉
      * @date 2022/3/29 11:03
      */
     public static function getConfig()
@@ -41,7 +40,6 @@ class OpenSettingLogic extends BaseLogic
     /**
      * @notes 微信开放平台设置
      * @param $params
-     * @author 段誉
      * @date 2022/3/29 11:03
      */
     public static function setConfig($params)

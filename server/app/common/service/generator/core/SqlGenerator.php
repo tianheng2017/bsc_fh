@@ -28,7 +28,6 @@ class SqlGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 替换变量
      * @return mixed|void
-     * @author 段誉
      * @date 2022/6/22 18:19
      */
     public function replaceVariables()
@@ -69,7 +68,6 @@ class SqlGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 描述
      * @return mixed
-     * @author 段誉
      * @date 2022/6/22 18:19
      */
     public function getListsNameContent()
@@ -81,7 +79,6 @@ class SqlGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取上级菜单内容
      * @return int|mixed
-     * @author 段誉
      * @date 2022/7/8 11:39
      */
     public function getMenuPidContent()
@@ -93,7 +90,6 @@ class SqlGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取菜单表内容
      * @return string
-     * @author 段誉
      * @date 2022/7/7 15:57
      */
     public function getMenuTableNameContent()
@@ -106,7 +102,6 @@ class SqlGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 是否构建菜单
      * @return bool
-     * @author 段誉
      * @date 2022/7/8 14:24
      */
     public function isBuildMenu()
@@ -119,7 +114,6 @@ class SqlGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 构建菜单
      * @return bool
-     * @author 段誉
      * @date 2022/7/8 15:27
      */
     public function buildMenuHandle()
@@ -141,7 +135,6 @@ class SqlGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取文件生成到模块的文件夹路径
      * @return mixed|void
-     * @author 段誉
      * @date 2022/6/22 18:19
      */
     public function getModuleGenerateDir()
@@ -155,7 +148,6 @@ class SqlGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取文件生成到runtime的文件夹路径
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:20
      */
     public function getRuntimeGenerateDir()
@@ -169,7 +161,6 @@ class SqlGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 生成的文件名
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:20
      */
     public function getGenerateName()
@@ -181,7 +172,6 @@ class SqlGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 文件信息
      * @return array
-     * @author 段誉
      * @date 2022/6/23 15:57
      */
     public function fileInfo(): array

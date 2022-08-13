@@ -38,7 +38,6 @@ class MenuController extends BaseAdminController
     /**
      * @notes 获取菜单路由
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/29 17:41
      */
     public function route()
@@ -51,7 +50,6 @@ class MenuController extends BaseAdminController
     /**
      * @notes 获取菜单列表
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/29 17:23
      */
     public function lists()
@@ -63,7 +61,6 @@ class MenuController extends BaseAdminController
     /**
      * @notes 菜单详情
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/30 10:07
      */
     public function detail()
@@ -76,7 +73,6 @@ class MenuController extends BaseAdminController
     /**
      * @notes 添加菜单
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/30 10:07
      */
     public function add()
@@ -90,7 +86,6 @@ class MenuController extends BaseAdminController
     /**
      * @notes 编辑菜单
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/30 10:07
      */
     public function edit()
@@ -104,7 +99,6 @@ class MenuController extends BaseAdminController
     /**
      * @notes 删除菜单
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/6/30 10:07
      */
     public function delete()
@@ -118,7 +112,6 @@ class MenuController extends BaseAdminController
     /**
      * @notes 更新状态
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/7/6 17:04
      */
     public function updateStatus()

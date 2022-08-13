@@ -29,7 +29,6 @@ class TransferLogLists extends BaseAdminDataLists implements ListsSearchInterfac
     /**
      * @notes 设置搜索条件
      * @return \string[][]
-     * @author likeadmin
      * @date 2022/08/11 16:53
      */
     public function setSearch(): array
@@ -47,7 +46,6 @@ class TransferLogLists extends BaseAdminDataLists implements ListsSearchInterfac
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author likeadmin
      * @date 2022/08/11 16:53
      */
     public function lists(): array
@@ -64,7 +62,6 @@ class TransferLogLists extends BaseAdminDataLists implements ListsSearchInterfac
     /**
      * @notes 获取数量
      * @return int
-     * @author likeadmin
      * @date 2022/08/11 16:53
      */
     public function count(): int

@@ -26,7 +26,6 @@ class YesNoEnum
      * @notes 获取禁用状态
      * @param bool $value
      * @return string|string[]
-     * @author 令狐冲
      * @date 2021/7/8 19:02
      */
     public static function getDisableDesc($value = true)

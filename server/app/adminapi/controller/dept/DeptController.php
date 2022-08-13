@@ -26,7 +26,6 @@ class DeptController extends BaseAdminController
     /**
      * @notes 部门列表
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/5/25 18:07
      */
     public function lists()
@@ -43,7 +42,6 @@ class DeptController extends BaseAdminController
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 段誉
      * @date 2022/5/26 18:36
      */
     public function leaderDept()
@@ -56,7 +54,6 @@ class DeptController extends BaseAdminController
     /**
      * @notes 添加部门
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/5/25 18:40
      */
     public function add()
@@ -70,7 +67,6 @@ class DeptController extends BaseAdminController
     /**
      * @notes 编辑部门
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/5/25 18:41
      */
     public function edit()
@@ -87,7 +83,6 @@ class DeptController extends BaseAdminController
     /**
      * @notes 删除部门
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/5/25 18:41
      */
     public function delete()
@@ -101,7 +96,6 @@ class DeptController extends BaseAdminController
     /**
      * @notes 获取部门详情
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/5/25 18:41
      */
     public function detail()

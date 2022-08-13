@@ -27,7 +27,6 @@ class OfficialAccountMenuLogic extends BaseLogic
      * @notes 保存
      * @param $params
      * @return bool
-     * @author 段誉
      * @date 2022/3/29 10:43
      */
     public static function save($params)
@@ -47,7 +46,6 @@ class OfficialAccountMenuLogic extends BaseLogic
      * @notes 一级菜单校验
      * @param $menu
      * @throws \Exception
-     * @author 段誉
      * @date 2022/3/29 10:55
      */
     public static function checkMenu($menu)
@@ -90,7 +88,6 @@ class OfficialAccountMenuLogic extends BaseLogic
      * @notes 二级菜单校验
      * @param $subButtion
      * @throws \Exception
-     * @author 段誉
      * @date 2022/3/29 10:55
      */
     public static function checkSubButton($subButtion)
@@ -125,7 +122,6 @@ class OfficialAccountMenuLogic extends BaseLogic
      * @notes 菜单类型校验
      * @param $item
      * @throws \Exception
-     * @author 段誉
      * @date 2022/3/29 10:55
      */
     public static function checkType($item)
@@ -163,7 +159,6 @@ class OfficialAccountMenuLogic extends BaseLogic
      * @param $params
      * @return bool
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @author 段誉
      * @date 2022/3/29 10:55
      */
     public static function saveAndPublish($params)
@@ -199,7 +194,6 @@ class OfficialAccountMenuLogic extends BaseLogic
     /**
      * @notes 查看菜单详情
      * @return array|int|mixed|string|null
-     * @author 段誉
      * @date 2022/3/29 10:56
      */
     public static function detail()

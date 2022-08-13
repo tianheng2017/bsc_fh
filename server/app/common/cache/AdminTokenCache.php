@@ -30,7 +30,6 @@ class AdminTokenCache extends BaseCache
      * @notes 通过token获取缓存管理员信息
      * @param $token
      * @return false|mixed
-     * @author 令狐冲
      * @date 2021/6/30 16:57
      */
     public function getAdminInfo($token)
@@ -57,7 +56,6 @@ class AdminTokenCache extends BaseCache
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 令狐冲
      * @date 2021/7/5 12:12
      */
     public function setAdminInfo($token)
@@ -90,7 +88,6 @@ class AdminTokenCache extends BaseCache
      * @notes 删除缓存
      * @param $token
      * @return bool
-     * @author 令狐冲
      * @date 2021/7/3 16:57
      */
     public function deleteAdminInfo($token)

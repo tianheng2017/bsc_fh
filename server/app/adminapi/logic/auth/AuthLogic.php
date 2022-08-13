@@ -27,7 +27,6 @@ class AuthLogic
     /**
      * @notes 获取全部权限
      * @return mixed
-     * @author 段誉
      * @date 2022/7/1 11:55
      */
     public static function getAllAuth()
@@ -45,7 +44,6 @@ class AuthLogic
      * @notes 获取当前管理员角色按钮权限
      * @param $roleId
      * @return mixed
-     * @author 段誉
      * @date 2022/7/1 16:10
      */
     public static function getBtnAuthByRoleId($admin)
@@ -82,7 +80,6 @@ class AuthLogic
      * @notes 获取管理员角色关联的菜单id(菜单，权限)
      * @param int $adminId
      * @return array
-     * @author 段誉
      * @date 2022/7/1 15:56
      */
     public static function getAuthByAdminId(int $adminId): array

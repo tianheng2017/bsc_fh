@@ -101,7 +101,6 @@ abstract class BaseGenerator
     /**
      * @notes 初始化表表数据
      * @param array $tableData
-     * @author 段誉
      * @date 2022/6/22 18:03
      */
     public function initGenerateData(array $tableData)
@@ -119,7 +118,6 @@ abstract class BaseGenerator
 
     /**
      * @notes 生成文件到模块或runtime目录
-     * @author 段誉
      * @date 2022/6/22 18:03
      */
     public function generate()
@@ -140,7 +138,6 @@ abstract class BaseGenerator
     /**
      * @notes 获取文件生成到模块的文件夹路径
      * @return mixed
-     * @author 段誉
      * @date 2022/6/22 18:05
      */
     abstract public function getModuleGenerateDir();
@@ -149,7 +146,6 @@ abstract class BaseGenerator
     /**
      * @notes  获取文件生成到runtime的文件夹路径
      * @return mixed
-     * @author 段誉
      * @date 2022/6/22 18:05
      */
     abstract public function getRuntimeGenerateDir();
@@ -158,7 +154,6 @@ abstract class BaseGenerator
     /**
      * @notes 替换模板变量
      * @return mixed
-     * @author 段誉
      * @date 2022/6/22 18:06
      */
     abstract public function replaceVariables();
@@ -167,7 +162,6 @@ abstract class BaseGenerator
     /**
      * @notes 生成文件名
      * @return mixed
-     * @author 段誉
      * @date 2022/6/22 18:17
      */
     abstract public function getGenerateName();
@@ -176,7 +170,6 @@ abstract class BaseGenerator
     /**
      * @notes 文件夹不存在则创建
      * @param string $path
-     * @author 段誉
      * @date 2022/6/22 18:07
      */
     public function checkDir(string $path)
@@ -188,7 +181,6 @@ abstract class BaseGenerator
     /**
      * @notes 设置表信息
      * @param $tableData
-     * @author 段誉
      * @date 2022/6/22 18:07
      */
     public function setTableData($tableData)
@@ -201,7 +193,6 @@ abstract class BaseGenerator
     /**
      * @notes 设置模块名
      * @param string $moduleName
-     * @author 段誉
      * @date 2022/6/22 18:07
      */
     public function setModuleName(string $moduleName): void
@@ -213,7 +204,6 @@ abstract class BaseGenerator
     /**
      * @notes 设置类目录
      * @param string $classDir
-     * @author 段誉
      * @date 2022/6/22 18:08
      */
     public function setClassDir(string $classDir): void
@@ -225,7 +215,6 @@ abstract class BaseGenerator
     /**
      * @notes 设置生成文件内容
      * @param string $content
-     * @author 段誉
      * @date 2022/6/22 18:08
      */
     public function setContent(string $content): void
@@ -238,7 +227,6 @@ abstract class BaseGenerator
      * @notes 获取模板路径
      * @param string $templateName
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:09
      */
     public function getTemplatePath(string $templateName): string
@@ -250,7 +238,6 @@ abstract class BaseGenerator
     /**
      * @notes 小驼峰命名
      * @return string
-     * @author 段誉
      * @date 2022/6/27 18:44
      */
     public function getLowerCamelName()
@@ -262,7 +249,6 @@ abstract class BaseGenerator
     /**
      * @notes 大驼峰命名
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:09
      */
     public function getUpperCamelName()
@@ -274,7 +260,6 @@ abstract class BaseGenerator
     /**
      * @notes 表名小写
      * @return string
-     * @author 段誉
      * @date 2022/7/12 10:41
      */
     public function getLowerTableName()
@@ -286,7 +271,6 @@ abstract class BaseGenerator
     /**
      * @notes 获取表名
      * @return array|string|string[]
-     * @author 段誉
      * @date 2022/6/22 18:09
      */
     public function getTableName()
@@ -299,7 +283,6 @@ abstract class BaseGenerator
     /**
      * @notes 获取表主键
      * @return mixed|string
-     * @author 段誉
      * @date 2022/6/22 18:09
      */
     public function getPkContent()
@@ -321,7 +304,6 @@ abstract class BaseGenerator
     /**
      * @notes 获取作者信息
      * @return mixed|string
-     * @author 段誉
      * @date 2022/6/24 10:18
      */
     public function getAuthorContent()
@@ -333,7 +315,6 @@ abstract class BaseGenerator
     /**
      * @notes 代码生成备注时间
      * @return false|string
-     * @author 段誉
      * @date 2022/6/24 10:28
      */
     public function getNoteDateContent()
@@ -347,7 +328,6 @@ abstract class BaseGenerator
      * @param $content
      * @param $blankpace
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:09
      */
     public function setBlankSpace($content, $blankpace)
@@ -366,7 +346,6 @@ abstract class BaseGenerator
      * @param $waitReplace
      * @param $template
      * @return array|false|string|string[]
-     * @author 段誉
      * @date 2022/6/23 9:52
      */
     public function replaceFileData($needReplace, $waitReplace, $template)
@@ -378,7 +357,6 @@ abstract class BaseGenerator
     /**
      * @notes 生成方式是否为压缩包
      * @return bool
-     * @author 段誉
      * @date 2022/6/23 17:02
      */
     public function isGenerateTypeZip()

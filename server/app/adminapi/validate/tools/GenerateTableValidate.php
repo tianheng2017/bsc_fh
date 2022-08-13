@@ -42,7 +42,6 @@ class GenerateTableValidate extends BaseValidate
     /**
      * @notes 选择数据表场景
      * @return GenerateTableValidate
-     * @author 段誉
      * @date 2022/6/15 18:58
      */
     public function sceneSelect()
@@ -54,7 +53,6 @@ class GenerateTableValidate extends BaseValidate
     /**
      * @notes 需要校验id的场景
      * @return GenerateTableValidate
-     * @author 段誉
      * @date 2022/6/15 18:58
      */
     public function sceneId()
@@ -66,7 +64,6 @@ class GenerateTableValidate extends BaseValidate
     /**
      * @notes 下载场景
      * @return GenerateTableValidate
-     * @author 段誉
      * @date 2022/6/24 10:02
      */
     public function sceneDownload()
@@ -81,7 +78,6 @@ class GenerateTableValidate extends BaseValidate
      * @param $rule
      * @param $data
      * @return bool|string
-     * @author 段誉
      * @date 2022/6/15 18:58
      */
     protected function checkTable($value, $rule, $data)
@@ -105,7 +101,6 @@ class GenerateTableValidate extends BaseValidate
      * @param $rule
      * @param $data
      * @return bool|string
-     * @author 段誉
      * @date 2022/6/15 18:58
      */
     protected function checkTableData($value, $rule, $data)

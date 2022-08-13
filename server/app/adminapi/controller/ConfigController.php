@@ -27,7 +27,6 @@ class ConfigController extends BaseAdminController
     /**
      * @notes 基础配置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/31 11:01
      */
     public function getConfig()

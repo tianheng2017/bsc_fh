@@ -28,7 +28,6 @@ class DictDataLogic extends BaseLogic
      * @notes 添加编辑
      * @param array $params
      * @return DictData|\think\Model
-     * @author 段誉
      * @date 2022/6/20 17:13
      */
     public static function save(array $params)
@@ -56,7 +55,6 @@ class DictDataLogic extends BaseLogic
      * @notes 删除字典数据
      * @param array $params
      * @return bool
-     * @author 段誉
      * @date 2022/6/20 17:01
      */
     public static function delete(array $params)
@@ -69,7 +67,6 @@ class DictDataLogic extends BaseLogic
      * @notes 获取字典数据详情
      * @param $params
      * @return array
-     * @author 段誉
      * @date 2022/6/20 17:01
      */
     public static function detail($params): array

@@ -33,7 +33,6 @@ class StorageValidate extends BaseValidate
     /**
      * @notes 设置存储引擎参数场景
      * @return StorageValidate
-     * @author 段誉
      * @date 2022/4/20 16:18
      */
     public function sceneSetup()
@@ -45,7 +44,6 @@ class StorageValidate extends BaseValidate
     /**
      * @notes 获取配置参数信息场景
      * @return StorageValidate
-     * @author 段誉
      * @date 2022/4/20 16:18
      */
     public function sceneDetail()
@@ -57,7 +55,6 @@ class StorageValidate extends BaseValidate
     /**
      * @notes 切换存储引擎场景
      * @return StorageValidate
-     * @author 段誉
      * @date 2022/4/20 16:18
      */
     public function sceneChange()

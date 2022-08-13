@@ -29,7 +29,6 @@ class RoleController extends BaseAdminController
     /**
      * @notes 查看角色列表
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/29 11:49
      */
     public function lists()
@@ -41,7 +40,6 @@ class RoleController extends BaseAdminController
     /**
      * @notes 添加权限
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/29 11:49
      */
     public function add()
@@ -58,7 +56,6 @@ class RoleController extends BaseAdminController
     /**
      * @notes 编辑角色
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/29 14:18
      */
     public function edit()
@@ -75,7 +72,6 @@ class RoleController extends BaseAdminController
     /**
      * @notes 删除角色
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/29 14:18
      */
     public function delete()
@@ -92,7 +88,6 @@ class RoleController extends BaseAdminController
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 段誉
      * @date 2021/12/29 14:18
      */
     public function detail()

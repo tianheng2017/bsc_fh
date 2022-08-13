@@ -23,7 +23,6 @@ class CacheLogic extends BaseLogic
 {
     /**
      * @notes 清楚系统缓存
-     * @author 段誉
      * @date 2022/4/8 16:29
      */
     public static function clear()

@@ -29,7 +29,6 @@ class InitMiddleware
      * @param $request
      * @param \Closure $next
      * @return mixed
-     * @author 令狐冲
      * @date 2021/7/2 19:29
      */
     public function handle($request, \Closure $next)

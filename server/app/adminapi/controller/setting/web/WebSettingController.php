@@ -26,7 +26,6 @@ class WebSettingController extends BaseAdminController
     /**
      * @notes 获取网站信息
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/28 15:44
      */
     public function getWebsite()
@@ -39,7 +38,6 @@ class WebSettingController extends BaseAdminController
     /**
      * @notes 设置网站信息
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/28 15:45
      */
     public function setWebsite()
@@ -54,7 +52,6 @@ class WebSettingController extends BaseAdminController
     /**
      * @notes 获取备案信息
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/28 16:10
      */
     public function getCopyright()
@@ -67,7 +64,6 @@ class WebSettingController extends BaseAdminController
     /**
      * @notes 设置备案信息
      * @return \think\response\Json
-     * @author 段誉
      * @date 2021/12/28 16:10
      */
     public function setCopyright()

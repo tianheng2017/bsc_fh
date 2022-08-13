@@ -48,7 +48,6 @@ class DeptValidate extends BaseValidate
     /**
      * @notes 添加场景
      * @return DeptValidate
-     * @author 段誉
      * @date 2022/5/25 18:16
      */
     public function sceneAdd()
@@ -60,7 +59,6 @@ class DeptValidate extends BaseValidate
     /**
      * @notes 详情场景
      * @return DeptValidate
-     * @author 段誉
      * @date 2022/5/25 18:16
      */
     public function sceneDetail()
@@ -72,7 +70,6 @@ class DeptValidate extends BaseValidate
     /**
      * @notes 编辑场景
      * @return DeptValidate
-     * @author 段誉
      * @date 2022/5/26 18:42
      */
     public function sceneEdit()
@@ -84,7 +81,6 @@ class DeptValidate extends BaseValidate
     /**
      * @notes 删除场景
      * @return DeptValidate
-     * @author 段誉
      * @date 2022/5/25 18:16
      */
     public function sceneDelete()
@@ -97,7 +93,6 @@ class DeptValidate extends BaseValidate
      * @notes 校验部门
      * @param $value
      * @return bool|string
-     * @author 段誉
      * @date 2022/5/25 18:17
      */
     public function checkDept($value)
@@ -114,7 +109,6 @@ class DeptValidate extends BaseValidate
      * @notes 校验能否删除
      * @param $value
      * @return bool|string
-     * @author 段誉
      * @date 2022/5/26 14:22
      */
     public function checkAbleDetele($value)
@@ -143,7 +137,6 @@ class DeptValidate extends BaseValidate
      * @param $rule
      * @param array $data
      * @return bool|string
-     * @author 段誉
      * @date 2022/5/26 18:41
      */
     public function checkPid($value, $rule, $data = [])

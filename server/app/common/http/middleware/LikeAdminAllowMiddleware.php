@@ -28,7 +28,6 @@ class LikeAdminAllowMiddleware
      * @param \Closure $next
      * @param array|null $header
      * @return mixed|\think\Response
-     * @author 令狐冲
      * @date 2021/7/26 11:51
      */
     public function handle($request, Closure $next, ?array $header = [])

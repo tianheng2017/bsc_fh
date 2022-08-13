@@ -24,7 +24,6 @@ trait ListsSortTrait
      * @param $sortField
      * @param $defaultOrder
      * @return array|string[]
-     * @author 令狐冲
      * @date 2021/7/16 00:06
      */
     private function createOrder($sortField, $defaultOrder)

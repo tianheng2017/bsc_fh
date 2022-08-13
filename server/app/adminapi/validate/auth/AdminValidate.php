@@ -54,7 +54,6 @@ class AdminValidate extends BaseValidate
     /**
      * @notes 添加场景
      * @return AdminValidate
-     * @author 段誉
      * @date 2021/12/29 15:46
      */
     public function sceneAdd()
@@ -66,7 +65,6 @@ class AdminValidate extends BaseValidate
     /**
      * @notes 详情场景
      * @return AdminValidate
-     * @author 段誉
      * @date 2021/12/29 15:46
      */
     public function sceneDetail()
@@ -77,7 +75,6 @@ class AdminValidate extends BaseValidate
     /**
      * @notes 编辑场景
      * @return AdminValidate
-     * @author 段誉
      * @date 2021/12/29 15:47
      */
     public function sceneEdit()
@@ -90,7 +87,6 @@ class AdminValidate extends BaseValidate
     /**
      * @notes 删除场景
      * @return AdminValidate
-     * @author 段誉
      * @date 2021/12/29 15:47
      */
     public function sceneDelete()
@@ -106,7 +102,6 @@ class AdminValidate extends BaseValidate
      * @param $rule
      * @param $data
      * @return bool|string
-     * @author 段誉
      * @date 2021/12/29 10:19
      */
     public function edit($value, $rule, $data)
@@ -126,7 +121,6 @@ class AdminValidate extends BaseValidate
      * @notes 检查指定管理员是否存在
      * @param $value
      * @return bool|string
-     * @author 段誉
      * @date 2021/12/29 10:19
      */
     public function checkAdmin($value)
@@ -142,7 +136,6 @@ class AdminValidate extends BaseValidate
      * @notes 检查超级管理员
      * @param $value
      * @return bool|string
-     * @author 段誉
      * @date 2021/12/29 10:19
      */
     public function checkRoot($value, $rule, $data=[])

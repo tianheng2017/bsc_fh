@@ -28,7 +28,6 @@ class UploadService
      * @param string $save_dir
      * @return array
      * @throws Exception
-     * @author 段誉
      * @date 2021/12/29 16:30
      */
     public static function image($cid, int $user_id = 0, string $save_dir = 'uploads/images')
@@ -89,7 +88,6 @@ class UploadService
      * @param string $save_dir
      * @return array
      * @throws Exception
-     * @author 段誉
      * @date 2021/12/29 16:32
      */
     public static function video($cid, int $user_id = 0, string $save_dir = 'uploads/video')

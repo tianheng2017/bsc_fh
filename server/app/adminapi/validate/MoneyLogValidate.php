@@ -27,7 +27,6 @@ class MoneyLogValidate extends BaseValidate
     /**
      * @notes 设置搜索条件
      * @return \string[][]
-     * @author likeadmin
      * @date 2022/08/12 07:44
      */
     protected $rule = [
@@ -38,7 +37,6 @@ class MoneyLogValidate extends BaseValidate
     /**
      * @notes 添加场景
      * @return MoneyLogValidate
-     * @author likeadmin
      * @date 2022/08/12 07:44
      */
     public function sceneAdd()
@@ -50,7 +48,6 @@ class MoneyLogValidate extends BaseValidate
     /**
      * @notes 删除场景
      * @return MoneyLogValidate
-     * @author likeadmin
      * @date 2022/08/12 07:44
      */
     public function sceneDelete()
@@ -62,7 +59,6 @@ class MoneyLogValidate extends BaseValidate
     /**
      * @notes 详情场景
      * @return MoneyLogValidate
-     * @author likeadmin
      * @date 2022/08/12 07:44
      */
     public function sceneDetail()

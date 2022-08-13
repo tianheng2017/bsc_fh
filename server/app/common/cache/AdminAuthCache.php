@@ -58,7 +58,6 @@ class AdminAuthCache extends BaseCache
      * @notes 获取管理权限uri
      * @param $adminId
      * @return array|mixed
-     * @author 令狐冲
      * @date 2021/8/19 15:27
      */
     public function getAdminUri()

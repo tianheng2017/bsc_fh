@@ -27,30 +27,36 @@ class WithdrawValidate extends BaseValidate
     /**
      * @notes 设置搜索条件
      * @return \string[][]
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
     protected $rule = [
-        'id' => 'require',
+        'id'        =>  'require',
+        'status'    =>  'require|in:1,2',
+        'remark'    =>  'requireIf:status,2'
+    ];
+
+    protected $message = [
+        'id.require'        =>  'ID不能为空',
+        'status.require'    =>  '请选择审核结果',
+        'status.in'         =>  '审核结果不存在',
+        'remark.requireIf'  =>  '请输入拒绝理由',
     ];
 
 
     /**
-     * @notes 添加场景
+     * @notes 审核场景
      * @return WithdrawValidate
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
-    public function sceneAdd()
+    public function sceneAudit()
     {
-        return $this->remove('id', true);
+        return $this->only(['id', 'status', 'remark']);
     }
 
 
     /**
      * @notes 删除场景
      * @return WithdrawValidate
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
     public function sceneDelete()
@@ -62,7 +68,6 @@ class WithdrawValidate extends BaseValidate
     /**
      * @notes 详情场景
      * @return WithdrawValidate
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
     public function sceneDetail()

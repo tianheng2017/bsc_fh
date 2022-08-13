@@ -29,7 +29,6 @@ class JobsController extends BaseAdminController
     /**
      * @notes 岗位列表
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/5/26 10:00
      */
     public function lists()
@@ -41,7 +40,6 @@ class JobsController extends BaseAdminController
     /**
      * @notes 添加岗位
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/5/25 18:40
      */
     public function add()
@@ -55,7 +53,6 @@ class JobsController extends BaseAdminController
     /**
      * @notes 编辑岗位
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/5/25 18:41
      */
     public function edit()
@@ -72,7 +69,6 @@ class JobsController extends BaseAdminController
     /**
      * @notes 删除岗位
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/5/25 18:41
      */
     public function delete()
@@ -86,7 +82,6 @@ class JobsController extends BaseAdminController
     /**
      * @notes 获取岗位详情
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/5/25 18:41
      */
     public function detail()

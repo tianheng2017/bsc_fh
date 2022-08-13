@@ -30,7 +30,6 @@ class DeptLogic extends BaseLogic
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 段誉
      * @date 2022/5/30 15:44
      */
     public static function lists($params)
@@ -62,7 +61,6 @@ class DeptLogic extends BaseLogic
      * @param int $pid
      * @param int $level
      * @return array
-     * @author 段誉
      * @date 2022/5/30 15:44
      */
     public static function getTree($array, $pid = 0, $level = 0)
@@ -85,7 +83,6 @@ class DeptLogic extends BaseLogic
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 段誉
      * @date 2022/5/26 18:36
      */
     public static function leaderDept()
@@ -101,7 +98,6 @@ class DeptLogic extends BaseLogic
     /**
      * @notes 添加部门
      * @param array $params
-     * @author 段誉
      * @date 2022/5/25 18:20
      */
     public static function add(array $params)
@@ -121,7 +117,6 @@ class DeptLogic extends BaseLogic
      * @notes 编辑部门
      * @param array $params
      * @return bool
-     * @author 段誉
      * @date 2022/5/25 18:39
      */
     public static function edit(array $params): bool
@@ -153,7 +148,6 @@ class DeptLogic extends BaseLogic
     /**
      * @notes 删除部门
      * @param array $params
-     * @author 段誉
      * @date 2022/5/25 18:40
      */
     public static function delete(array $params)
@@ -166,7 +160,6 @@ class DeptLogic extends BaseLogic
      * @notes 获取部门详情
      * @param $params
      * @return array
-     * @author 段誉
      * @date 2022/5/25 18:40
      */
     public static function detail($params): array

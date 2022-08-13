@@ -26,7 +26,6 @@ class CrontabController extends BaseAdminController
     /**
      * @notes 定时任务列表
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 14:27
      */
     public function lists()
@@ -38,7 +37,6 @@ class CrontabController extends BaseAdminController
     /**
      * @notes 添加定时任务
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 14:27
      */
     public function add()
@@ -55,7 +53,6 @@ class CrontabController extends BaseAdminController
     /**
      * @notes 查看定时任务详情
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 14:27
      */
     public function detail()
@@ -69,7 +66,6 @@ class CrontabController extends BaseAdminController
     /**
      * @notes 编辑定时任务
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 14:27
      */
     public function edit()
@@ -86,7 +82,6 @@ class CrontabController extends BaseAdminController
     /**
      * @notes 删除定时任务
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 14:27
      */
     public function delete()
@@ -103,7 +98,6 @@ class CrontabController extends BaseAdminController
     /**
      * @notes 操作定时任务
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 14:28
      */
     public function operate()
@@ -120,7 +114,6 @@ class CrontabController extends BaseAdminController
     /**
      * @notes 获取规则执行时间
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 14:28
      */
     public function expression()

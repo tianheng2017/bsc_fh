@@ -22,7 +22,6 @@ class BaseValidate extends Validate
 
     /**
      * @notes 设置请求方式
-     * @author 令狐冲
      * @date 2021/12/27 14:13
      */
     public function post()
@@ -36,7 +35,6 @@ class BaseValidate extends Validate
 
     /**
      * @notes 设置请求方式
-     * @author 令狐冲
      * @date 2021/12/27 14:13
      */
     public function get()
@@ -53,7 +51,6 @@ class BaseValidate extends Validate
      * @param null $scene 场景验证
      * @param array $validate_data 验证参数，可追加和覆盖掉接收的参数
      * @return array
-     * @author 令狐冲
      * @date 2021/12/27 14:13
      */
     public function goCheck($scene = null, array $validate_data = []): array

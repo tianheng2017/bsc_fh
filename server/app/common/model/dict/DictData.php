@@ -33,7 +33,6 @@ class DictData extends BaseModel
      * @param $value
      * @param $data
      * @return string
-     * @author 段誉
      * @date 2022/6/20 16:31
      */
     public function getStatusDescAttr($value, $data)

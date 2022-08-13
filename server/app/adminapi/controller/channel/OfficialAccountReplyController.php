@@ -29,7 +29,6 @@ class OfficialAccountReplyController extends BaseAdminController
     /**
      * @notes 查看回复列表(关注/关键词/默认)
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:58
      */
     public function lists()
@@ -41,7 +40,6 @@ class OfficialAccountReplyController extends BaseAdminController
     /**
      * @notes 添加回复(关注/关键词/默认)
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:58
      */
     public function add()
@@ -58,7 +56,6 @@ class OfficialAccountReplyController extends BaseAdminController
     /**
      * @notes 查看回复详情
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:58
      */
     public function detail()
@@ -72,7 +69,6 @@ class OfficialAccountReplyController extends BaseAdminController
     /**
      * @notes 编辑回复(关注/关键词/默认)
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:58
      */
     public function edit()
@@ -89,7 +85,6 @@ class OfficialAccountReplyController extends BaseAdminController
     /**
      * @notes 删除回复(关注/关键词/默认)
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:59
      */
     public function delete()
@@ -103,7 +98,6 @@ class OfficialAccountReplyController extends BaseAdminController
     /**
      * @notes 更新排序
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:59
      */
     public function sort()
@@ -117,7 +111,6 @@ class OfficialAccountReplyController extends BaseAdminController
     /**
      * @notes 更新状态
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:59
      */
     public function status()
@@ -131,7 +124,6 @@ class OfficialAccountReplyController extends BaseAdminController
     /**
      * @notes 微信公众号回调
      * @throws \ReflectionException
-     * @author 段誉
      * @date 2022/3/29 10:59
      */
     public function index()

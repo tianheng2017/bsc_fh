@@ -31,7 +31,6 @@ class UsersController extends BaseAdminController
     /**
      * @notes 获取列表
      * @return \think\response\Json
-     * @author likeadmin
      * @date 2022/08/11 10:48
      */
     public function lists()
@@ -43,7 +42,6 @@ class UsersController extends BaseAdminController
     /**
      * @notes 添加
      * @return \think\response\Json
-     * @author likeadmin
      * @date 2022/08/11 10:48
      */
     // public function add()
@@ -60,7 +58,6 @@ class UsersController extends BaseAdminController
     /**
      * @notes 编辑
      * @return \think\response\Json
-     * @author likeadmin
      * @date 2022/08/11 10:48
      */
     // public function edit()
@@ -77,7 +74,6 @@ class UsersController extends BaseAdminController
     /**
      * @notes 删除
      * @return \think\response\Json
-     * @author likeadmin
      * @date 2022/08/11 10:48
      */
     // public function delete()
@@ -91,7 +87,6 @@ class UsersController extends BaseAdminController
     /**
      * @notes 获取详情
      * @return \think\response\Json
-     * @author likeadmin
      * @date 2022/08/11 10:48
      */
     public function detail()

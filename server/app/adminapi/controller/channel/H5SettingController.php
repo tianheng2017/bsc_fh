@@ -26,7 +26,6 @@ class H5SettingController extends BaseAdminController
     /**
      * @notes 获取H5设置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:36
      */
     public function getConfig()
@@ -39,7 +38,6 @@ class H5SettingController extends BaseAdminController
     /**
      * @notes H5设置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:36
      */
     public function setConfig()

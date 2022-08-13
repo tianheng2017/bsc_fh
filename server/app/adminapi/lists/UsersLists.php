@@ -29,7 +29,6 @@ class UsersLists extends BaseAdminDataLists implements ListsSearchInterface
     /**
      * @notes 设置搜索条件
      * @return \string[][]
-     * @author likeadmin
      * @date 2022/08/11 10:48
      */
     public function setSearch(): array
@@ -47,7 +46,6 @@ class UsersLists extends BaseAdminDataLists implements ListsSearchInterface
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author likeadmin
      * @date 2022/08/11 10:48
      */
     public function lists(): array
@@ -64,7 +62,6 @@ class UsersLists extends BaseAdminDataLists implements ListsSearchInterface
     /**
      * @notes 获取数量
      * @return int
-     * @author likeadmin
      * @date 2022/08/11 10:48
      */
     public function count(): int

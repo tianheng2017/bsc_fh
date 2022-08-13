@@ -29,7 +29,6 @@ class OfficialAccountReplyLogic extends BaseLogic
      * @notes 添加回复(关注/关键词/默认)
      * @param $params
      * @return bool
-     * @author 段誉
      * @date 2022/3/29 10:57
      */
     public static function add($params)
@@ -56,7 +55,6 @@ class OfficialAccountReplyLogic extends BaseLogic
      * @notes 查看回复详情
      * @param $params
      * @return array
-     * @author 段誉
      * @date 2022/3/29 11:00
      */
     public static function detail($params)
@@ -71,7 +69,6 @@ class OfficialAccountReplyLogic extends BaseLogic
      * @notes 编辑回复(关注/关键词/默认)
      * @param $params
      * @return bool
-     * @author 段誉
      * @date 2022/3/29 11:01
      */
     public static function edit($params)
@@ -97,7 +94,6 @@ class OfficialAccountReplyLogic extends BaseLogic
     /**
      * @notes 删除回复(关注/关键词/默认)
      * @param $params
-     * @author 段誉
      * @date 2022/3/29 11:01
      */
     public static function delete($params)
@@ -109,7 +105,6 @@ class OfficialAccountReplyLogic extends BaseLogic
     /**
      * @notes 更新排序
      * @param $params
-     * @author 段誉
      * @date 2022/3/29 11:01
      */
     public static function sort($params)
@@ -122,7 +117,6 @@ class OfficialAccountReplyLogic extends BaseLogic
     /**
      * @notes 更新状态
      * @param $params
-     * @author 段誉
      * @date 2022/3/29 11:01
      */
     public static function status($params)
@@ -138,7 +132,6 @@ class OfficialAccountReplyLogic extends BaseLogic
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
      * @throws \ReflectionException
-     * @author 段誉
      * @date 2022/3/29 11:01
      */
     public static function index()

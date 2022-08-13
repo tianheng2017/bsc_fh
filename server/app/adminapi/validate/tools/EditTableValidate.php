@@ -54,7 +54,6 @@ class EditTableValidate extends BaseValidate
      * @param $rule
      * @param $data
      * @return bool|string
-     * @author 段誉
      * @date 2022/6/15 18:58
      */
     protected function checkTableData($value, $rule, $data)
@@ -73,7 +72,6 @@ class EditTableValidate extends BaseValidate
      * @param $rule
      * @param $data
      * @return bool|string
-     * @author 段誉
      * @date 2022/6/20 10:42
      */
     protected function checkColumn($value, $rule, $data)

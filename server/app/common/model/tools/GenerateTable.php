@@ -30,7 +30,6 @@ class GenerateTable extends BaseModel
     /**
      * @notes 关联数据表字段
      * @return \think\model\relation\HasMany
-     * @author 段誉
      * @date 2022/6/15 10:46
      */
     public function tableColumn()
@@ -43,7 +42,6 @@ class GenerateTable extends BaseModel
      * @param $value
      * @param $data
      * @return string|string[]
-     * @author 段誉
      * @date 2022/6/14 11:25
      */
     public function getTemplateTypeDescAttr($value, $data)

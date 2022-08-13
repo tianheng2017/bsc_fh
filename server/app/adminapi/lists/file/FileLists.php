@@ -27,7 +27,6 @@ class FileLists extends BaseAdminDataLists implements ListsSearchInterface
     /**
      * @notes 文件搜索条件
      * @return \string[][]
-     * @author 段誉
      * @date 2021/12/29 14:27
      */
     public function setSearch(): array
@@ -45,7 +44,6 @@ class FileLists extends BaseAdminDataLists implements ListsSearchInterface
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 段誉
      * @date 2021/12/29 14:27
      */
     public function lists(): array
@@ -69,7 +67,6 @@ class FileLists extends BaseAdminDataLists implements ListsSearchInterface
     /**
      * @notes 获取文件数量
      * @return int
-     * @author 段誉
      * @date 2021/12/29 14:29
      */
     public function count(): int

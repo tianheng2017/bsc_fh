@@ -28,7 +28,6 @@ class FileController extends BaseAdminController
     /**
      * @notes 文件列表
      * @return Json
-     * @author 段誉
      * @date 2021/12/29 14:30
      */
     public function lists()
@@ -40,7 +39,6 @@ class FileController extends BaseAdminController
     /**
      * @notes 文件移动成功
      * @return Json
-     * @author 段誉
      * @date 2021/12/29 14:30
      */
     public function move()
@@ -54,7 +52,6 @@ class FileController extends BaseAdminController
     /**
      * @notes 重命名文件
      * @return Json
-     * @author 段誉
      * @date 2021/12/29 14:31
      */
     public function rename()
@@ -68,7 +65,6 @@ class FileController extends BaseAdminController
     /**
      * @notes 删除文件
      * @return Json
-     * @author 段誉
      * @date 2021/12/29 14:31
      */
     public function delete()
@@ -82,7 +78,6 @@ class FileController extends BaseAdminController
     /**
      * @notes 分类列表
      * @return Json
-     * @author 段誉
      * @date 2021/12/29 14:31
      */
     public function listCate()
@@ -94,7 +89,6 @@ class FileController extends BaseAdminController
     /**
      * @notes 添加文件分类
      * @return Json
-     * @author 段誉
      * @date 2021/12/29 14:31
      */
     public function addCate()
@@ -108,7 +102,6 @@ class FileController extends BaseAdminController
     /**
      * @notes 编辑文件分类
      * @return Json
-     * @author 段誉
      * @date 2021/12/29 14:31
      */
     public function editCate()
@@ -122,7 +115,6 @@ class FileController extends BaseAdminController
     /**
      * @notes 删除文件分类
      * @return Json
-     * @author 段誉
      * @date 2021/12/29 14:32
      */
     public function delCate()

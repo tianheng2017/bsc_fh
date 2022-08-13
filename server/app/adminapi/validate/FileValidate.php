@@ -43,7 +43,6 @@ class FileValidate extends BaseValidate
     /**
      * @notes id验证场景
      * @return FileValidate
-     * @author 段誉
      * @date 2021/12/29 14:32
      */
     public function sceneId()
@@ -55,7 +54,6 @@ class FileValidate extends BaseValidate
     /**
      * @notes 重命名文件场景
      * @return FileValidate
-     * @author 段誉
      * @date 2021/12/29 14:32
      */
     public function sceneRename()
@@ -67,7 +65,6 @@ class FileValidate extends BaseValidate
     /**
      * @notes 新增分类场景
      * @return FileValidate
-     * @author 段誉
      * @date 2021/12/29 14:33
      */
     public function sceneAddCate()
@@ -79,7 +76,6 @@ class FileValidate extends BaseValidate
     /**
      * @notes 编辑分类场景
      * @return FileValidate
-     * @author 段誉
      * @date 2021/12/29 14:33
      */
     public function sceneEditCate()
@@ -91,7 +87,6 @@ class FileValidate extends BaseValidate
     /**
      * @notes 移动场景
      * @return FileValidate
-     * @author 段誉
      * @date 2021/12/29 14:33
      */
     public function sceneMove()
@@ -103,7 +98,6 @@ class FileValidate extends BaseValidate
     /**
      * @notes 删除场景
      * @return FileValidate
-     * @author 段誉
      * @date 2021/12/29 14:35
      */
     public function sceneDelete()

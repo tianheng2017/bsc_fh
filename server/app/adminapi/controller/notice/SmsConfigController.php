@@ -26,7 +26,6 @@ class SmsConfigController extends BaseAdminController
     /**
      * @notes 获取短信配置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 11:36
      */
     public function getConfig()
@@ -39,7 +38,6 @@ class SmsConfigController extends BaseAdminController
     /**
      * @notes 短信配置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 11:36
      */
     public function setConfig()
@@ -53,7 +51,6 @@ class SmsConfigController extends BaseAdminController
     /**
      * @notes 查看短信配置详情
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 11:36
      */
     public function detail()

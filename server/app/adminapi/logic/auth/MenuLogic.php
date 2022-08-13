@@ -42,7 +42,6 @@ class MenuLogic extends BaseLogic
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 段誉
      * @date 2022/7/1 10:50
      */
     public static function getMenuByAdminId($adminId)
@@ -70,7 +69,6 @@ class MenuLogic extends BaseLogic
      * @notes 添加菜单
      * @param array $params
      * @return SystemMenu|\think\Model
-     * @author 段誉
      * @date 2022/6/30 10:06
      */
     public static function add(array $params)
@@ -97,7 +95,6 @@ class MenuLogic extends BaseLogic
      * @notes 编辑菜单
      * @param array $params
      * @return SystemMenu
-     * @author 段誉
      * @date 2022/6/30 10:07
      */
     public static function edit(array $params)
@@ -125,7 +122,6 @@ class MenuLogic extends BaseLogic
      * @notes 详情
      * @param $params
      * @return array
-     * @author 段誉
      * @date 2022/6/30 9:54
      */
     public static function detail($params)
@@ -137,7 +133,6 @@ class MenuLogic extends BaseLogic
     /**
      * @notes 删除菜单
      * @param $params
-     * @author 段誉
      * @date 2022/6/30 9:47
      */
     public static function delete($params)
@@ -153,7 +148,6 @@ class MenuLogic extends BaseLogic
      * @notes 更新状态
      * @param array $params
      * @return SystemMenu
-     * @author 段誉
      * @date 2022/7/6 17:02
      */
     public static function updateStatus(array $params)

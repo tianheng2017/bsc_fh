@@ -26,7 +26,6 @@ class OfficialAccountReplyLists extends BaseAdminDataLists implements ListsSearc
     /**
      * @notes 设置搜索
      * @return \string[][]
-     * @author 段誉
      * @date 2022/3/30 15:02
      */
     public function setSearch(): array
@@ -43,7 +42,6 @@ class OfficialAccountReplyLists extends BaseAdminDataLists implements ListsSearc
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 段誉
      * @date 2022/3/30 15:02
      */
     public function lists(): array
@@ -67,7 +65,6 @@ class OfficialAccountReplyLists extends BaseAdminDataLists implements ListsSearc
     /**
      * @notes 回复记录数
      * @return int
-     * @author 段誉
      * @date 2022/3/30 15:02
      */
     public function count(): int

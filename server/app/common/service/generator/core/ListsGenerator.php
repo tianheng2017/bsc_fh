@@ -26,7 +26,6 @@ class ListsGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 替换变量
      * @return mixed|void
-     * @author 段誉
      * @date 2022/6/22 18:12
      */
     public function replaceVariables()
@@ -77,7 +76,6 @@ class ListsGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取命名空间内容
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:12
      */
     public function getNameSpaceContent()
@@ -92,7 +90,6 @@ class ListsGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取use内容
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:12
      */
     public function getUseContent()
@@ -116,7 +113,6 @@ class ListsGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取类描述
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:12
      */
     public function getClassCommentContent()
@@ -133,7 +129,6 @@ class ListsGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取包名
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:12
      */
     public function getPackageNameContent()
@@ -145,7 +140,6 @@ class ListsGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取继承控制器
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:12
      */
     public function getExtendsListsContent()
@@ -161,7 +155,6 @@ class ListsGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取查询条件内容
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:12
      */
     public function getQueryConditionContent()
@@ -206,7 +199,6 @@ class ListsGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取查询字段
      * @return false|string
-     * @author 段誉
      * @date 2022/6/22 18:13
      */
     public function getFieldDataContent()
@@ -226,7 +218,6 @@ class ListsGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取文件生成到模块的文件夹路径
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:13
      */
     public function getModuleGenerateDir()
@@ -244,7 +235,6 @@ class ListsGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取文件生成到runtime的文件夹路径
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:13
      */
     public function getRuntimeGenerateDir()
@@ -262,7 +252,6 @@ class ListsGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes  生成的文件名
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:13
      */
     public function getGenerateName()
@@ -274,7 +263,6 @@ class ListsGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 文件信息
      * @return array
-     * @author 段誉
      * @date 2022/6/23 15:57
      */
     public function fileInfo(): array

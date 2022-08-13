@@ -25,7 +25,6 @@ class CacheController extends BaseAdminController
     /**
      * @notes 清除系统缓存
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/4/8 16:34
      */
     public function clear()

@@ -49,7 +49,6 @@ class JobsValidate extends BaseValidate
     /**
      * @notes 添加场景
      * @return JobsValidate
-     * @author 段誉
      * @date 2022/5/26 9:53
      */
     public function sceneAdd()
@@ -61,7 +60,6 @@ class JobsValidate extends BaseValidate
     /**
      * @notes 详情场景
      * @return JobsValidate
-     * @author 段誉
      * @date 2022/5/26 9:53
      */
     public function sceneDetail()
@@ -78,7 +76,6 @@ class JobsValidate extends BaseValidate
     /**
      * @notes 删除场景
      * @return JobsValidate
-     * @author 段誉
      * @date 2022/5/26 9:54
      */
     public function sceneDelete()
@@ -91,7 +88,6 @@ class JobsValidate extends BaseValidate
      * @notes 校验岗位
      * @param $value
      * @return bool|string
-     * @author 段誉
      * @date 2022/5/26 9:55
      */
     public function checkJobs($value)
@@ -108,7 +104,6 @@ class JobsValidate extends BaseValidate
      * @notes 校验能否删除
      * @param $value
      * @return bool|string
-     * @author 段誉
      * @date 2022/5/26 14:22
      */
     public function checkAbleDetele($value)

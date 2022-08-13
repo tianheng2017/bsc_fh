@@ -26,7 +26,6 @@ class JobsLists extends BaseAdminDataLists implements ListsSearchInterface
     /**
      * @notes 设置搜索条件
      * @return \string[][]
-     * @author 段誉
      * @date 2022/5/26 9:46
      */
     public function setSearch(): array
@@ -60,7 +59,6 @@ class JobsLists extends BaseAdminDataLists implements ListsSearchInterface
     /**
      * @notes 获取数量
      * @return int
-     * @author 段誉
      * @date 2022/5/26 9:48
      */
     public function count(): int

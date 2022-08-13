@@ -31,7 +31,6 @@ class GeneratorLogic extends BaseLogic
      * @notes 表详情
      * @param $params
      * @return array
-     * @author 段誉
      * @date 2022/6/20 10:45
      */
     public static function getTableDetail($params): array
@@ -54,7 +53,6 @@ class GeneratorLogic extends BaseLogic
      * @param $params
      * @param $adminId
      * @return bool
-     * @author 段誉
      * @date 2022/6/20 10:44
      */
     public static function selectTable($params, $adminId)
@@ -83,7 +81,6 @@ class GeneratorLogic extends BaseLogic
      * @notes 编辑表信息
      * @param $params
      * @return bool
-     * @author 段誉
      * @date 2022/6/20 10:44
      */
     public static function editTable($params)
@@ -138,7 +135,6 @@ class GeneratorLogic extends BaseLogic
      * @notes 删除表相关信息
      * @param $params
      * @return bool
-     * @author 段誉
      * @date 2022/6/16 9:30
      */
     public static function deleteTable($params)
@@ -161,7 +157,6 @@ class GeneratorLogic extends BaseLogic
      * @notes 同步表字段
      * @param $params
      * @return bool
-     * @author 段誉
      * @date 2022/6/23 16:28
      */
     public static function syncColumn($params)
@@ -191,7 +186,6 @@ class GeneratorLogic extends BaseLogic
      * @notes 生成代码
      * @param $params
      * @return false|int[]
-     * @author 段誉
      * @date 2022/6/24 9:43
      */
     public static function generate($params)
@@ -234,7 +228,6 @@ class GeneratorLogic extends BaseLogic
      * @notes 预览
      * @param $params
      * @return false
-     * @author 段誉
      * @date 2022/6/23 16:27
      */
     public static function preview($params)
@@ -259,7 +252,6 @@ class GeneratorLogic extends BaseLogic
      * @notes 获取表字段信息
      * @param $tableName
      * @return array
-     * @author 段誉
      * @date 2022/6/23 16:28
      */
     public static function getTableColumn($tableName)
@@ -275,7 +267,6 @@ class GeneratorLogic extends BaseLogic
      * @param $tableData
      * @param $adminId
      * @return GenerateTable|\think\Model
-     * @author 段誉
      * @date 2022/6/23 16:28
      */
     public static function initTable($tableData, $adminId)
@@ -301,7 +292,6 @@ class GeneratorLogic extends BaseLogic
      * @param $column
      * @param $tableId
      * @throws \Exception
-     * @author 段誉
      * @date 2022/6/23 16:28
      */
     public static function initTableColumn($column, $tableId)
@@ -338,7 +328,6 @@ class GeneratorLogic extends BaseLogic
      * @notes 下载文件
      * @param $fileName
      * @return false|string
-     * @author 段誉
      * @date 2022/6/24 9:51
      */
     public static function download(string $fileName)

@@ -30,7 +30,6 @@ class JsonService
      * @param int $code
      * @param int $show
      * @return Json
-     * @author 段誉
      * @date 2021/12/24 18:28
      */
     public static function success(string $msg = 'success', array $data = [], int $code = 1, int $show = 1): Json
@@ -47,7 +46,6 @@ class JsonService
      * @param int $code
      * @param int $show
      * @return Json
-     * @author 段誉
      * @date 2021/12/24 18:28
      */
     public static function fail(string $msg = 'fail', array $data = [], int $code = 0, int $show = 1): Json
@@ -61,7 +59,6 @@ class JsonService
      * @notes 接口返回数据
      * @param $data
      * @return Json
-     * @author 段誉
      * @date 2021/12/24 18:29
      */
     public static function data($data): Json
@@ -79,7 +76,6 @@ class JsonService
      * @param array $data
      * @param int $httpStatus
      * @return Json
-     * @author 段誉
      * @date 2021/12/24 18:29
      */
     private static function result(int $code, int $show, string $msg = 'OK', array $data = [], int $httpStatus = 200): Json
@@ -97,7 +93,6 @@ class JsonService
      * @param int $code
      * @param int $show
      * @return Json
-     * @author 段誉
      * @date 2021/12/24 18:29
      */
     public static function throw(string $msg = 'fail', array $data = [], int $code = 0, int $show = 1): Json
@@ -112,7 +107,6 @@ class JsonService
      * @notes 数据列表
      * @param \app\common\lists\BaseDataLists $lists
      * @return \think\response\Json
-     * @author 令狐冲
      * @date 2021/7/28 11:15
      */
     public static function dataLists(BaseDataLists $lists): Json

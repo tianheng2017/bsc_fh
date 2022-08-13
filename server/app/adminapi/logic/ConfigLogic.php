@@ -23,7 +23,6 @@ class ConfigLogic
     /**
      * @notes 获取配置
      * @return array
-     * @author 段誉
      * @date 2021/12/31 11:03
      */
     public static function getConfig(): array

@@ -24,7 +24,6 @@ class AppSettingLogic extends BaseLogic
     /**
      * @notes 获取App设置
      * @return array
-     * @author 段誉
      * @date 2022/3/29 10:25
      */
     public static function getConfig()
@@ -41,7 +40,6 @@ class AppSettingLogic extends BaseLogic
     /**
      * @notes App设置
      * @param $params
-     * @author 段誉
      * @date 2022/3/29 10:26
      */
     public static function setConfig($params)

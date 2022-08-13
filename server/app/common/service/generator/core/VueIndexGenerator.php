@@ -26,7 +26,6 @@ class VueIndexGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 替换变量
      * @return mixed|void
-     * @author 段誉
      * @date 2022/6/22 18:19
      */
     public function replaceVariables()
@@ -72,7 +71,6 @@ class VueIndexGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取搜索内容
      * @return string
-     * @author 段誉
      * @date 2022/6/23 11:57
      */
     public function getSearchViewContent()
@@ -112,7 +110,6 @@ class VueIndexGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取列表内容
      * @return string
-     * @author 段誉
      * @date 2022/6/23 11:57
      */
     public function getListsViewContent()
@@ -160,7 +157,6 @@ class VueIndexGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取查询条件内容
      * @return string
-     * @author 段誉
      * @date 2022/6/23 11:57
      */
     public function getQueryParamsContent()
@@ -188,7 +184,6 @@ class VueIndexGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取字典数据内容
      * @return string
-     * @author 段誉
      * @date 2022/6/23 11:58
      */
     public function getDictDataContent()
@@ -215,7 +210,6 @@ class VueIndexGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取字典数据api内容
      * @return false|string
-     * @author 段誉
      * @date 2022/6/23 11:58
      */
     public function getDictDataApiContent()
@@ -253,7 +247,6 @@ class VueIndexGenerator extends BaseGenerator implements GenerateInterface
      * @notes 权限规则
      * @param string $type
      * @return string
-     * @author 段誉
      * @date 2022/7/7 9:47
      */
     public function getPermsContent($type = 'add')
@@ -270,7 +263,6 @@ class VueIndexGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取文件生成到模块的文件夹路径
      * @return mixed|void
-     * @author 段誉
      * @date 2022/6/22 18:19
      */
     public function getModuleGenerateDir()
@@ -284,7 +276,6 @@ class VueIndexGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取文件生成到runtime的文件夹路径
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:20
      */
     public function getRuntimeGenerateDir()
@@ -298,7 +289,6 @@ class VueIndexGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 生成的文件名
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:20
      */
     public function getGenerateName()
@@ -310,7 +300,6 @@ class VueIndexGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 文件信息
      * @return array
-     * @author 段誉
      * @date 2022/6/23 15:57
      */
     public function fileInfo(): array

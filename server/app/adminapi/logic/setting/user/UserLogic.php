@@ -23,7 +23,6 @@ class UserLogic
     /**
      * @notes 获取用户设置
      * @return array
-     * @author 段誉
      * @date 2022/3/29 10:09
      */
     public static function getConfig(): array
@@ -41,7 +40,6 @@ class UserLogic
      * @notes 设置用户设置
      * @param array $params
      * @return bool
-     * @author 段誉
      * @date 2022/3/29 10:09
      */
     public function setConfig(array $params): bool
@@ -54,7 +52,6 @@ class UserLogic
     /**
      * @notes 获取注册配置
      * @return array
-     * @author 段誉
      * @date 2022/3/29 10:10
      */
     public function getRegisterConfig(): array
@@ -88,7 +85,6 @@ class UserLogic
      * @notes 设置登录注册
      * @param array $params
      * @return bool
-     * @author 段誉
      * @date 2022/3/29 10:10
      */
     public static function setRegisterConfig(array $params): bool

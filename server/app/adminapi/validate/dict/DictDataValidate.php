@@ -47,7 +47,6 @@ class DictDataValidate extends BaseValidate
     /**
      * @notes 添加场景
      * @return DictDataValidate
-     * @author 段誉
      * @date 2022/6/20 16:54
      */
     public function sceneAdd()
@@ -59,7 +58,6 @@ class DictDataValidate extends BaseValidate
     /**
      * @notes ID场景
      * @return DictDataValidate
-     * @author 段誉
      * @date 2022/6/20 16:54
      */
     public function sceneId()
@@ -71,7 +69,6 @@ class DictDataValidate extends BaseValidate
     /**
      * @notes 编辑场景
      * @return DictDataValidate
-     * @author 段誉
      * @date 2022/6/20 18:36
      */
     public function sceneEdit()
@@ -84,7 +81,6 @@ class DictDataValidate extends BaseValidate
      * @notes 校验字典数据
      * @param $value
      * @return bool|string
-     * @author 段誉
      * @date 2022/6/20 16:55
      */
     protected function checkDictData($value)
@@ -101,7 +97,6 @@ class DictDataValidate extends BaseValidate
      * @notes 校验字典类型
      * @param $value
      * @return bool|string
-     * @author 段誉
      * @date 2022/6/20 17:03
      */
     protected function checkDictType($value)

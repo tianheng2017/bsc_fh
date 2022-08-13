@@ -26,7 +26,6 @@ class DataTableLists extends BaseAdminDataLists
     /**
      * @notes 查询结果
      * @return mixed
-     * @author 段誉
      * @date 2022/6/13 18:54
      */
     public function queryResult()
@@ -45,7 +44,6 @@ class DataTableLists extends BaseAdminDataLists
     /**
      * @notes 处理列表
      * @return array
-     * @author 段誉
      * @date 2022/6/13 18:54
      */
     public function lists(): array
@@ -60,7 +58,6 @@ class DataTableLists extends BaseAdminDataLists
     /**
      * @notes 获取数量
      * @return int
-     * @author 段誉
      * @date 2022/6/13 18:54
      */
     public function count(): int

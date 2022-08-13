@@ -39,7 +39,6 @@ class Admin extends BaseModel
     /**
      * @notes 关联部门
      * @return \think\model\relation\HasOne
-     * @author 段誉
      * @date 2022/5/26 11:11
      */
     public function dept()
@@ -51,7 +50,6 @@ class Admin extends BaseModel
     /**
      * @notes 角色菜单关联
      * @return \think\model\relation\HasMany
-     * @author 段誉
      * @date 2022/7/7 12:04
      */
     public function roleMenu()
@@ -66,7 +64,6 @@ class Admin extends BaseModel
      * @param $value
      * @param $data
      * @return string|string[]
-     * @author 令狐冲
      * @date 2021/7/7 01:25
      */
     public function getDisableDescAttr($value, $data)

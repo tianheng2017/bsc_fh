@@ -32,7 +32,6 @@ class AdminLogic extends BaseLogic
     /**
      * @notes 添加管理员
      * @param array $params
-     * @author 段誉
      * @date 2021/12/29 10:23
      */
     public static function add(array $params)
@@ -60,7 +59,6 @@ class AdminLogic extends BaseLogic
      * @notes 编辑管理员
      * @param array $params
      * @return bool
-     * @author 段誉
      * @date 2021/12/29 10:43
      */
     public static function edit(array $params) : bool
@@ -119,7 +117,6 @@ class AdminLogic extends BaseLogic
      * @notes 删除管理员
      * @param array $params
      * @return bool
-     * @author 段誉
      * @date 2021/12/29 10:45
      */
     public static function delete(array $params) : bool
@@ -156,7 +153,6 @@ class AdminLogic extends BaseLogic
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
-     * @author 段誉
      * @date 2021/12/29 10:46
      */
     public static function expireToken($token) : bool
@@ -182,7 +178,6 @@ class AdminLogic extends BaseLogic
      * @notes 查看管理员详情
      * @param $params
      * @return array
-     * @author 段誉
      * @date 2021/12/29 11:07
      */
     public static function detail($params, $action = 'detail') : array
@@ -210,7 +205,6 @@ class AdminLogic extends BaseLogic
      * @notes 编辑超级管理员
      * @param $params
      * @return Admin
-     * @author 段誉
      * @date 2022/4/8 17:54
      */
     public static function editSelf($params)

@@ -9,15 +9,12 @@
 // | QQ群：248415224
 // | 邮件客服：315@wayu.cn
 
-
 namespace app\adminapi\controller;
-
 
 use app\adminapi\controller\BaseAdminController;
 use app\adminapi\lists\WithdrawLists;
 use app\adminapi\logic\WithdrawLogic;
 use app\adminapi\validate\WithdrawValidate;
-
 
 /**
  * Withdraw控制器
@@ -26,58 +23,34 @@ use app\adminapi\validate\WithdrawValidate;
  */
 class WithdrawController extends BaseAdminController
 {
-
-
     /**
      * @notes 获取列表
      * @return \think\response\Json
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
     public function lists()
     {
         return $this->dataLists(new WithdrawLists());
     }
-
-
+    
     /**
-     * @notes 添加
+     * @notes 审核
      * @return \think\response\Json
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
-    public function add()
+    public function audit()
     {
-        $params = (new WithdrawValidate())->post()->goCheck('add');
-        $result = WithdrawLogic::add($params);
+        $params = (new WithdrawValidate())->post()->goCheck('audit');
+        $result = WithdrawLogic::audit($params);
         if (true === $result) {
-            return $this->success('添加成功', [], 1, 1);
+            return $this->success('操作成功', [], 1, 1);
         }
         return $this->fail(WithdrawLogic::getError());
     }
-
-
-    /**
-     * @notes 编辑
-     * @return \think\response\Json
-     * @author likeadmin
-     * @date 2022/08/12 23:49
-     */
-    public function edit()
-    {
-        $params = (new WithdrawValidate())->post()->goCheck();
-        $result = WithdrawLogic::edit($params);
-        if (true === $result) {
-            return $this->success('编辑成功', [], 1, 1);
-        }
-        return $this->fail(WithdrawLogic::getError());
-    }
-
-
+    
     /**
      * @notes 删除
      * @return \think\response\Json
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
     public function delete()
@@ -91,7 +64,6 @@ class WithdrawController extends BaseAdminController
     /**
      * @notes 获取详情
      * @return \think\response\Json
-     * @author likeadmin
      * @date 2022/08/12 23:49
      */
     public function detail()
@@ -100,6 +72,4 @@ class WithdrawController extends BaseAdminController
         $result = WithdrawLogic::detail($params);
         return $this->data($result);
     }
-
-
 }

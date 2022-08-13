@@ -35,7 +35,6 @@ trait ListsExcelTrait
      * @return string
      * @throws \PhpOffice\PhpSpreadsheet\Exception
      * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
-     * @author 令狐冲
      * @date 2021/7/21 16:04
      */
     public function createExcel($excelFields, $lists)
@@ -112,7 +111,6 @@ trait ListsExcelTrait
     /**
      * @notes 获取导出信息
      * @return array
-     * @author 令狐冲
      * @date 2021/7/29 16:08
      */
     public function excelInfo()

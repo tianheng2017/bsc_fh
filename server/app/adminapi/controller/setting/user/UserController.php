@@ -28,7 +28,6 @@ class UserController extends BaseAdminController
     /**
      * @notes 获取用户设置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:08
      */
     public function getConfig()
@@ -41,7 +40,6 @@ class UserController extends BaseAdminController
     /**
      * @notes 设置用户设置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:08
      */
     public function setConfig()
@@ -55,7 +53,6 @@ class UserController extends BaseAdminController
     /**
      * @notes 获取注册配置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:08
      */
     public function getRegisterConfig()
@@ -68,7 +65,6 @@ class UserController extends BaseAdminController
     /**
      * @notes 设置注册配置
      * @return \think\response\Json
-     * @author 段誉
      * @date 2022/3/29 10:08
      */
     public function setRegisterConfig()

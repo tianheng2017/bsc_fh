@@ -42,7 +42,6 @@ abstract class BaseCache extends Cache
      * @param mixed $value
      * @param null $ttl
      * @return bool
-     * @author 段誉
      * @date 2021/12/27 14:16
      */
     public function set($key, $value, $ttl = null): bool
@@ -54,7 +53,6 @@ abstract class BaseCache extends Cache
     /**
      * @notes 清除缓存类所有缓存
      * @return bool
-     * @author 段誉
      * @date 2021/12/27 14:16
      */
     public function deleteTag(): bool

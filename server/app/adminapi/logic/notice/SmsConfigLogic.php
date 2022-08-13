@@ -25,7 +25,6 @@ class SmsConfigLogic extends BaseLogic
     /**
      * @notes 获取短信配置
      * @return array
-     * @author 段誉
      * @date 2022/3/29 11:37
      */
     public static function getConfig()
@@ -42,7 +41,6 @@ class SmsConfigLogic extends BaseLogic
      * @notes 短信配置
      * @param $params
      * @return bool|void
-     * @author 段誉
      * @date 2022/3/29 11:37
      */
     public static function setConfig($params)
@@ -74,7 +72,6 @@ class SmsConfigLogic extends BaseLogic
      * @notes 查看短信配置详情
      * @param $params
      * @return array|int|mixed|string|null
-     * @author 段誉
      * @date 2022/3/29 11:37
      */
     public static function detail($params)
@@ -109,7 +106,6 @@ class SmsConfigLogic extends BaseLogic
      * @notes 获取短信平台名称
      * @param $value
      * @return string
-     * @author 段誉
      * @date 2022/3/29 11:37
      */
     public static function getNameDesc($value)

@@ -55,7 +55,6 @@ class GenerateService
 
     /**
      * @notes 删除生成文件夹内容
-     * @author 段誉
      * @date 2022/6/23 18:52
      */
     public function delGenerateDirContent()
@@ -70,7 +69,6 @@ class GenerateService
      * @notes 设置生成状态
      * @param $name
      * @param false $status
-     * @author 段誉
      * @date 2022/6/23 18:53
      */
     public function setGenerateFlag($name, $status = false)
@@ -83,7 +81,6 @@ class GenerateService
     /**
      * @notes 获取生成状态标记
      * @return mixed|object|\think\App
-     * @author 段誉
      * @date 2022/6/23 18:53
      */
     public function getGenerateFlag()
@@ -94,7 +91,6 @@ class GenerateService
 
     /**
      * @notes 删除标记时间
-     * @author 段誉
      * @date 2022/6/23 18:53
      */
     public function delGenerateFlag()
@@ -106,7 +102,6 @@ class GenerateService
     /**
      * @notes 生成器相关类
      * @return string[]
-     * @author 段誉
      * @date 2022/6/23 17:17
      */
     public function getGeneratorClass()
@@ -128,7 +123,6 @@ class GenerateService
     /**
      * @notes 生成文件
      * @param array $tableData
-     * @author 段誉
      * @date 2022/6/23 18:52
      */
     public function generate(array $tableData)
@@ -153,7 +147,6 @@ class GenerateService
      * @notes 预览文件
      * @param array $tableData
      * @return array
-     * @author 段誉
      * @date 2022/6/23 18:52
      */
     public function preview(array $tableData)
@@ -170,7 +163,6 @@ class GenerateService
 
     /**
      * @notes 压缩文件
-     * @author 段誉
      * @date 2022/6/23 19:02
      */
     public function zipFile()
@@ -190,7 +182,6 @@ class GenerateService
      * @param $basePath
      * @param $dirName
      * @param $zip
-     * @author 段誉
      * @date 2022/6/23 19:02
      */
     public function addFileZip($basePath, $dirName, $zip)
@@ -214,7 +205,6 @@ class GenerateService
     /**
      * @notes 返回压缩包临时路径
      * @return mixed
-     * @author 段誉
      * @date 2022/6/24 9:41
      */
     public function getDownloadUrl()

@@ -25,7 +25,6 @@ class ControllerGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 替换变量
      * @return mixed|void
-     * @author 段誉
      * @date 2022/6/22 18:09
      */
     public function replaceVariables()
@@ -70,7 +69,6 @@ class ControllerGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取命名空间内容
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:10
      */
     public function getNameSpaceContent()
@@ -85,7 +83,6 @@ class ControllerGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取use模板内容
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:10
      */
     public function getUseContent()
@@ -113,7 +110,6 @@ class ControllerGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取类描述内容
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:10
      */
     public function getClassCommentContent()
@@ -130,7 +126,6 @@ class ControllerGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取包名
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:10
      */
     public function getPackageNameContent()
@@ -142,7 +137,6 @@ class ControllerGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取继承控制器
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:10
      */
     public function getExtendsControllerContent()
@@ -158,7 +152,6 @@ class ControllerGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取文件生成到模块的文件夹路径
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:10
      */
     public function getModuleGenerateDir()
@@ -175,7 +168,6 @@ class ControllerGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 获取文件生成到runtime的文件夹路径
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:11
      */
     public function getRuntimeGenerateDir()
@@ -193,7 +185,6 @@ class ControllerGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 生成文件名
      * @return string
-     * @author 段誉
      * @date 2022/6/22 18:11
      */
     public function getGenerateName()
@@ -205,7 +196,6 @@ class ControllerGenerator extends BaseGenerator implements GenerateInterface
     /**
      * @notes 文件信息
      * @return array
-     * @author 段誉
      * @date 2022/6/23 15:57
      */
     public function fileInfo(): array
