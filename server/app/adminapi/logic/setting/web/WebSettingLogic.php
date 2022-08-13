@@ -42,6 +42,7 @@ class WebSettingLogic extends BaseLogic
             'cbfh_bl' => ConfigService::get('website', 'cbfh_bl'),
 			'api_key' => ConfigService::get('website', 'api_key'),
 			'scan_node' => ConfigService::get('website', 'scan_node'),
+			'token_contract' => ConfigService::get('website', 'token_contract'),
         ];
     }
 
@@ -66,6 +67,7 @@ class WebSettingLogic extends BaseLogic
         ConfigService::set('website', 'cbfh_bl', $params['cbfh_bl']);
 		ConfigService::set('website', 'api_key', $params['api_key']);
 		ConfigService::set('website', 'scan_node', $params['scan_node']);
+		ConfigService::set('website', 'token_contract', $params['token_contract']);
     }
 
 
