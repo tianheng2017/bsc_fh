@@ -42,7 +42,7 @@ class WithdrawLogic extends BaseLogic
                 'remark'    =>  $params['remark'],
                 'cl_time'   =>  time(),
             ], [
-                'id'    =>  $params['id'],
+                'id'        =>  $params['id'],
             ]);
 
             Db::commit();
