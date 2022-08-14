@@ -1,11 +1,7 @@
 <template>
     <div>
         <el-card class="!border-none mb-4" shadow="never">
-            <el-form
-                class="mb-[-16px]"
-                :model="queryParams"
-                inline
-            >
+            <el-form class="mb-[-16px]" :model="queryParams" inline>
                 <el-form-item label="交易hash" prop="tx">
                     <el-input class="w-56" v-model="queryParams.tx" clearable placeholder="请输入交易hash" />
                 </el-form-item>
@@ -15,21 +11,10 @@
                 <el-form-item label="状态" prop="state">
                     <el-select class="w-56" v-model="queryParams.state" clearable placeholder="请选择状态">
                         <el-option label="全部" value=""></el-option>
-                        <el-option 
-                            v-for="(item, index) in dictData.state"
-                            :key="index" 
-                            :label="item.name"
-                            :value="item.value"
-                        />
+                        <el-option v-for="(item, index) in dictData.state" :key="index" :label="item.name"
+                            :value="item.value" />
                     </el-select>
                 </el-form-item>
-                <el-form-item label="区块到账时间" prop="block_time">
-                    <data-picker
-                        v-model:start_time="queryParams.start_time"
-                        v-model:end_time="queryParams.end_time"
-                    />
-                </el-form-item>
-                
 
                 <el-form-item>
                     <el-button type="primary" @click="resetPage">查询</el-button>
@@ -54,23 +39,23 @@
             <div class="mt-4">
                 <el-table :data="pager.lists" @selection-change="handleSelectionChange">
                     <el-table-column type="selection" width="55" />
-                    <el-table-column label="ID" prop="id" />
-                    <el-table-column label="交易hash" prop="tx" />
-                    <el-table-column label="币种名称" prop="symbol" />
-                    <el-table-column label="发送方" prop="from_address" />
-                    <el-table-column label="接收方" prop="to_address" />
-                    <el-table-column label="转入数量" prop="amount" />
-                    <el-table-column label="状态" prop="state">
+                    <el-table-column label="ID" prop="id" width="60" align="center" header-align="center" />
+                    <el-table-column label="交易hash" prop="tx" align="center" header-align="center" />
+                    <el-table-column label="币种名称" prop="symbol" align="center" header-align="center" />
+                    <el-table-column label="发送方" prop="from_address" align="center" header-align="center" />
+                    <el-table-column label="接收方" prop="to_address" align="center" header-align="center" />
+                    <el-table-column label="转入数量" prop="amount" align="center" header-align="center" />
+                    <el-table-column label="状态" prop="state" align="center" header-align="center">
                         <template #default="{ row }">
                             <dict-value :options="dictData.state" :value="row.state" />
                         </template>
                     </el-table-column>
-                    <el-table-column label="区块到账时间" prop="block_time">
+                    <el-table-column label="区块到账时间" prop="block_time" align="center" header-align="center">
                         <template #default="{ row }">
-                          <span>{{ timeFormat(row.block_time, 'yyyy-mm-dd hh:MM:ss') }}</span>
+                            <span>{{ row.block_time ? timeFormat(row.block_time, 'yyyy-mm-dd hh:MM:ss') : '' }}</span>
                         </template>
                     </el-table-column>
-                    <el-table-column label="创建时间" prop="create_time" />
+                    <el-table-column label="创建时间" prop="create_time" align="center" header-align="center" />
 
                     <!-- <el-table-column label="操作" width="120" fixed="right">
                         <template #default="{ row }">

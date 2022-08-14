@@ -32,15 +32,15 @@
             <div class="mt-4">
                 <el-table :data="pager.lists" @selection-change="handleSelectionChange">
                     <el-table-column type="selection" width="55" />
-                    <el-table-column label="ID" prop="id" />
-                    <el-table-column label="钱包地址" prop="address" />
-                    <el-table-column label="上级ID" prop="fid" />
-                    <el-table-column label="代币余额(快照)" prop="amount1" />
-                    <el-table-column label="BNB收益" prop="amount2" />
-                    <el-table-column label="已分红次数" prop="count" />
-                    <el-table-column label="注册时间" prop="create_time" />
+                    <el-table-column label="ID" prop="id" width="60" align="center" header-align="center" />
+                    <el-table-column label="钱包地址" prop="address" align="center" header-align="center" />
+                    <el-table-column label="上级ID" prop="fid" align="center" header-align="center" />
+                    <el-table-column label="代币余额(快照)" prop="amount1" align="center" header-align="center" />
+                    <el-table-column label="BNB收益" prop="amount2" align="center" header-align="center" />
+                    <el-table-column label="已分红次数" prop="count" align="center" header-align="center" />
+                    <el-table-column label="注册时间" prop="create_time" align="center" header-align="center" />
 
-                    <el-table-column label="操作" width="120" fixed="right">
+                    <el-table-column label="操作" width="120" fixed="right" align="center" header-align="center">
                         <template #default="{ row }">
                             <el-button v-perms="['users/edit']" type="primary" link @click="handleEdit(row)">
                                 编辑

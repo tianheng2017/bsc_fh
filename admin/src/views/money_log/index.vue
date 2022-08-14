@@ -36,16 +36,16 @@
             <div class="mt-4">
                 <el-table :data="pager.lists" @selection-change="handleSelectionChange">
                     <el-table-column type="selection" width="55" />
-                    <el-table-column label="ID" prop="id" />
-                    <el-table-column label="用户ID" prop="uid" />
-                    <el-table-column label="方向" prop="direction" />
-                    <el-table-column label="金额" prop="amount" />
-                    <el-table-column label="资金类型" prop="mtype">
+                    <el-table-column label="ID" prop="id" width="60" align="center" header-align="center" />
+                    <el-table-column label="用户ID" prop="uid" align="center" header-align="center" />
+                    <el-table-column label="方向" prop="direction" align="center" header-align="center" />
+                    <el-table-column label="金额" prop="amount" align="center" header-align="center" />
+                    <el-table-column label="资金类型" prop="mtype" align="center" header-align="center">
                         <template #default="{ row }">
                             <dict-value :options="dictData.mtype" :value="row.mtype" />
                         </template>
                     </el-table-column>
-                    <el-table-column label="明细详情" prop="content" />
+                    <el-table-column label="明细详情" prop="content" align="center" header-align="center" />
 
                     <!-- <el-table-column label="操作" width="120" fixed="right">
                         <template #default="{ row }">
