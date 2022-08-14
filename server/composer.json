@@ -32,6 +32,7 @@
         "qcloud/cos-sdk-v5": "^2.5",
         "aliyuncs/oss-sdk-php": "^2.4",
         "sc0vu/web3.php": "dev-master",
+        "tianheng2017/ethsign": "dev-master",
         "ext-bcmath": "*",
         "ext-curl": "*",
         "ext-openssl": "*",

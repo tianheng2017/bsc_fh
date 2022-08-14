@@ -29,6 +29,7 @@ class ComposerStaticInitd2a74ba94e266cc4f45a64c54a292d7e
     public static $prefixLengthsPsr4 = array (
         't' => 
         array (
+            'tianheng2017\\' => 13,
             'think\\view\\driver\\' => 18,
             'think\\trace\\' => 12,
             'think\\app\\' => 10,
@@ -115,6 +116,7 @@ class ComposerStaticInitd2a74ba94e266cc4f45a64c54a292d7e
         ),
         'E' => 
         array (
+            'Elliptic\\' => 9,
             'EasyWeChat\\' => 11,
             'EasyWeChatComposer\\' => 19,
         ),
@@ -123,9 +125,18 @@ class ComposerStaticInitd2a74ba94e266cc4f45a64c54a292d7e
             'Cron\\' => 5,
             'Complex\\' => 8,
         ),
+        'B' => 
+        array (
+            'BN\\' => 3,
+            'BI\\' => 3,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'tianheng2017\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tianheng2017/ethsign/src',
+        ),
         'think\\view\\driver\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/think-view/src',
@@ -318,6 +329,10 @@ class ComposerStaticInitd2a74ba94e266cc4f45a64c54a292d7e
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
+        'Elliptic\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/simplito/elliptic-php/lib',
+        ),
         'EasyWeChat\\' => 
         array (
             0 => __DIR__ . '/..' . '/overtrue/wechat/src',
@@ -333,6 +348,14 @@ class ComposerStaticInitd2a74ba94e266cc4f45a64c54a292d7e
         'Complex\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
+        ),
+        'BN\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/simplito/bn-php/lib',
+        ),
+        'BI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/simplito/bigint-wrapper-php/lib',
         ),
     );
 

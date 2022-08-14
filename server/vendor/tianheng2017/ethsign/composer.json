@@ -1,0 +1,23 @@
+{
+    "name": "tianheng2017/ethsign",
+    "description": "ethsign",
+    "type": "library",
+    "authors": [
+        {
+            "name": "tianheng2017",
+            "email": "tianheng2017@qq.com"
+        }
+    ],
+    "require": {
+        "PHP": "^7.0",
+        "simplito/elliptic-php": "1.0.9",
+        "kornrunner/keccak": "~1"
+    },
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "tianheng2017\\": "src"
+        }
+    }
+}
