@@ -36,7 +36,7 @@ class IndexController extends BaseController
                 $user = Users::where('address', $post['address'])->find();
                 if (empty($user)) {
                     // 获取cookie保存的上级
-                    $faddress = cookie('ref') ?? '';
+                    $faddress = cookie('invite') ?? '';
                     if ($post['address'] == $faddress) {
                         // 上级 == 自己时，上级置为空
                         $faddress = '';
@@ -52,7 +52,7 @@ class IndexController extends BaseController
                 $user->zhi = Regpath::where(['uid' => Users::address2id($user->address), 'level' => 1])->count();
                 $user->san = Regpath::where(['uid' => Users::address2id($user->address)])->count();
                 $user->first_leader = Users::id2address($user->fid);
-                $user->invite_url = $this->request->domain().'/mobile?ref='.$user->address;
+                $user->invite_url = $this->request->domain().'/mobile?invite='.$user->address;
 
                 // 控制输出字段
                 $user->visible([
