@@ -1,0 +1,1 @@
+var t=p;function p(f,i){if(i){i=i.trim().replace(/^(\?|#|&)/,""),i=i&&"?"+i;var n=f.split(/[\?\#]/),v=n[0];i&&/\:\/\/[^\/]*$/.test(v)&&(v=v+"/");var a=f.match(/(\#.*)$/);f=v+i,a&&(f=f+a[0])}return f}export{t as u};

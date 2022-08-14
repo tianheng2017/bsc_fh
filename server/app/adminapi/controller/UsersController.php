@@ -60,15 +60,15 @@ class UsersController extends BaseAdminController
      * @return \think\response\Json
      * @date 2022/08/11 10:48
      */
-    // public function edit()
-    // {
-        // $params = (new UsersValidate())->post()->goCheck();
-        // $result = UsersLogic::edit($params);
-        // if (true === $result) {
-            // return $this->success('编辑成功', [], 1, 1);
-        // }
-        // return $this->fail(UsersLogic::getError());
-    // }
+     public function edit()
+     {
+         $params = (new UsersValidate())->post()->goCheck();
+         $result = UsersLogic::edit($params);
+         if (true === $result) {
+             return $this->success('编辑成功', [], 1, 1);
+         }
+         return $this->fail(UsersLogic::getError());
+     }
 
 
     /**

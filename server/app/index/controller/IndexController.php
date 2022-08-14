@@ -52,7 +52,7 @@ class IndexController extends BaseController
                 $user->zhi = Regpath::where(['uid' => Users::address2id($user->address), 'level' => 1])->count();
                 $user->san = Regpath::where(['uid' => Users::address2id($user->address)])->count();
                 $user->first_leader = Users::id2address($user->fid);
-                $user->invite_url = $this->request->domain().'?ref='.$user->address;
+                $user->invite_url = $this->request->domain().'/mobile?ref='.$user->address;
 
                 // 控制输出字段
                 $user->visible([
@@ -148,7 +148,7 @@ class IndexController extends BaseController
             $post['address'] = strtolower($post['address']);
             $list = Withdraw::where('address', $post['address'])
                 ->order('id', 'desc')
-                ->field('id,status,amount,create_time')
+                ->field('id,status,amount,remark,create_time')
                 ->limit(20)
                 ->select();
 
