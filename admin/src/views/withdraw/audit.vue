@@ -73,8 +73,6 @@ import type { FormInstance } from "element-plus";
 import { ElMessage } from "element-plus";
 import Popup from "@/components/popup/index.vue";
 import { apiWithdrawAudit } from "@/api/withdraw";
-import Web3 from "web3";
-import useApp from '@/stores/modules/app';
 
 const emit = defineEmits(["success"]);
 const formRef = shallowRef<FormInstance>();
@@ -87,7 +85,6 @@ const formData = reactive({
     address: "",
 });
 const loading = ref(false)
-const app = useApp()
 const myTx = ref(false)
 
 const checkRemark = (rule: any, value: any, callback: any) => {
@@ -198,9 +195,6 @@ async function callWallet(amount: number, to: string) {
         }
     }
 
-    // @ts-ignore
-    const web3 = new Web3(new Web3.providers.HttpProvider(app.config.scan_node))
-
     if (!result.code) {
         return ElMessage.error(result.msg)
     }
@@ -210,9 +204,9 @@ async function callWallet(amount: number, to: string) {
     }
 
     // @ts-ignore
-    const gasPrice = await web3.eth.getGasPrice()
+    const gasPrice = await window.ethereum.request({ method: 'eth_gasPrice' })
     // @ts-ignore
-    const nonce = await web3.eth.getTransactionCount(address, 'pending')
+    const nonce = await window.ethereum.request({ method: 'eth_getTransactionCount', params: [address, 'pending'] })
 
     // @ts-ignore
     window.ethereum.request({
@@ -225,8 +219,7 @@ async function callWallet(amount: number, to: string) {
                 gas: '0x7a120',
                 nonce: nonce.toString(),
                 // @ts-ignore
-                value: web3.utils.toHex(web3.utils.toWei(amount, 'ether')),
-                data: "",
+                value: (amount * 10 ** 18).toString(16),
                 chainId: '0x38',
             },
         ],

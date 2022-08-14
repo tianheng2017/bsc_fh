@@ -81,7 +81,7 @@
             }
         },
         "devServer" : {
-            "https" : true
+            "https" : false
         }
     }
 }

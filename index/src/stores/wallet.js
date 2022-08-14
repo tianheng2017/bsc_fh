@@ -186,11 +186,11 @@ export const useWallet = defineStore('wallet', {
 				        if (res.code) {
 							this.getUserInfo()
 						}
-						return layer.msg(res.msg, {icon: res.code ? 1 : 2, time: 2000})
+						layer.msg(res.msg, {icon: res.code ? 1 : 2, time: 2000})
 				    }
 				});
 			} catch(e) {
-				return layer.msg(e.message, {icon: 2, time: 2000})
+				layer.msg(e.message, {icon: 2, time: 2000})
 			}
 		},
 		

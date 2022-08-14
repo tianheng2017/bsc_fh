@@ -2,6 +2,13 @@
     <div class="workbench">
         <div class="md:flex">
             <el-card class="!border-none mb-4 flex-1" shadow="never">
+                <div class="flex justify-center items-center h-32">
+                    <div class="text-4xl">
+                        后台管理系统
+                    </div>
+                </div>
+            </el-card>
+            <!-- <el-card class="!border-none mb-4 flex-1" shadow="never">
                 <template #header>
                     <div>
                         <span class="card-title">今日数据</span>
@@ -41,10 +48,10 @@
                         </div>
                     </div>
                 </div>
-            </el-card>
+            </el-card> -->
         </div>
-        <div class="function mb-4">
-            <el-card class="flex-1 !border-none" shadow="never">
+        <!-- <div class="function mb-4"> -->
+            <!-- <el-card class="flex-1 !border-none" shadow="never">
                 <template #header>
                     <span>常用功能</span>
                 </template>
@@ -57,9 +64,9 @@
                         </router-link>
                     </div>
                 </div>
-            </el-card>
-        </div>
-        <div class="md:flex">
+            </el-card> -->
+        <!-- </div> -->
+        <!-- <div class="md:flex">
             <el-card class="flex-1 !border-none mb-4" shadow="never">
                 <template #header>
                     <span>访问量趋势图</span>
@@ -68,7 +75,7 @@
                     <v-charts style="height: 350px" :option="workbenchData.visitorOption" :autoresize="true" />
                 </div>
             </el-card>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -149,7 +156,7 @@ const getData = () => {
 }
 
 onMounted(() => {
-    getData()
+    // getData()
 })
 </script>
 

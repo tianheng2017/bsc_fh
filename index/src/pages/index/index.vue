@@ -37,6 +37,14 @@
 	const tab = ref(0)
 	const amount = ref('')
 	const withdraw = () => {
+		// 环境检测
+		const check = wallet.checkWallet()
+		if (check !== true) {
+			return Dialog.alert({
+			    message: check.message,
+			})
+		}
+		
 		if (amount.value == '') {
 			return layer.msg("请输入提取数量", {
 				icon: 2,
@@ -193,7 +201,7 @@
 						</van-grid-item>
 					</van-grid>
 					<van-row align="center" class="px-2.5">
-						<van-cell title="我的上级" title-class="font-bold">
+						<van-cell title="我的上级" title-class="font-bold" title-style="flex: 0.3">
 							<template #value>
 								<span v-if="wallet.first_leader !== null"
 									class="value-class">{{ wallet.first_leader || '无' }}</span>
