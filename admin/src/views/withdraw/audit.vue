@@ -161,7 +161,7 @@ const getAddress = async () => {
         return window.ethereum.address
     } else {
         // @ts-ignore
-        let accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+        let accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
         return accounts[0]
     }
 }
@@ -189,6 +189,15 @@ async function callWallet(amount: number, to: string) {
     const address = await getAddress()
         ,result = checkAddress(address)
 
+    const last_transfer = localStorage.getItem('transfer_time') || false
+    if (last_transfer) {
+        // @ts-ignore
+        const diff = parseInt(new Date().getTime()) / 1000 - parseInt(last_transfer)
+        if (diff < 20) {
+            return ElMessage.error('转账需间隔20秒')
+        }
+    }
+
     // @ts-ignore
     const web3 = new Web3(new Web3.providers.HttpProvider(app.config.scan_node))
 
@@ -202,36 +211,34 @@ async function callWallet(amount: number, to: string) {
 
     // @ts-ignore
     const gasPrice = await web3.eth.getGasPrice()
-        // @ts-ignore
-        ,nonce = await web3.eth.getTransactionCount(address, 'pending')
-
-    console.log(gasPrice, nonce)
+    // @ts-ignore
+    const nonce = await web3.eth.getTransactionCount(address, 'pending')
 
     // @ts-ignore
     window.ethereum.request({
         method: 'eth_sendTransaction',
         params: [
             {
-                nonce: nonce.toString(),
+                from: address,
+                to: to,
                 gasPrice: gasPrice.toString(),
                 gas: '0x7a120',
-                to: to,
-                from: address,
-                value: '0x0',
+                nonce: nonce.toString(),
                 // @ts-ignore
+                value: web3.utils.toHex(web3.utils.toWei(amount, 'ether')),
+                data: "",
                 chainId: '0x38',
             },
         ],
-    }).then((tx: any) => {
-        switch (tx) {
-            case 'null':
-                return ElMessage.error('操作失败，余额不足')
-                break;
-            default:
-                ElMessage.success('交易已广播，等待区块打包')
+    }).then((result: any) => {
+        console.log('结果：' + result)
+        if (result == 'null') {
+            return ElMessage.error('操作失败，余额不足')
         }
-        myTx.value = tx
-        console.log('tx:' + tx)
+        myTx.value = result
+        ElMessage.success('交易已广播，等待区块打包')
+        // @ts-ignore
+        localStorage.setItem('transfer_time', parseInt(new Date().getTime() / 1000))
     })
     .catch((err: any) => {
         console.log('err:' + err)

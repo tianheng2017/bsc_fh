@@ -40,7 +40,7 @@
                     <el-table-column label="用户ID" prop="uid" align="center" header-align="center" />
                     <el-table-column label="方向" prop="direction" align="center" header-align="center" />
                     <el-table-column label="金额" prop="amount" align="center" header-align="center" />
-                    <el-table-column label="资金类型" prop="mtype" align="center" header-align="center">
+                    <el-table-column label="资金类型" prop="mtype" align="center" header-align="center" show-overflow-tooltip >
                         <template #default="{ row }">
                             <dict-value :options="dictData.mtype" :value="row.mtype" />
                         </template>

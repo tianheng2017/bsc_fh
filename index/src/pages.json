@@ -1,0 +1,19 @@
+{
+    "easycom": {
+        "^d-(.*)": "components/d-$1/d-$1.vue"
+    },
+	"pages": [
+        {
+            "path": "pages/index/index",
+            "style": {
+                "navigationStyle": "custom"
+            }
+        }
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "BSC Dapp",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}

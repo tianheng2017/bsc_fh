@@ -40,10 +40,10 @@
                 <el-table :data="pager.lists" @selection-change="handleSelectionChange">
                     <el-table-column type="selection" width="55" />
                     <el-table-column label="ID" prop="id" width="60" align="center" header-align="center" />
-                    <el-table-column label="交易hash" prop="tx" align="center" header-align="center" />
+                    <el-table-column label="交易hash" prop="tx" align="center" header-align="center" show-overflow-tooltip />
                     <el-table-column label="币种名称" prop="symbol" align="center" header-align="center" />
-                    <el-table-column label="发送方" prop="from_address" align="center" header-align="center" />
-                    <el-table-column label="接收方" prop="to_address" align="center" header-align="center" />
+                    <el-table-column label="发送方" prop="from_address" align="center" header-align="center" show-overflow-tooltip />
+                    <el-table-column label="接收方" prop="to_address" align="center" header-align="center" show-overflow-tooltip />
                     <el-table-column label="转入数量" prop="amount" align="center" header-align="center" />
                     <el-table-column label="状态" prop="state" align="center" header-align="center">
                         <template #default="{ row }">
