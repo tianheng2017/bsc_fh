@@ -1,5 +1,9 @@
 <script setup>
 	import {
+		showNotify,
+		showDialog
+	} from 'vant'
+	import {
 		onMounted,
 		ref,
 		watch
@@ -7,10 +11,6 @@
 	import {
 		useWallet
 	} from '@/stores/wallet'
-	import {
-		showNotify,
-		showDialog
-	} from 'vant'
 	import {
 		layer
 	} from '@layui/layer-vue'
@@ -33,13 +33,21 @@
 		$cookies.config("0")
 		$cookies.set("invite", invite)
 	}
+	
+	const wallet = useWallet()
+	
+	onMounted(async () => {
+		await setTimeout(async () => {
+			await wallet.init()
+		}, 300)
+	})
 
 	const tab = ref(0)
 	const amount = ref('')
 	const withdraw = () => {
 		const check = wallet.checkWallet()
 		if (check !== true) {
-			return showDialog.alert({
+			return showDialog({
 				message: check.message,
 			})
 		}
@@ -67,15 +75,7 @@
 			wallet.getMoneyLogList()
 		}
 	}
-
-	const wallet = useWallet()
-
-	onMounted(async () => {
-		await setTimeout(async () => {
-			await wallet.init()
-		}, 300)
-	})
-
+	
 	const themeVars = {
 		NavBarBackground: '#1C1C1E',
 		NavBarTitleTextColor: '#FFF',
@@ -109,7 +109,7 @@
 		try {
 			const check = wallet.checkWallet()
 			if (check !== true) {
-				return showDialog.alert({
+				return showDialog({
 					message: check.message,
 				})
 			}
@@ -209,21 +209,23 @@
 							</van-cell>
 						</van-grid-item>
 					</van-grid>
-					<van-row align="center" class="px-2.5">
-						<van-cell title="我的上级" title-class="font-bold" title-style="flex: 0.3" :value-class="darkWhite">
+					<van-row align="center">
+						<van-cell title="我的上级" style="padding-left: 24px;" title-class="font-bold" title-style="flex: 0.3" :value-class="darkWhite">
 							<template #value>
-								<span v-if="wallet.first_leader !== null">{{ wallet.first_leader || '无' }}</span>
-								<span v-else>
-									<van-loading type="spinner" size="24px" />
-								</span>
+								<view style="padding-right: 8px;">
+									<span v-if="wallet.first_leader !== null">{{ wallet.first_leader || '无' }}</span>
+									<span v-else>
+										<van-loading type="spinner" size="24px" />
+									</span>
+								</view>
 							</template>
 						</van-cell>
 					</van-row>
 				</view>
-				<view class="mt-2">
+				<view class="mt-2.5">
 					<van-tabs>
 						<van-tab title="我的推广链接">
-							<view class="m-2.5">
+							<view class="mb-2.5">
 								<van-cell-group>
 									<van-field autosize type="textarea" :clearable="true" v-model="wallet.invite_url"
 										readonly />
@@ -243,7 +245,7 @@
 				<view class="mt-2.5 pb-32">
 					<van-tabs v-model:active="tab" @change="tabChange">
 						<van-tab title="提取收益">
-							<view class="m-2.5">
+							<view class="mt-2.5 mb-2.5">
 								<van-cell-group>
 									<van-field type="number" :clearable="true" v-model="amount" label="提取数量"
 										placeholder="请输入提取数量" />

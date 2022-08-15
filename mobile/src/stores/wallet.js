@@ -72,11 +72,11 @@ export const useWallet = defineStore('wallet', {
 				
 			} catch(e) {
 				if (e?.code == -32002) {
-					return showDialog.alert({
+					return showDialog({
 					    message: unlockMessage,
 					})
 				}
-				return showDialog.alert({
+				return showDialog({
 				    message: e.message,
 				})
 			}
@@ -133,7 +133,7 @@ export const useWallet = defineStore('wallet', {
 			try {
 				const check = this.checkWallet()
 				if (check !== true) {
-					return showDialog.alert({
+					return showDialog({
 					    message: check.message,
 					})
 				}
@@ -182,7 +182,7 @@ export const useWallet = defineStore('wallet', {
 			try {
 				const check = this.checkWallet()
 				if (check !== true) {
-					return showDialog.alert({
+					return showDialog({
 					    message: check.message,
 					})
 				}
@@ -212,7 +212,7 @@ export const useWallet = defineStore('wallet', {
 			try {
 				const check = this.checkWallet()
 				if (check !== true) {
-					return showDialog.alert({
+					return showDialog({
 					    message: check.message,
 					})
 				}
