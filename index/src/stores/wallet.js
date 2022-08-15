@@ -23,7 +23,6 @@ export const useWallet = defineStore('wallet', {
 			invite_url: null,
 			withdraw_list: null,
 			money_log_list: null,
-			theme: 'dark',
         }
     },
     getters: {
@@ -239,12 +238,5 @@ export const useWallet = defineStore('wallet', {
 				return layer.msg(e.message, {icon: 2, time: 2000})
 			}
 		}
-    },
-	toggleTheme() {
-		if (this.theme == 'dark') {
-			this.theme = 'light'
-		} else {
-			this.theme = 'dark'
-		}
-	}
+    }
 })

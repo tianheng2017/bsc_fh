@@ -12,7 +12,6 @@ import rollupNodePolyFill from 'rollup-plugin-node-polyfills'
 import Components from 'unplugin-vue-components/vite'
 import {
 	VantResolver,
-	VarletUIResolver
 } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
@@ -23,7 +22,7 @@ export default defineConfig({
 	plugins: [
 		uni(),
 		Components({
-			resolvers: [VantResolver(), VarletUIResolver()],
+			resolvers: [VantResolver()],
 		}),
 	],
 	resolve: {

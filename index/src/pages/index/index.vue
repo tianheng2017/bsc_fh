@@ -47,14 +47,14 @@
 				time: 2000
 			})
 		}
-		
+
 		showDialog.confirm({
-			title: '提示',
-			message: '确定提取 ' + amount.value + ' BNB收益？',
-		})
-		.then(() => {
-			wallet.doWithdraw(amount.value)
-		})
+				title: '提示',
+				message: '确定提取 ' + amount.value + ' BNB收益？',
+			})
+			.then(() => {
+				wallet.doWithdraw(amount.value)
+			})
 	}
 
 	const tabChange = (e) => {
@@ -74,11 +74,32 @@
 	})
 
 	const themeVars = {
+		NavBarBackground: '#1C1C1E',
+		NavBarTitleTextColor: '#FFF',
 		NotifyLineHeight: '46px',
 		FieldTextAreaMinHeight: '300px'
 	}
-	
-	const darkWhite = wallet.theme == 'dark' ? 'text-white' : ''
+
+	const theme = ref(localStorage.getItem('theme') || 'dark')
+	const darkWhite = ref(localStorage.getItem('darkWhite') || 'text-white')
+	const themeIcon = ref(localStorage.getItem('themeIcon') || '/static/images/light-theme.svg')
+	const toggleTheme = () => {
+		if (theme.value == 'dark') {
+			theme.value = 'light'
+			darkWhite.value = 'pass'
+			themeIcon.value = '/static/images/dark-theme.svg'
+			localStorage.setItem('theme', 'light')
+			localStorage.setItem('darkWhite', 'pass')
+			localStorage.setItem('themeIcon', '/static/images/dark-theme.svg')
+		} else {
+			theme.value = 'dark'
+			darkWhite.value = 'text-white'
+			themeIcon.value = '/static/images/light-theme.svg'
+			localStorage.setItem('theme', 'dark')
+			localStorage.setItem('darkWhite', 'text-white')
+			localStorage.setItem('themeIcon', '/static/images/light-theme.svg')
+		}
+	}
 
 	const {
 		toClipboard
@@ -109,12 +130,15 @@
 </script>
 
 <template>
-	<view :class="{'bg-black': wallet.theme == 'dark'}">
-		<van-config-provider :theme-vars="themeVars" :theme="wallet.theme">
-			<d-header title="BSC Dapp" />
+	<view :class="{'bg-black': theme == 'dark'}">
+		<van-config-provider :theme-vars="themeVars" :theme="theme">
+			<van-nav-bar title="BSC Dapp">
+				<template #right>
+					<van-icon :name="themeIcon" size="27" @tap="toggleTheme" />
+				</template>
+			</van-nav-bar>
 			<view class="container mx-auto mt-2.5">
-				<van-row align="center" :class="['px-2.5', darkWhite]"
-					@click="copy(wallet.address)">
+				<van-row align="center" :class="['px-2.5', darkWhite]" @click="copy(wallet.address)">
 					<van-image radius="50%" width="50px" height="50px" src="/mobile/static/images/wallet.png" />
 					<view class="pl-2 text-xs">
 						{{ wallet.sortAddress || '加载中...' }}
@@ -146,8 +170,7 @@
 						<van-grid-item>
 							<van-cell title="小区业绩" title-class="font-bold" :value-class="darkWhite">
 								<template #value>
-									<span v-if="wallet.min !== null"
-										class="text-ellipsis">{{ wallet.min }}</span>
+									<span v-if="wallet.min !== null" class="text-ellipsis">{{ wallet.min }}</span>
 									<span v-else>
 										<van-loading type="spinner" size="24px" />
 									</span>
@@ -157,8 +180,7 @@
 						<van-grid-item>
 							<van-cell title="大区业绩" title-class="font-bold" :value-class="darkWhite">
 								<template #value>
-									<span v-if="wallet.max !== null"
-										class="text-ellipsis">{{ wallet.max }}</span>
+									<span v-if="wallet.max !== null" class="text-ellipsis">{{ wallet.max }}</span>
 									<span v-else>
 										<van-loading type="spinner" size="24px" />
 									</span>
@@ -223,7 +245,7 @@
 							<view class="m-2.5">
 								<van-cell-group>
 									<van-field type="number" :clearable="true" v-model="amount" label="提取数量"
-										placeholder="请输入提取BNB收益的数量" />
+										placeholder="请输入提取数量" />
 								</van-cell-group>
 							</view>
 							<view class="text-center">
