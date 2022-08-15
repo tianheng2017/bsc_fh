@@ -8,24 +8,23 @@
 		useWallet
 	} from '@/stores/wallet'
 	import {
-		Notify,
-		Dialog,
-		Toast,
+		showNotify,
+		showDialog
 	} from 'vant'
-	import useClipboard from 'vue-clipboard3'
 	import {
 		layer
 	} from '@layui/layer-vue'
-	
+	import useClipboard from 'vue-clipboard3'
+
 	const getQueryString = (name) => {
-	   const reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)")
-	   const r = window.location.search.substr(1).match(reg)
-	   if(r != null) {
-		   return unescape(r[2])
-	   }
-	   return null
+		const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
+		const r = window.location.search.substr(1).match(reg)
+		if (r != null) {
+			return unescape(r[2])
+		}
+		return null
 	}
-	
+
 	const invite = getQueryString('invite')
 	if (invite) {
 		$cookies.config("0")
@@ -37,24 +36,25 @@
 	const withdraw = () => {
 		const check = wallet.checkWallet()
 		if (check !== true) {
-			return Dialog.alert({
-			    message: check.message,
+			return showDialog.alert({
+				message: check.message,
 			})
 		}
-		
+
 		if (amount.value == '') {
 			return layer.msg("请输入提取数量", {
 				icon: 2,
 				time: 2000
 			})
 		}
-		Dialog.confirm({
-				title: '提示',
-				message: '确定提取 ' + amount.value + ' BNB收益？',
-			})
-			.then(() => {
-				wallet.doWithdraw(amount.value)
-			})
+		
+		showDialog.confirm({
+			title: '提示',
+			message: '确定提取 ' + amount.value + ' BNB收益？',
+		})
+		.then(() => {
+			wallet.doWithdraw(amount.value)
+		})
 	}
 
 	const tabChange = (e) => {
@@ -70,7 +70,6 @@
 	onMounted(async () => {
 		await setTimeout(async () => {
 			await wallet.init()
-			await wallet.getUserInfo()
 		}, 300)
 	})
 
@@ -78,6 +77,8 @@
 		NotifyLineHeight: '46px',
 		FieldTextAreaMinHeight: '300px'
 	}
+	
+	const darkWhite = wallet.theme == 'dark' ? 'text-white' : ''
 
 	const {
 		toClipboard
@@ -86,19 +87,19 @@
 		try {
 			const check = wallet.checkWallet()
 			if (check !== true) {
-				return Dialog.alert({
+				return showDialog.alert({
 					message: check.message,
 				})
 			}
 
 			await toClipboard(val)
-			Notify({
+			showNotify({
 				type: 'success',
 				message: '复制成功',
 				className: 'notify',
 			})
 		} catch (e) {
-			Notify({
+			showNotify({
 				type: 'danger',
 				message: '复制失败：' + e.message,
 				className: 'notify',
@@ -108,79 +109,77 @@
 </script>
 
 <template>
-	<view>
-		<van-config-provider :theme-vars="themeVars">
+	<view :class="{'bg-black': wallet.theme == 'dark'}">
+		<van-config-provider :theme-vars="themeVars" :theme="wallet.theme">
 			<d-header title="BSC Dapp" />
 			<view class="container mx-auto mt-2.5">
-				<van-row align="center" class="px-2.5">
+				<van-row align="center" :class="['px-2.5', darkWhite]"
+					@click="copy(wallet.address)">
 					<van-image radius="50%" width="50px" height="50px" src="/mobile/static/images/wallet.png" />
 					<view class="pl-2 text-xs">
 						{{ wallet.sortAddress || '加载中...' }}
 					</view>
-					<van-button plain type="primary" size="mini" @click="copy(wallet.address)" class="ml-2">
-						复制
-					</van-button>
 				</van-row>
 				<view class="mt-2">
 					<van-grid :column-num="2">
 						<van-grid-item>
-							<van-cell title="代币(快照)" title-class="font-bold">
+							<van-cell title="代币(快照)" title-class="font-bold" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.amount1 !== null"
-										class="value-class text-ellipsis">{{ wallet.amount1 }}</span>
-									<span v-else class="value-class">
+										class="text-ellipsis">{{ wallet.amount1 }}</span>
+									<span v-else>
 										<van-loading type="spinner" size="24px" />
 									</span>
 								</template>
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="BNB收益" title-class="font-bold">
+							<van-cell title="BNB收益" title-class="font-bold" :value-class="darkWhite">
 								<template #value>
-									<span v-if="wallet.amount2 !== null" class="value-class">{{ wallet.amount2 }}</span>
-									<span v-else class="value-class">
+									<span v-if="wallet.amount2 !== null">{{ wallet.amount2 }}</span>
+									<span v-else>
 										<van-loading type="spinner" size="24px" />
 									</span>
 								</template>
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="小区业绩" title-class="font-bold">
+							<van-cell title="小区业绩" title-class="font-bold" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.min !== null"
-										class="value-class text-ellipsis">{{ wallet.min }}</span>
-									<span v-else class="value-class">
+										class="text-ellipsis">{{ wallet.min }}</span>
+									<span v-else>
 										<van-loading type="spinner" size="24px" />
 									</span>
 								</template>
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="大区业绩" title-class="font-bold">
+							<van-cell title="大区业绩" title-class="font-bold" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.max !== null"
-										class="value-class text-ellipsis">{{ wallet.max }}</span>
-									<span v-else class="value-class">
+										class="text-ellipsis">{{ wallet.max }}</span>
+									<span v-else>
 										<van-loading type="spinner" size="24px" />
 									</span>
 								</template>
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="直推人数" title-class="font-bold">
+							<van-cell title="直推人数" title-class="font-bold" :value-class="darkWhite">
 								<template #value>
-									<span v-if="wallet.zhi !== null" class="value-class">{{ wallet.zhi }}</span>
-									<span v-else class="value-class">
+									<span v-if="wallet.zhi !== null">{{ wallet.zhi }}</span>
+									<span v-else>
 										<van-loading type="spinner" size="24px" />
 									</span>
 								</template>
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="伞下人数" title-class="font-bold">
+							<van-cell title="伞下人数" title-class="font-bold" :value-class="darkWhite">
 								<template #value>
-									<span v-if="wallet.san !== null" class="value-class">{{ wallet.san }}</span>
-									<span v-else class="value-class">
+									<span v-if="wallet.san !== null">{{ wallet.san }}</span>
+									<span v-else>
 										<van-loading type="spinner" size="24px" />
 									</span>
 								</template>
@@ -188,11 +187,10 @@
 						</van-grid-item>
 					</van-grid>
 					<van-row align="center" class="px-2.5">
-						<van-cell title="我的上级" title-class="font-bold" title-style="flex: 0.3">
+						<van-cell title="我的上级" title-class="font-bold" title-style="flex: 0.3" :value-class="darkWhite">
 							<template #value>
-								<span v-if="wallet.first_leader !== null"
-									class="value-class">{{ wallet.first_leader || '无' }}</span>
-								<span v-else class="value-class">
+								<span v-if="wallet.first_leader !== null">{{ wallet.first_leader || '无' }}</span>
+								<span v-else>
 									<van-loading type="spinner" size="24px" />
 								</span>
 							</template>

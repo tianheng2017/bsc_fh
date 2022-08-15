@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { Toast, Dialog } from 'vant'
+import { showDialog } from 'vant'
 import { layer } from '@layui/layer-vue'
 import { baseURL } from '@/config/app'
 
@@ -23,6 +23,7 @@ export const useWallet = defineStore('wallet', {
 			invite_url: null,
 			withdraw_list: null,
 			money_log_list: null,
+			theme: 'dark',
         }
     },
     getters: {
@@ -30,7 +31,7 @@ export const useWallet = defineStore('wallet', {
             if (state.address == '') {
                 return ''
             }
-            return state.address.slice(0, 10) + '...' + state.address.slice(-10)
+            return state.address.slice(0, 15) + '...' + state.address.slice(-15)
         }
     },
     actions: {
@@ -50,26 +51,33 @@ export const useWallet = defineStore('wallet', {
 					window.location.reload()
 				});
 				
-				if (window.ethereum.chainId !== 56 && window.ethereum.networkVersion !== '56') {
+				if (window.ethereum.chainId !== '0x38' || window.ethereum.networkVersion !== '56') {
 					throw new Error(undefinedMessage2)
 				}
 				
-				let address =  undefined
+				let address = undefined
 				if (window.ethereum.isHbWallet) {
 					address = window.ethereum.address
 				} else {
 					const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
 					address = accounts[0]
 				}
-				if (address == undefined) {
+				if (!address) {
 					throw new Error(unlockMessage)
 				}
 				
 				this.isUnlock = true
 				this.address = address
 				
+				await this.getUserInfo()
+				
 			} catch(e) {
-				return Dialog.alert({
+				if (e?.code == -32002) {
+					return showDialog.alert({
+					    message: unlockMessage,
+					})
+				}
+				return showDialog.alert({
 				    message: e.message,
 				})
 			}
@@ -91,38 +99,42 @@ export const useWallet = defineStore('wallet', {
 			return true
 		},
 		async getUserInfo() {
-			await uni.request({
-			    url: baseURL + '/index/index/getUserInfo',
-				method: 'POST',
-			    data: {
-			        address: this.address
-			    },
-				header: {
-					'X-Requested-With': 'xmlhttprequest'
-				},
-			    success: (res) => {
-					res = res.data
-					
-			        if (res.code == 0) {
-						return layer.msg(res.msg, {icon: 2, time: 2000})
+			try {
+				await uni.request({
+					url: baseURL + '/index/index/getUserInfo',
+					method: 'POST',
+					data: {
+						address: this.address
+					},
+					header: {
+						'X-Requested-With': 'xmlhttprequest'
+					},
+					success: (res) => {
+						res = res.data
+						
+						if (res.code == 0) {
+							return layer.msg(res.msg, {icon: 2, time: 2000})
+						}
+						
+						this.amount1 = res.data.amount1
+						this.amount2 = res.data.amount2
+						this.min = res.data.min
+						this.max = res.data.max
+						this.zhi = res.data.zhi
+						this.san = res.data.san
+						this.first_leader = res.data.first_leader
+						this.invite_url = res.data.invite_url
 					}
-					
-					this.amount1 = res.data.amount1
-					this.amount2 = res.data.amount2
-					this.min = res.data.min
-					this.max = res.data.max
-					this.zhi = res.data.zhi
-					this.san = res.data.san
-					this.first_leader = res.data.first_leader
-					this.invite_url = res.data.invite_url
-			    }
-			});
+				});
+			} catch(e) {
+				layer.msg(e.message, {icon: 2, time: 2000})
+			}
 		},
 		async doWithdraw(amount) {
 			try {
 				const check = this.checkWallet()
 				if (check !== true) {
-					return Dialog.alert({
+					return showDialog.alert({
 					    message: check.message,
 					})
 				}
@@ -171,7 +183,7 @@ export const useWallet = defineStore('wallet', {
 			try {
 				const check = this.checkWallet()
 				if (check !== true) {
-					return Dialog.alert({
+					return showDialog.alert({
 					    message: check.message,
 					})
 				}
@@ -201,7 +213,7 @@ export const useWallet = defineStore('wallet', {
 			try {
 				const check = this.checkWallet()
 				if (check !== true) {
-					return Dialog.alert({
+					return showDialog.alert({
 					    message: check.message,
 					})
 				}
@@ -228,4 +240,11 @@ export const useWallet = defineStore('wallet', {
 			}
 		}
     },
+	toggleTheme() {
+		if (this.theme == 'dark') {
+			this.theme = 'light'
+		} else {
+			this.theme = 'dark'
+		}
+	}
 })

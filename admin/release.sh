@@ -1,6 +1,6 @@
 #!/bin/bash
 # 文件原路径
-srcPath="./dist/"
+srcPath="./dist"
 # 发布路径文件夹
 releasePath="../server/public/admin"
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 # 文件原路径
-srcPath="./dist/"
+srcPath="./dist/build/h5"
 # 发布路径文件夹
-releasePath="../server/public/index"
+releasePath="../server/public/mobile"
 
 #删除发布目录下的mobile文件
 rm -r $releasePath
@@ -16,3 +16,4 @@ echo "已复制 $srcPath/* ==> $releasePath"
 
 cp $releasePath/../favicon.ico $releasePath
 cp $releasePath/index.html $releasePath/../
+echo "已复制 $releasePath/index.html ==> $releasePath/../"
