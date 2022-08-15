@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
-import { showDialog } from 'vant'
 import { layer } from '@layui/layer-vue'
+import { showDialog } from 'vant'
 import { baseURL } from '@/config/app'
 
 const undefinedMessage1 = '请在Dapp浏览环境下打开'
@@ -73,11 +73,11 @@ export const useWallet = defineStore('wallet', {
 			} catch(e) {
 				if (e?.code == -32002) {
 					return showDialog({
-					    message: unlockMessage,
+						message: unlockMessage,
 					})
 				}
 				return showDialog({
-				    message: e.message,
+					message: e.message,
 				})
 			}
 			
@@ -126,7 +126,9 @@ export const useWallet = defineStore('wallet', {
 					}
 				});
 			} catch(e) {
-				layer.msg(e.message, {icon: 2, time: 2000})
+				return showDialog({
+					message: e.message,
+				})
 			}
 		},
 		async doWithdraw(amount) {
@@ -134,7 +136,7 @@ export const useWallet = defineStore('wallet', {
 				const check = this.checkWallet()
 				if (check !== true) {
 					return showDialog({
-					    message: check.message,
+						message: check.message,
 					})
 				}
 				
@@ -183,7 +185,7 @@ export const useWallet = defineStore('wallet', {
 				const check = this.checkWallet()
 				if (check !== true) {
 					return showDialog({
-					    message: check.message,
+						message: check.message,
 					})
 				}
 				
@@ -213,7 +215,7 @@ export const useWallet = defineStore('wallet', {
 				const check = this.checkWallet()
 				if (check !== true) {
 					return showDialog({
-					    message: check.message,
+						message: check.message,
 					})
 				}
 				

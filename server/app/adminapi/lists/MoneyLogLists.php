@@ -51,7 +51,7 @@ class MoneyLogLists extends BaseAdminDataLists implements ListsSearchInterface
     public function lists(): array
     {
         return MoneyLog::where($this->searchWhere)
-            ->field(['id', 'uid', 'direction', 'amount', 'mtype', 'content'])
+            ->field(['id', 'uid', 'address', 'direction', 'amount', 'mtype', 'content'])
             ->limit($this->limitOffset, $this->limitLength)
             ->order(['id' => 'desc'])
             ->select()

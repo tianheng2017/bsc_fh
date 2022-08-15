@@ -15,6 +15,9 @@
                 label-width="120px"
                 :rules="formRules"
             >
+                <el-form-item label="申请人" prop="address">
+                    <el-link :underline="false">{{ formData.address }}</el-link>
+                </el-form-item>
                 <el-form-item label="提现数量" prop="amount">
                     <el-link :underline="false">{{ formData.amount + ' BNB' }}</el-link>
                 </el-form-item>
@@ -167,7 +170,7 @@ const getAddress = async () => {
 const checkAddress = (address: string|number) => {
     let code = 0, msg = ''
     if (address == -1) {
-        msg = '请在Dapp浏览器环境打开';
+        msg = '请在metamask浏览器环境打开';
     } else if (address == -2) {
         msg = '请切换到BSC链'
     } else if (address == undefined) {

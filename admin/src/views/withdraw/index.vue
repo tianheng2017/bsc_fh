@@ -5,7 +5,7 @@
                 <!-- <el-form-item label="交易hash" prop="tx">
                     <el-input class="w-56" v-model="queryParams.tx" clearable placeholder="请输入交易hash" />
                 </el-form-item> -->
-                <el-form-item label="用户钱包" prop="address">
+                <el-form-item label="申请人" prop="address">
                     <el-input class="w-56" v-model="queryParams.address" clearable placeholder="请输入用户钱包" />
                 </el-form-item>
                 <el-form-item label="提现状态" prop="status">
@@ -41,8 +41,7 @@
                     <el-table-column label="ID" prop="id" width="60" align="center" header-align="center" />
                     <!-- <el-table-column label="交易hash" prop="tx" align="center" header-align="center"
                         show-overflow-tooltip /> -->
-                    <el-table-column label="用户钱包" prop="address" align="center" header-align="center"
-                        show-overflow-tooltip/>
+                    <el-table-column label="申请人" prop="address" align="center" header-align="center" />
                     <el-table-column label="提现数量" prop="amount" align="center" header-align="center" width="100"/>
                     <el-table-column label="提现状态" prop="status" align="center" header-align="center" width="100">
                         <template #default="{ row }">

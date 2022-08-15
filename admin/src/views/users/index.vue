@@ -33,7 +33,7 @@
                 <el-table :data="pager.lists" @selection-change="handleSelectionChange">
                     <el-table-column type="selection" width="55" />
                     <el-table-column label="ID" prop="id" width="60" align="center" header-align="center" />
-                    <el-table-column label="钱包地址" prop="address" align="center" header-align="center" show-overflow-tooltip />
+                    <el-table-column label="钱包地址" prop="address" align="center" header-align="center" />
                     <el-table-column label="上级ID" prop="fid" align="center" header-align="center" />
                     <el-table-column label="代币余额(快照)" prop="amount1" align="center" header-align="center" />
                     <el-table-column label="BNB收益" prop="amount2" align="center" header-align="center" />

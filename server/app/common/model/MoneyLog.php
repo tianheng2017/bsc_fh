@@ -40,6 +40,7 @@ class MoneyLog extends BaseModel
         try {
             self::create([
                 'uid'       =>  $uid,
+				'address'	=>	Users::id2address($uid),
                 'direction' =>  $direction,
                 'amount'    =>  $amount,
                 'mtype'     =>  $mtype,

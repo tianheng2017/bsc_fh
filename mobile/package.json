@@ -54,7 +54,7 @@
     "sass": "^1.53.0",
     "tailwindcss": "^3.1.6",
     "unplugin-vue-components": "^0.22.4",
-    "vant": "^v4.0.0-beta.0",
+    "vant": "beta",
     "vue": "^3.2.37",
     "vue-clipboard3": "^2.0.0",
     "vue-cookies": "^1.8.1",

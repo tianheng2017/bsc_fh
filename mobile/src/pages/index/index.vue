@@ -1,7 +1,8 @@
 <script setup>
 	import {
 		showNotify,
-		showDialog
+		showDialog,
+		showConfirmDialog,
 	} from 'vant'
 	import {
 		onMounted,
@@ -59,13 +60,13 @@
 			})
 		}
 
-		showDialog.confirm({
-				title: '提示',
-				message: '确定提取 ' + amount.value + ' BNB收益？',
-			})
-			.then(() => {
-				wallet.doWithdraw(amount.value)
-			})
+		showConfirmDialog({
+			title: '提示',
+			message: '确定提取 ' + amount.value + ' BNB收益？',
+		})
+		.then(() => {
+			wallet.doWithdraw(amount.value)
+		})
 	}
 
 	const tabChange = (e) => {
@@ -148,7 +149,7 @@
 				<view class="mt-2">
 					<van-grid :column-num="2">
 						<van-grid-item>
-							<van-cell title="代币(快照)" title-class="font-bold" :value-class="darkWhite">
+							<van-cell title="代币余额" title-class="font-bold" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.amount1 !== null"
 										class="text-ellipsis">{{ wallet.amount1 }}</span>

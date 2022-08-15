@@ -37,8 +37,12 @@
                 <el-table :data="pager.lists" @selection-change="handleSelectionChange">
                     <el-table-column type="selection" width="55" />
                     <el-table-column label="ID" prop="id" width="60" align="center" header-align="center" />
-                    <el-table-column label="用户ID" prop="uid" align="center" header-align="center" />
-                    <el-table-column label="方向" prop="direction" align="center" header-align="center" />
+                    <el-table-column label="用户钱包" prop="address" align="center" header-align="center" />
+                    <el-table-column label="方向" prop="direction" align="center" header-align="center" >
+                        <template #default="{ row }">
+                            <dict-value :options="dictData.direction" :value="row.direction" />
+                        </template>
+                    </el-table-column>
                     <el-table-column label="金额" prop="amount" align="center" header-align="center" />
                     <el-table-column label="资金类型" prop="mtype" align="center" header-align="center" show-overflow-tooltip >
                         <template #default="{ row }">
@@ -107,6 +111,7 @@ const handleSelectionChange = (val: any[]) => {
 // 字典数据
 const dictData = reactive<Record<string, any[]>>({
     mtype: [],
+    direction: [],
 
 })
 
@@ -117,6 +122,13 @@ const getDictData = () => {
         page_type: 0
     }).then((res: any) => {
         dictData.mtype = res.lists
+    })
+
+    dictDataLists({
+        type_value: 'direction',
+        page_type: 0
+    }).then((res: any) => {
+        dictData.direction = res.lists
     })
 
 }
