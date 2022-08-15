@@ -88,6 +88,9 @@
                     <div class="w-80">
                         <el-input type="textarea" rows="10" v-model="formData.token_abi" placeholder="请输入代币合约ABI">
                         </el-input>
+                        <div class="form-tips">
+                            保存后如果显示[object Object]...之类的不用管它，数据正确就行
+                        </div>
                     </div>
                 </el-form-item>
             </el-form>
