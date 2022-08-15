@@ -15,6 +15,9 @@
 		layer
 	} from '@layui/layer-vue'
 	import useClipboard from 'vue-clipboard3'
+	import walletImg from '@/assets/images/wallet.png'
+	import darkImg from '@/assets/images/dark-theme.svg'
+	import lightImg from '@/assets/images/light-theme.svg'
 
 	const getQueryString = (name) => {
 		const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
@@ -82,7 +85,7 @@
 
 	const theme = ref(localStorage.getItem('theme') || 'dark')
 	const darkWhite = ref(localStorage.getItem('darkWhite') || 'text-white')
-	const themeIcon = ref(localStorage.getItem('themeIcon') || '/static/images/light-theme.svg')
+	const themeIcon = ref(localStorage.getItem('themeIcon') || lightImg)
 	const setValueAndCache = (t, d, tv) => {
 		theme.value = t
 		darkWhite.value = d
@@ -93,9 +96,9 @@
 	}
 	const toggleTheme = () => {
 		if (theme.value == 'dark') {
-			setValueAndCache('light', 'pass', '/static/images/dark-theme.svg')
+			setValueAndCache('light', 'noCss', darkImg)
 		} else {
-			setValueAndCache('dark', 'text-white', '/static/images/light-theme.svg')
+			setValueAndCache('dark', 'text-white', lightImg)
 		}
 	}
 
@@ -137,7 +140,7 @@
 			</van-nav-bar>
 			<view class="container mx-auto mt-2.5">
 				<van-row align="center" :class="['px-2.5', darkWhite]" @click="copy(wallet.address)">
-					<van-image radius="50%" width="50px" height="50px" src="/mobile/static/images/wallet.png" />
+					<van-image radius="50%" width="50px" height="50px" :src="walletImg" />
 					<view class="pl-2 text-xs">
 						{{ wallet.sortAddress || '加载中...' }}
 					</view>

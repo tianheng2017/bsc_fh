@@ -6,7 +6,7 @@ import layer from '@layui/layer-vue'
 import '@layui/layer-vue/lib/index.css'
 import '@vant/touch-emulator'
 import 'vant/lib/index.css'
-import '@/utils/style.css'
+import '@/asset/css/style.css'
 
 export function createApp() {
 	
