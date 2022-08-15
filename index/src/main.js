@@ -9,12 +9,11 @@ import 'vant/lib/index.css'
 import '@/utils/style.css'
 
 export function createApp() {
-	const app = createSSRApp(App)
 	
+	const app = createSSRApp(App)
 	app.config.globalProperties.$cookies = VueCookies
-
     app.use(createPinia()).use(layer)
-    
+	
 	return {
 		app,
 	}

@@ -17,7 +17,6 @@
 		layer
 	} from '@layui/layer-vue'
 	
-	// 解析url参数
 	const getQueryString = (name) => {
 	   const reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)")
 	   const r = window.location.search.substr(1).match(reg)
@@ -27,7 +26,6 @@
 	   return null
 	}
 	
-	// cookies处理
 	const invite = getQueryString('invite')
 	if (invite) {
 		$cookies.config("0")
@@ -37,7 +35,6 @@
 	const tab = ref(0)
 	const amount = ref('')
 	const withdraw = () => {
-		// 环境检测
 		const check = wallet.checkWallet()
 		if (check !== true) {
 			return Dialog.alert({
@@ -60,9 +57,7 @@
 			})
 	}
 
-	// 提取收益标签切换
 	const tabChange = (e) => {
-		// 切换标签刷新数据
 		if (e == 1) {
 			wallet.getWithdrawList()
 		} else if (e == 2) {
@@ -70,40 +65,32 @@
 		}
 	}
 
-	// 引入store
 	const wallet = useWallet()
 
-	// mounted生命周期
 	onMounted(async () => {
-		// 延迟300毫秒执行，确保浏览器相关环境注入完毕
 		await setTimeout(async () => {
-			// 初始化
 			await wallet.init()
-			// 查询我的线上余额
 			await wallet.getUserInfo()
 		}, 300)
 	})
 
-	// 自定义notify组件高度
 	const themeVars = {
 		NotifyLineHeight: '46px',
 		FieldTextAreaMinHeight: '300px'
 	}
 
-	// 复制到剪切板
 	const {
 		toClipboard
 	} = useClipboard()
 	const copy = async (val) => {
 		try {
-			// 环境检测
 			const check = wallet.checkWallet()
 			if (check !== true) {
 				return Dialog.alert({
 					message: check.message,
 				})
 			}
-			// 开始复制
+
 			await toClipboard(val)
 			Notify({
 				type: 'success',
