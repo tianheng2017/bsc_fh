@@ -83,21 +83,19 @@
 	const theme = ref(localStorage.getItem('theme') || 'dark')
 	const darkWhite = ref(localStorage.getItem('darkWhite') || 'text-white')
 	const themeIcon = ref(localStorage.getItem('themeIcon') || '/static/images/light-theme.svg')
+	const setValueAndCache = (t, d, tv) => {
+		theme.value = t
+		darkWhite.value = d
+		themeIcon.value = tv
+		localStorage.setItem('theme', t)
+		localStorage.setItem('darkWhite', d)
+		localStorage.setItem('themeIcon', tv)
+	}
 	const toggleTheme = () => {
 		if (theme.value == 'dark') {
-			theme.value = 'light'
-			darkWhite.value = 'pass'
-			themeIcon.value = '/static/images/dark-theme.svg'
-			localStorage.setItem('theme', 'light')
-			localStorage.setItem('darkWhite', 'pass')
-			localStorage.setItem('themeIcon', '/static/images/dark-theme.svg')
+			setValueAndCache('light', 'pass', '/static/images/dark-theme.svg')
 		} else {
-			theme.value = 'dark'
-			darkWhite.value = 'text-white'
-			themeIcon.value = '/static/images/light-theme.svg'
-			localStorage.setItem('theme', 'dark')
-			localStorage.setItem('darkWhite', 'text-white')
-			localStorage.setItem('themeIcon', '/static/images/light-theme.svg')
+			setValueAndCache('dark', 'text-white', '/static/images/light-theme.svg')
 		}
 	}
 
