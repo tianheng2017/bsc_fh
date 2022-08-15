@@ -300,3 +300,9 @@
 		</van-config-provider>
 	</view>
 </template>
+<style>
+	body {
+	  /* --van-button-default-border-color: var(--van-gray-4); */
+	  --van-button-default-border-color: unset;
+	}
+</style>
