@@ -81,7 +81,8 @@
 		NavBarBackground: '#1C1C1E',
 		NavBarTitleTextColor: '#FFF',
 		NotifyLineHeight: '46px',
-		FieldTextAreaMinHeight: '300px'
+		FieldTextAreaMinHeight: '300px',
+		CellHorizontalPadding: '9px',
 	}
 
 	const theme = ref(localStorage.getItem('theme') || 'dark')
@@ -114,7 +115,6 @@
 					message: check.message,
 				})
 			}
-
 			await toClipboard(val)
 			showNotify({
 				type: 'success',
@@ -149,7 +149,7 @@
 				<view class="mt-2">
 					<van-grid :column-num="2">
 						<van-grid-item>
-							<van-cell title="代币余额" title-class="font-bold" :value-class="darkWhite">
+							<van-cell title="代币余额" title-class="" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.amount1 !== null"
 										class="text-ellipsis">{{ wallet.amount1 }}</span>
@@ -160,7 +160,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="BNB收益" title-class="font-bold" :value-class="darkWhite">
+							<van-cell title="BNB收益" title-class="" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.amount2 !== null">{{ wallet.amount2 }}</span>
 									<span v-else>
@@ -170,7 +170,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="小区业绩" title-class="font-bold" :value-class="darkWhite">
+							<van-cell title="小区业绩" title-class="" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.min !== null" class="text-ellipsis">{{ wallet.min }}</span>
 									<span v-else>
@@ -180,7 +180,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="大区业绩" title-class="font-bold" :value-class="darkWhite">
+							<van-cell title="大区业绩" title-class="" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.max !== null" class="text-ellipsis">{{ wallet.max }}</span>
 									<span v-else>
@@ -190,7 +190,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="直推人数" title-class="font-bold" :value-class="darkWhite">
+							<van-cell title="直推人数" title-class="" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.zhi !== null">{{ wallet.zhi }}</span>
 									<span v-else>
@@ -200,7 +200,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="伞下人数" title-class="font-bold" :value-class="darkWhite">
+							<van-cell title="伞下人数" title-class="" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.san !== null">{{ wallet.san }}</span>
 									<span v-else>
@@ -211,7 +211,7 @@
 						</van-grid-item>
 					</van-grid>
 					<van-row align="center">
-						<van-cell title="我的上级" style="padding-left: 24px;" title-class="font-bold" title-style="flex: 0.3" :value-class="darkWhite">
+						<van-cell title="我的上级" style="padding-left: 17px;" title-class="" title-style="flex: 0.3" :value-class="darkWhite">
 							<template #value>
 								<view style="padding-right: 8px;">
 									<span v-if="wallet.first_leader !== null">{{ wallet.first_leader || '无' }}</span>
@@ -226,19 +226,11 @@
 				<view class="mt-2.5">
 					<van-tabs>
 						<van-tab title="我的推广链接">
-							<view class="mb-2.5">
+							<view class="mb-2.5" @tap="copy(wallet.invite_url)">
 								<van-cell-group>
 									<van-field autosize type="textarea" :clearable="true" v-model="wallet.invite_url"
 										readonly />
 								</van-cell-group>
-							</view>
-							<view class="text-center">
-								<van-row>
-									<van-col span="24">
-										<van-button type="success" size="small" @tap="copy(wallet.invite_url)">复制推广链接
-										</van-button>
-									</van-col>
-								</van-row>
 							</view>
 						</van-tab>
 					</van-tabs>
@@ -302,7 +294,6 @@
 </template>
 <style>
 	body {
-	  /* --van-button-default-border-color: var(--van-gray-4); */
 	  --van-button-default-border-color: unset;
 	}
 </style>

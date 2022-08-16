@@ -2711,7 +2711,7 @@ utils-merge@1.0.1:
   resolved "https://registry.npmmirror.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==
 
-vant@^v4.0.0-beta.0:
+vant@beta:
   version "4.0.0-beta.0"
   resolved "https://registry.npmmirror.com/vant/-/vant-4.0.0-beta.0.tgz#c85ac9b8fd24f494f9ce0c0dfc06d21b167083a5"
   integrity sha512-Y418/RCxmnijsKpl+heEN1qpf2L6V0GrtvhQYjFDZEumX+nTzqjIRpStAxZRODI3TbQk3BzwvloU5EVJs+X7Zg==

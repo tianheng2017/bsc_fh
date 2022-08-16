@@ -11,4 +11,7 @@
     margin: 0;
     padding: 0;
 }
+.notify {
+    height: 46px;
+}
 </style>

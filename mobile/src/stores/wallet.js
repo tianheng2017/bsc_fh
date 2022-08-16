@@ -3,7 +3,7 @@ import { layer } from '@layui/layer-vue'
 import { showDialog } from 'vant'
 import { baseURL } from '@/config/app'
 
-const undefinedMessage1 = '请在Dapp浏览环境下打开'
+const undefinedMessage1 = '请在Dapp浏览环境中打开'
 const undefinedMessage2 = '请切换到币安智能链主网'
 const unlockMessage = '请解锁钱包'
 

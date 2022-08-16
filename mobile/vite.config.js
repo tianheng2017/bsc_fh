@@ -18,7 +18,6 @@ export default defineConfig({
 		target: [
 			'es2015'
 		],
-		assetsDir: 'assets',
 	},
     css: {
         postcss: {
