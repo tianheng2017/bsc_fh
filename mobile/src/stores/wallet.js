@@ -19,7 +19,7 @@ export const useWallet = defineStore('wallet', {
 			max: null,
 			my_sl: null,
 			all_sl: null,
-			bd: null,
+			bd: '开发中',
 			first_leader: null,
 			invite_url: null,
 			withdraw_list: null,
@@ -125,7 +125,7 @@ export const useWallet = defineStore('wallet', {
 							this.max = res.data.max
 							this.my_sl = res.data.my_sl
 							this.all_sl = res.data.all_sl
-							this.bd = res.data.bd
+							// this.bd = res.data.bd
 							this.first_leader = res.data.first_leader
 							this.invite_url = res.data.invite_url
 							this.fh_wallet = res.data.fh_wallet
