@@ -17,12 +17,15 @@ export const useWallet = defineStore('wallet', {
 			amount2: null,
 			min: null,
 			max: null,
-			zhi: null,
-			san: null,
+			my_sl: null,
+			all_sl: null,
+			bd: null,
 			first_leader: null,
 			invite_url: null,
 			withdraw_list: null,
 			money_log_list: null,
+			fh_wallet: null,
+			rewardBnb: null,
         }
     },
     getters: {
@@ -58,7 +61,7 @@ export const useWallet = defineStore('wallet', {
 				if (window.ethereum.isHbWallet) {
 					address = window.ethereum.address
 				} else {
-					const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+					const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
 					address = accounts[0]
 				}
 				if (!address) {
@@ -69,6 +72,7 @@ export const useWallet = defineStore('wallet', {
 				this.address = address
 				
 				await this.getUserInfo()
+				await this.getRewardBnb()
 				
 			} catch(e) {
 				if (e?.code == -32002) {
@@ -80,7 +84,6 @@ export const useWallet = defineStore('wallet', {
 					message: e.message,
 				})
 			}
-			
         },
 		checkWallet() {
 			if (!this.isDapp) {
@@ -97,39 +100,42 @@ export const useWallet = defineStore('wallet', {
 			
 			return true
 		},
-		async getUserInfo() {
-			try {
-				await uni.request({
-					url: baseURL + '/index/index/getUserInfo',
-					method: 'POST',
-					data: {
-						address: this.address
-					},
-					header: {
-						'X-Requested-With': 'xmlhttprequest'
-					},
-					success: (res) => {
-						res = res.data
-						
-						if (res.code == 0) {
-							return layer.msg(res.msg, {icon: 2, time: 2000})
+		getUserInfo() {
+			return new Promise((resolve, reject) => {
+				try {
+					uni.request({
+						url: baseURL + '/index/index/getUserInfo',
+						method: 'POST',
+						data: {
+							address: this.address
+						},
+						header: {
+							'X-Requested-With': 'xmlhttprequest'
+						},
+						success: (res) => {
+							res = res.data
+							
+							if (res.code == 0) {
+								return layer.msg(res.msg, {icon: 2, time: 2000})
+							}
+							
+							this.amount1 = res.data.amount1
+							this.amount2 = res.data.amount2
+							this.min = res.data.min
+							this.max = res.data.max
+							this.my_sl = res.data.my_sl
+							this.all_sl = res.data.all_sl
+							this.bd = res.data.bd
+							this.first_leader = res.data.first_leader
+							this.invite_url = res.data.invite_url
+							this.fh_wallet = res.data.fh_wallet
+							resolve()
 						}
-						
-						this.amount1 = res.data.amount1
-						this.amount2 = res.data.amount2
-						this.min = res.data.min
-						this.max = res.data.max
-						this.zhi = res.data.zhi
-						this.san = res.data.san
-						this.first_leader = res.data.first_leader
-						this.invite_url = res.data.invite_url
-					}
-				});
-			} catch(e) {
-				return showDialog({
-					message: e.message,
-				})
-			}
+					});
+				} catch(e) {
+					reject(e.message)
+				}
+			})
 		},
 		async doWithdraw(amount) {
 			try {
@@ -154,7 +160,7 @@ export const useWallet = defineStore('wallet', {
 					params: [msg, this.address],
 				});
 				
-				await uni.request({
+				uni.request({
 				    url: baseURL + '/index/index/doWithdraw',
 					method: 'POST',
 				    data: {
@@ -180,14 +186,14 @@ export const useWallet = defineStore('wallet', {
 				layer.msg(e.message, {icon: 2, time: 2000})
 			}
 		},
-		async getWithdrawList () {
+		getWithdrawList () {
 			try {
 				const check = this.checkWallet()
 				if (check !== true) {
 					return 
 				}
 				
-				await uni.request({
+				uni.request({
 				    url: baseURL + '/index/index/getWithdrawList',
 					method: 'POST',
 				    data: {
@@ -208,14 +214,14 @@ export const useWallet = defineStore('wallet', {
 				return layer.msg(e.message, {icon: 2, time: 2000})
 			}
 		},
-		async getMoneyLogList () {
+		getMoneyLogList () {
 			try {
 				const check = this.checkWallet()
 				if (check !== true) {
 					return 
 				}
 				
-				await uni.request({
+				uni.request({
 				    url: baseURL + '/index/index/getMoneyLogList',
 					method: 'POST',
 				    data: {
@@ -232,6 +238,26 @@ export const useWallet = defineStore('wallet', {
 						}
 				    }
 				});
+			} catch(e) {
+				return layer.msg(e.message, {icon: 2, time: 2000})
+			}
+		},
+		async getRewardBnb () {
+			try {
+				const check = this.checkWallet()
+				if (check !== true) {
+					return 
+				}
+				
+				const balance = await window.ethereum.request({ 
+					method: 'eth_getBalance',
+					params: [
+						this.fh_wallet,
+						"pending"
+					]
+				})
+				
+				this.rewardBnb = eval(balance).toString(16)
 			} catch(e) {
 				return layer.msg(e.message, {icon: 2, time: 2000})
 			}

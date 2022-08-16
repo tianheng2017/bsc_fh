@@ -6,8 +6,10 @@
 	import {
 		onMounted,
 		ref,
-		watch
+		watch,
+		computed
 	} from 'vue'
+	import { useI18n } from 'vue-i18n'
 	import {
 		useWallet
 	} from '@/stores/wallet'
@@ -20,6 +22,12 @@
 	import lightImg from '@/assets/images/light-theme.svg'
 	import languageImg from '@/assets/images/language.png'
 	import emptyImg from '@/assets/images/empty.png'
+	
+	const i18n = useI18n()
+	const onSelect = (action) => {
+		localStorage.setItem('language', action.value)
+		i18n.locale.value = action.value
+	}
 
 	const getQueryString = (name) => {
 		const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
@@ -131,24 +139,22 @@
 	const showPopover = ref(false);
 	const actions = [{
 			text: '简体',
-			value: 0,
+			value: 'zhCN',
 		},
 		{
 			text: '繁體',
-			value: 1,
+			value: 'zhHK',
 		},
 		{
 			text: '日本',
-			value: 2,
+			value: 'jaJP',
 		},
 		{
 			text: '한국인',
-			value: 3,
+			value: 'koKR',
 		},
 	]
-	const onSelect = (action) => {
-		console.log(action)
-	}
+	
 </script>
 
 <template>
@@ -180,7 +186,7 @@
 				<view class="mt-2">
 					<van-grid :column-num="2">
 						<van-grid-item>
-							<van-cell title="代币余额" title-class="text-xs" :value-class="darkWhite">
+							<van-cell :title="$t('message.grid1')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.amount1 !== null"
 										class="text-ellipsis">{{ wallet.amount1 }}</span>
@@ -191,9 +197,9 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="BNB收益" title-class="text-xs" :value-class="darkWhite">
+							<van-cell :title="$t('message.grid2')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
-									<span v-if="wallet.amount2 !== null">{{ wallet.amount2 }}</span>
+									<span v-if="wallet.my_sl !== null">{{ wallet.my_sl }}</span>
 									<span v-else>
 										<van-loading type="spinner" size="24px" />
 									</span>
@@ -201,7 +207,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="小区算力" title-class="text-xs" :value-class="darkWhite">
+							<van-cell :title="$t('message.grid3')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.min !== null" class="text-ellipsis">{{ wallet.min }}</span>
 									<span v-else>
@@ -211,7 +217,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="大区算力" title-class="text-xs" :value-class="darkWhite">
+							<van-cell :title="$t('message.grid4')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.max !== null" class="text-ellipsis">{{ wallet.max }}</span>
 									<span v-else>
@@ -221,9 +227,9 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="直推人数" title-class="text-xs" :value-class="darkWhite">
+							<van-cell :title="$t('message.grid5')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
-									<span v-if="wallet.zhi !== null">{{ wallet.zhi }}</span>
+									<span v-if="wallet.all_sl !== null">{{ wallet.all_sl }}</span>
 									<span v-else>
 										<van-loading type="spinner" size="24px" />
 									</span>
@@ -231,9 +237,29 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="伞下人数" title-class="text-xs" :value-class="darkWhite">
+							<van-cell :title="$t('message.grid6')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
-									<span v-if="wallet.san !== null">{{ wallet.san }}</span>
+									<span v-if="wallet.bd !== null">{{ wallet.bd }}</span>
+									<span v-else>
+										<van-loading type="spinner" size="24px" />
+									</span>
+								</template>
+							</van-cell>
+						</van-grid-item>
+						<van-grid-item>
+							<van-cell :title="$t('message.grid7')" title-class="text-xs" :value-class="darkWhite">
+								<template #value>
+									<span v-if="wallet.rewardBnb !== null">{{ wallet.rewardBnb }}</span>
+									<span v-else>
+										<van-loading type="spinner" size="24px" />
+									</span>
+								</template>
+							</van-cell>
+						</van-grid-item>
+						<van-grid-item>
+							<van-cell :title="$t('message.grid8')" title-class="text-xs" :value-class="darkWhite">
+								<template #value>
+									<span v-if="wallet.amount2 !== null">{{ wallet.amount2 }}</span>
 									<span v-else>
 										<van-loading type="spinner" size="24px" />
 									</span>
@@ -242,7 +268,7 @@
 						</van-grid-item>
 					</van-grid>
 					<van-row align="center">
-						<van-cell title="我的布道人" style="padding-left: 13px;" title-class="" title-style="flex: 0.3"
+						<van-cell :title="$t('message.grid9')" style="padding-left: 13px;" title-class="" title-style="flex: 0.3"
 							:value-class="darkWhite">
 							<template #value>
 								<view style="padding-right: 5px;">
@@ -274,7 +300,7 @@
 						</van-tab>
 					</van-tabs>
 				</view>
-				<view class="mt-2.5 pb-32">
+				<view class="pb-32">
 					<van-tabs v-model:active="tab" @change="tabChange">
 						<van-tab title="提取收益">
 							<view class="mt-2.5 mb-2.5">

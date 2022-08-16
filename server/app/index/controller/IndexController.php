@@ -5,8 +5,10 @@ use app\BaseController;
 use app\common\model\BaseModel;
 use app\common\model\MoneyLog;
 use app\common\model\Regpath;
+use app\common\model\TransferLog;
 use app\common\model\Users;
 use app\common\model\Withdraw;
+use app\common\service\ConfigService;
 use app\common\service\JsonService;
 use think\Exception;
 use think\facade\Db;
@@ -39,19 +41,24 @@ class IndexController extends BaseController
                     $user = Users::userCreate($post['address'], Users::address2id($faddress));
                 }
 
+                $required_coin = ConfigService::get('website', 'required_coin');
+
                 $user->amount1 = floatval($user->amount1);
                 $user->amount2 = floatval($user->amount2);
                 $performance = Regpath::getPerformance($user->id);
                 $user->min = $performance[0];
                 $user->max = $performance[1];
-                $user->zhi = Regpath::where(['uid' => Users::address2id($user->address), 'level' => 1])->count();
-                $user->san = Regpath::where(['uid' => Users::address2id($user->address)])->count();
+                $user->my_sl = $user->amount1 > $required_coin ? $user->amount1 : 0;
+                $user->all_sl = Users::where('amount1','>', $required_coin)->sum('amount1');
+                $user->bd = TransferLog::getTodayInAmount();
                 $user->first_leader = Users::id2address($user->fid);
                 $user->invite_url = $this->request->domain().'/?invite='.$user->address;
+                $user->fh_wallet = ConfigService::get('website', 'fh_wallet');
 
                 $user->visible([
                     'id', 'address', 'amount1', 'amount2', 'min',
-                    'max', 'zhi', 'san', 'first_leader', 'invite_url',
+                    'max', 'my_sl', 'all_sl', 'bd', 'first_leader',
+                    'invite_url', 'fh_wallet',
                 ]);
             } catch (\Exception $e) {
                 return JsonService::fail($e->getMessage());
