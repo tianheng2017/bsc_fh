@@ -1,6 +1,5 @@
 <script setup>
 	import {
-		showNotify,
 		showDialog,
 		showConfirmDialog,
 	} from 'vant'
@@ -19,6 +18,8 @@
 	import walletImg from '@/assets/images/wallet.png'
 	import darkImg from '@/assets/images/dark-theme.svg'
 	import lightImg from '@/assets/images/light-theme.svg'
+	import languageImg from '@/assets/images/language.png'
+	import emptyImg from '@/assets/images/empty.png'
 
 	const getQueryString = (name) => {
 		const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
@@ -34,9 +35,9 @@
 		$cookies.config("0")
 		$cookies.set("invite", invite)
 	}
-	
+
 	const wallet = useWallet()
-	
+
 	onMounted(async () => {
 		await setTimeout(async () => {
 			await wallet.init()
@@ -61,12 +62,12 @@
 		}
 
 		showConfirmDialog({
-			title: '提示',
-			message: '确定提取 ' + amount.value + ' BNB收益？',
-		})
-		.then(() => {
-			wallet.doWithdraw(amount.value)
-		})
+				title: '提示',
+				message: '确定提取 ' + amount.value + ' BNB收益？',
+			})
+			.then(() => {
+				wallet.doWithdraw(amount.value)
+			})
 	}
 
 	const tabChange = (e) => {
@@ -76,13 +77,14 @@
 			wallet.getMoneyLogList()
 		}
 	}
-	
+
 	const themeVars = {
 		NavBarBackground: '#1C1C1E',
 		NavBarTitleTextColor: '#FFF',
 		NotifyLineHeight: '46px',
 		FieldTextAreaMinHeight: '300px',
-		CellHorizontalPadding: '9px',
+		CellHorizontalPadding: '5px',
+		DropdownItemZIndex: 999,
 	}
 
 	const theme = ref(localStorage.getItem('theme') || 'dark')
@@ -103,6 +105,10 @@
 			setValueAndCache('dark', 'text-white', lightImg)
 		}
 	}
+	
+	const allAmount = () => {
+		amount.value = wallet.amount1 || ''
+	}
 
 	const {
 		toClipboard
@@ -116,31 +122,56 @@
 				})
 			}
 			await toClipboard(val)
-			showNotify({
-				type: 'success',
-				message: '复制成功',
-				className: 'notify',
-			})
+			return layer.msg("复制成功", {icon: 1})
 		} catch (e) {
-			showNotify({
-				type: 'danger',
-				message: '复制失败：' + e.message,
-				className: 'notify',
-			})
+			return layer.msg('复制失败：' + e.message, {icon: 2})
 		}
+	}
+
+	const showPopover = ref(false);
+	const actions = [{
+			text: '简体',
+			value: 0,
+		},
+		{
+			text: '繁體',
+			value: 1,
+		},
+		{
+			text: '日本',
+			value: 2,
+		},
+		{
+			text: '한국인',
+			value: 3,
+		},
+	]
+	const onSelect = (action) => {
+		console.log(action)
 	}
 </script>
 
 <template>
 	<view :class="{'bg-black': theme == 'dark'}">
 		<van-config-provider :theme-vars="themeVars" :theme="theme">
-			<van-nav-bar title="BSC Dapp">
+			<van-nav-bar title="BSC Dapp" safe-area-inset-top>
 				<template #right>
-					<van-icon :name="themeIcon" size="27" @tap="toggleTheme" />
+					<van-row gutter="15">
+					  <van-col span="12">
+						  <van-popover v-model:show="showPopover" :actions="actions" @select="onSelect">
+						  	<template #reference>
+						  		<van-icon :name="languageImg" size="27" style="margin-top:8px;"/>
+						  	</template>
+						  </van-popover>
+					  </van-col>
+					  <van-col span="12">
+						  <van-icon :name="themeIcon" size="27" @tap="toggleTheme" style="margin-top:8px;" />
+					  </van-col>
+					</van-row>
 				</template>
 			</van-nav-bar>
 			<view class="container mx-auto mt-2.5">
-				<van-row align="center" :class="['px-2.5', darkWhite]" @click="copy(wallet.address)">
+				<van-row align="center" :class="['px-2', darkWhite]" @click="copy(wallet.address)">
 					<van-image radius="50%" width="50px" height="50px" :src="walletImg" />
 					<view class="pl-2 text-xs">
 						{{ wallet.sortAddress || '加载中...' }}
@@ -149,7 +180,7 @@
 				<view class="mt-2">
 					<van-grid :column-num="2">
 						<van-grid-item>
-							<van-cell title="代币余额" title-class="" :value-class="darkWhite">
+							<van-cell title="代币余额" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.amount1 !== null"
 										class="text-ellipsis">{{ wallet.amount1 }}</span>
@@ -160,7 +191,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="BNB收益" title-class="" :value-class="darkWhite">
+							<van-cell title="BNB收益" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.amount2 !== null">{{ wallet.amount2 }}</span>
 									<span v-else>
@@ -170,7 +201,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="小区业绩" title-class="" :value-class="darkWhite">
+							<van-cell title="小区算力" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.min !== null" class="text-ellipsis">{{ wallet.min }}</span>
 									<span v-else>
@@ -180,7 +211,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="大区业绩" title-class="" :value-class="darkWhite">
+							<van-cell title="大区算力" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.max !== null" class="text-ellipsis">{{ wallet.max }}</span>
 									<span v-else>
@@ -190,7 +221,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="直推人数" title-class="" :value-class="darkWhite">
+							<van-cell title="直推人数" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.zhi !== null">{{ wallet.zhi }}</span>
 									<span v-else>
@@ -200,7 +231,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell title="伞下人数" title-class="" :value-class="darkWhite">
+							<van-cell title="伞下人数" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.san !== null">{{ wallet.san }}</span>
 									<span v-else>
@@ -211,9 +242,10 @@
 						</van-grid-item>
 					</van-grid>
 					<van-row align="center">
-						<van-cell title="我的上级" style="padding-left: 17px;" title-class="" title-style="flex: 0.3" :value-class="darkWhite">
+						<van-cell title="我的布道人" style="padding-left: 13px;" title-class="" title-style="flex: 0.3"
+							:value-class="darkWhite">
 							<template #value>
-								<view style="padding-right: 8px;">
+								<view style="padding-right: 5px;">
 									<span v-if="wallet.first_leader !== null">{{ wallet.first_leader || '无' }}</span>
 									<span v-else>
 										<van-loading type="spinner" size="24px" />
@@ -227,10 +259,17 @@
 					<van-tabs>
 						<van-tab title="我的推广链接">
 							<view class="mb-2.5" @tap="copy(wallet.invite_url)">
-								<van-cell-group>
+								<van-cell-group v-if="wallet.invite_url !== null">
 									<van-field autosize type="textarea" :clearable="true" v-model="wallet.invite_url"
 										readonly />
 								</van-cell-group>
+								<view v-else>
+									<van-empty
+									  :image="emptyImg"
+									  image-size="60"
+									  description=""
+									/>
+								</view>
 							</view>
 						</van-tab>
 					</van-tabs>
@@ -241,7 +280,11 @@
 							<view class="mt-2.5 mb-2.5">
 								<van-cell-group>
 									<van-field type="number" :clearable="true" v-model="amount" label="提取数量"
-										placeholder="请输入提取数量" />
+										placeholder="请输入提取数量" label-align="center" center>
+										<template #button>
+										  <van-button size="small" plain type="default" @tap="allAmount">全部</van-button>
+										</template>
+									</van-field>
 								</van-cell-group>
 							</view>
 							<view class="text-center">
@@ -253,7 +296,7 @@
 							</view>
 						</van-tab>
 						<van-tab title="提取记录">
-							<van-empty description="暂无数据" v-if="!wallet.withdraw_list" />
+							<van-empty image-size="80" description="暂无数据" v-if="!wallet.withdraw_list" />
 							<view class="mt-2" v-else>
 								<van-row class="text-center text-xs text-gray-500">
 									<van-col span="6" class="text-ellipsis">时间</van-col>
@@ -271,7 +314,7 @@
 							</view>
 						</van-tab>
 						<van-tab title="收益明细">
-							<van-empty description="暂无数据" v-if="!wallet.money_log_list" />
+							<van-empty image-size="80" description="暂无数据" v-if="!wallet.money_log_list" />
 							<view class="mt-2" v-else>
 								<van-row class="text-center text-xs text-gray-500">
 									<van-col span="8">类型</van-col>
@@ -294,6 +337,6 @@
 </template>
 <style>
 	body {
-	  --van-button-default-border-color: unset;
+		--van-button-default-border-color: unset;
 	}
 </style>
