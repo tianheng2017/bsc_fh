@@ -283,7 +283,7 @@
 				</view>
 				<view class="mt-2.5">
 					<van-tabs>
-						<van-tab title="我的推广链接">
+						<van-tab :title="$t('message.myinvite')">
 							<view class="mb-2.5" @tap="copy(wallet.invite_url)">
 								<van-cell-group v-if="wallet.invite_url !== null">
 									<van-field autosize type="textarea" :clearable="true" v-model="wallet.invite_url"
