@@ -145,7 +145,7 @@ export const useWallet = defineStore('wallet', {
 				}
 				
 				if (amount > this.amount2) {
-					throw new Error("不能大于可提取数量")
+					throw new Error("不能超过可提取数量")
 				}
 				
 				const msg = '您正在进行重要操作，为保障资金安全，需鉴权验证身份！';
