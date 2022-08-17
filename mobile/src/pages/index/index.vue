@@ -155,7 +155,12 @@
 	}
 
 	const showPopover = ref(false);
-	const actions = [{
+	const actions = [
+		{
+			text: 'English',
+			value: 'enUS',
+		},
+		{
 			text: '简体',
 			value: 'zhCN',
 		},
@@ -521,7 +526,7 @@
 								<van-cell-group v-if="wallet.invite_url !== null">
 									<van-field autosize type="textarea" :clearable="true" v-model="wallet.invite_url"
 										readonly />
-									<view class="text-center">
+									<view class="text-center pb-2 pt-2">
 										<van-row>
 											<van-col span="24">
 												<van-button type="success" size="small" @tap="copy(wallet.invite_url)">{{ $t('message.copy_invite') }}
