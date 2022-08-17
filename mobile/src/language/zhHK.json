@@ -33,5 +33,7 @@
 	"exceed_limit": "不能超過可提取數量",
 	"sign_msg": "您正在進行重要操作，為保障資金安全，需鑑權驗證身份！",
 	"copy_success": "複製成功",
-	"copy_error": "複製失敗"
+	"copy_error": "複製失敗",
+	"reason": "备注",
+	"copy_invite": "複製推廣鏈接"
 }

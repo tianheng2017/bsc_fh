@@ -33,5 +33,7 @@
 	"exceed_limit": "추출할 수 있는 양을 초과할 수 없음",
 	"sign_msg": "중요한 작업을 하고 있습니다. 자금의 안전을 위해 본인 인증 및 확인이 필요합니다!",
 	"copy_success": "복사 성공",
-	"copy_error": "복사 실패"
+	"copy_error": "복사 실패",
+	"reason": "비고",
+	"copy_invite": "프로모션 링크 복사"
 }

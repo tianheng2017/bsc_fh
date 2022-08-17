@@ -5,10 +5,12 @@
 	} from 'vant'
 	import {
 		onMounted,
+		onBeforeUnmount,
 		ref,
 		watch,
 		computed
 	} from 'vue'
+	import { Locale } from 'vant'
 	import { useI18n } from 'vue-i18n'
 	import {
 		useWallet
@@ -18,6 +20,7 @@
 	} from '@layui/layer-vue'
 	import useClipboard from 'vue-clipboard3'
 	import { baseURL } from '@/config/app'
+	import { changeSystemLanguage } from '@/language/index'
 	import walletImg from '@/assets/images/wallet.png'
 	import darkImg from '@/assets/images/dark-theme.svg'
 	import lightImg from '@/assets/images/light-theme.svg'
@@ -25,13 +28,22 @@
 	import emptyImg from '@/assets/images/empty.png'
 	
 	const i18n = useI18n()
+	
+	let undefinedMessage1 = i18n.t('message.in_dapp')
+	let undefinedMessage2 = i18n.t('message.switch_bsc')
+	let unlockMessage = i18n.t('message.unlock_wallet')
+	
 	const onSelect = (action) => {
 		localStorage.setItem('language', action.value)
 		i18n.locale.value = action.value
+		
+		const  labelAndValue = changeSystemLanguage(action.value)
+		Locale.use(labelAndValue[0], labelAndValue[1])
+		
+		undefinedMessage1 = i18n.t('message.in_dapp')
+		undefinedMessage2 = i18n.t('message.switch_bsc')
+		unlockMessage = i18n.t('message.unlock_wallet')
 	}
-	const undefinedMessage1 = i18n.t('message.in_dapp')
-	const undefinedMessage2 = i18n.t('message.switch_bsc')
-	const unlockMessage = i18n.t('message.unlock_wallet')
 
 	const getQueryString = (name) => {
 		const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
@@ -47,19 +59,22 @@
 		$cookies.config("0")
 		$cookies.set("invite", invite)
 	}
-
+	
+	const timer = ref('')
 	const wallet = useWallet()
-
 	onMounted(async () => {
 		await setTimeout(async () => {
 			await init()
 		}, 300)
 	})
+	onBeforeUnmount(() => {
+		clearInterval(timer.value)
+	})
 
 	const tab = ref(0)
 	const amount = ref('')
 	const withdraw = () => {
-		const check = wallet.checkWallet()
+		const check = checkWallet()
 		if (check !== true) {
 			return showDialog({
 				message: check.message,
@@ -118,7 +133,7 @@
 	}
 	
 	const allAmount = () => {
-		amount.value = wallet.amount1 || ''
+		amount.value = wallet.amount2 || ''
 	}
 
 	const {
@@ -126,7 +141,7 @@
 	} = useClipboard()
 	const copy = async (val) => {
 		try {
-			const check = wallet.checkWallet()
+			const check = checkWallet()
 			if (check !== true) {
 				return showDialog({
 					message: check.message,
@@ -193,7 +208,8 @@
 			wallet.address = address
 			
 			await getUserInfo()
-			await getRewardBnb()
+			
+			timer.value = setInterval(getUserInfo, 10000)
 			
 		} catch(e) {
 			if (e?.code == -32002) {
@@ -205,6 +221,22 @@
 				message: e.message,
 			})
 		}
+	}
+	
+	const checkWallet = () => {
+		if (!wallet.isDapp) {
+			return {
+				message: undefinedMessage1,
+			}
+		}
+		
+		if (!wallet.isUnlock) {
+			return {
+				message: unlockMessage,
+			}
+		}
+		
+		return true
 	}
 	
 	const getUserInfo = () => {
@@ -236,6 +268,7 @@
 						wallet.first_leader = res.data.first_leader
 						wallet.invite_url = res.data.invite_url
 						wallet.fh_wallet = res.data.fh_wallet
+						wallet.rewardBnb = res.data.rewardBnb
 						resolve()
 					}
 				});
@@ -247,7 +280,7 @@
 	
 	const doWithdraw = async(amount) => {
 		try {
-			const check = wallet.checkWallet()
+			const check = checkWallet()
 			if (check !== true) {
 				return showDialog({
 					message: check.message,
@@ -284,8 +317,10 @@
 					res = res.data
 					
 			        if (res.code) {
-						wallet.getUserInfo()
+						getUserInfo()
 					}
+					
+					amount.value = ''
 					
 					layer.msg(res.msg, {icon: res.code ? 1 : 2, time: 2000})
 			    }
@@ -297,7 +332,7 @@
 	
 	const getWithdrawList = () => {
 		try {
-			const check = wallet.checkWallet()
+			const check = checkWallet()
 			if (check !== true) {
 				return 
 			}
@@ -326,7 +361,7 @@
 	
 	const getMoneyLogList = () => {
 		try {
-			const check = wallet.checkWallet()
+			const check = checkWallet()
 			if (check !== true) {
 				return 
 			}
@@ -348,27 +383,6 @@
 					}
 			    }
 			});
-		} catch(e) {
-			return layer.msg(e.message, {icon: 2, time: 2000})
-		}
-	}
-	
-	const getRewardBnb = async() => {
-		try {
-			const check = wallet.checkWallet()
-			if (check !== true) {
-				return 
-			}
-			
-			const balance = await window.ethereum.request({ 
-				method: 'eth_getBalance',
-				params: [
-					wallet.fh_wallet,
-					"pending"
-				]
-			})
-			
-			wallet.rewardBnb = eval(balance).toString(16)
 		} catch(e) {
 			return layer.msg(e.message, {icon: 2, time: 2000})
 		}
@@ -503,10 +517,18 @@
 				<view class="mt-2.5">
 					<van-tabs>
 						<van-tab :title="$t('message.myinvite')">
-							<view class="mb-2.5" @tap="copy(wallet.invite_url)">
+							<view class="mb-2.5">
 								<van-cell-group v-if="wallet.invite_url !== null">
 									<van-field autosize type="textarea" :clearable="true" v-model="wallet.invite_url"
 										readonly />
+									<view class="text-center">
+										<van-row>
+											<van-col span="24">
+												<van-button type="success" size="small" @tap="copy(wallet.invite_url)">{{ $t('message.copy_invite') }}
+												</van-button>
+											</van-col>
+										</van-row>
+									</view>
 								</van-cell-group>
 								<view v-else>
 									<van-empty

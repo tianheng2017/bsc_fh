@@ -29,21 +29,4 @@ export const useWallet = defineStore('wallet', {
             return state.address.slice(0, 15) + '...' + state.address.slice(-15)
         }
     },
-    actions: {
-		checkWallet() {
-			if (!this.isDapp) {
-				return {
-					message: undefinedMessage1,
-				}
-			}
-			
-			if (!this.isUnlock) {
-				return {
-					message: unlockMessage,
-				}
-			}
-			
-			return true
-		},
-    }
 })
