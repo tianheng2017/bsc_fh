@@ -31,5 +31,7 @@
 	"unlock_wallet": "請解鎖您的錢包",
 	"amount_limit": "提取數量必須大於0",
 	"exceed_limit": "不能超過可提取數量",
-	"sign_msg": "您正在進行重要操作，為保障資金安全，需鑑權驗證身份！"
+	"sign_msg": "您正在進行重要操作，為保障資金安全，需鑑權驗證身份！",
+	"copy_success": "複製成功",
+	"copy_error": "複製失敗"
 }

@@ -133,9 +133,9 @@
 				})
 			}
 			await toClipboard(val)
-			return layer.msg("复制成功", {icon: 1})
+			return layer.msg(i18n.t('message.copy_success'), {icon: 1})
 		} catch (e) {
-			return layer.msg('复制失败：' + e.message, {icon: 2})
+			return layer.msg(i18n.t('message.copy_error') + '：' + e.message, {icon: 2})
 		}
 	}
 
