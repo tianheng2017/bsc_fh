@@ -229,7 +229,7 @@ class IndexController extends BaseController
             }
 
             foreach ($list as $k => $v) {
-                $list[$k]['status'] = BaseModel::$mtype[$v['status']];
+                $list[$k]['status'] = BaseModel::$mtypeLanguage[$v['status']];
             }
 
             return JsonService::data($list->toArray());

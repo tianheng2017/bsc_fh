@@ -33,14 +33,14 @@ class BaseModel extends Model
     ];
 
     /**
-     * 资金日志对照语言包
+     * 资金日志对照-语言包专用
      */
     public static $mtypeLanguage = [
-        1       =>  '持币分红获得BNB',
-        2       =>  '推广分红获得BNB',
-        3       =>  '提取BNB',
-        4       =>  '提取成功',
-        5       =>  '提取驳回',
+        1       =>  'mtype1',
+        2       =>  'mtype2',
+        3       =>  'mtype3',
+        4       =>  'mtype4',
+        5       =>  'mtype5',
     ];
 
     /**
