@@ -68,11 +68,12 @@ class IndexController extends BaseController
                 $user->first_leader = Users::id2address($user->fid);
                 $user->invite_url = $this->request->domain().'/?invite='.$user->address;
                 $user->fh_wallet = ConfigService::get('website', 'fh_wallet');
+                $user->rewardBnb = TransferLog::getTodayInAmount();
 
                 $user->visible([
                     'id', 'address', 'amount1', 'amount2', 'min',
                     'max', 'my_sl', 'all_sl', 'bd', 'first_leader',
-                    'invite_url', 'fh_wallet',
+                    'invite_url', 'fh_wallet', 'rewardBnb',
                 ]);
             } catch (\Exception $e) {
                 return JsonService::fail($e->getMessage());
