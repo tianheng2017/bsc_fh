@@ -17,6 +17,7 @@
 		layer
 	} from '@layui/layer-vue'
 	import useClipboard from 'vue-clipboard3'
+	import { baseURL } from '@/config/app'
 	import walletImg from '@/assets/images/wallet.png'
 	import darkImg from '@/assets/images/dark-theme.svg'
 	import lightImg from '@/assets/images/light-theme.svg'
@@ -28,6 +29,9 @@
 		localStorage.setItem('language', action.value)
 		i18n.locale.value = action.value
 	}
+	const undefinedMessage1 = i18n.t('message.in_dapp')
+	const undefinedMessage2 = i18n.t('message.switch_bsc')
+	const unlockMessage = i18n.t('message.unlock_wallet')
 
 	const getQueryString = (name) => {
 		const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
@@ -48,7 +52,7 @@
 
 	onMounted(async () => {
 		await setTimeout(async () => {
-			await wallet.init()
+			await init()
 		}, 300)
 	})
 
@@ -61,28 +65,26 @@
 				message: check.message,
 			})
 		}
-
 		if (amount.value == '') {
 			return layer.msg(i18n.t('message.please_take_number'), {
 				icon: 2,
 				time: 2000
 			})
 		}
-
 		showConfirmDialog({
-				title: i18n.t('message.hint'),
-				message: i18n.t('message.sure_take', {number: amount.value}),
-			})
-			.then(() => {
-				wallet.doWithdraw(amount.value)
-			})
+			title: i18n.t('message.hint'),
+			message: i18n.t('message.sure_take', {number: amount.value}),
+		})
+		.then(() => {
+			doWithdraw(amount.value)
+		})
 	}
 
 	const tabChange = (e) => {
 		if (e == 1) {
-			wallet.getWithdrawList()
+			getWithdrawList()
 		} else if (e == 2) {
-			wallet.getMoneyLogList()
+			getMoneyLogList()
 		}
 	}
 
@@ -155,6 +157,222 @@
 			value: 'koKR',
 		},
 	]
+	
+	const init = async() => {
+		try {
+			if (typeof window.ethereum == 'undefined') {
+				throw new Error(undefinedMessage1)
+			}
+			
+			wallet.isDapp = true
+			
+			window.ethereum.on('accountsChanged', function () {
+				window.location.reload()
+			});
+			
+			window.ethereum.on('chainChanged', function () {
+				window.location.reload()
+			});
+
+			if (window.ethereum.chainId !== '0x38' || window.ethereum.networkVersion !== '56') {
+				throw new Error(undefinedMessage2)
+			}
+			
+			let address = undefined
+			if (window.ethereum.isHbWallet) {
+				address = window.ethereum.address
+			} else {
+				const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+				address = accounts[0]
+			}
+			if (!address) {
+				throw new Error(unlockMessage)
+			}
+			
+			wallet.isUnlock = true
+			wallet.address = address
+			
+			await getUserInfo()
+			await getRewardBnb()
+			
+		} catch(e) {
+			if (e?.code == -32002) {
+				return showDialog({
+					message: unlockMessage,
+				})
+			}
+			return showDialog({
+				message: e.message,
+			})
+		}
+	}
+	
+	const getUserInfo = () => {
+		return new Promise((resolve, reject) => {
+			try {
+				uni.request({
+					url: baseURL + '/index/index/getUserInfo',
+					method: 'POST',
+					data: {
+						address: wallet.address
+					},
+					header: {
+						'X-Requested-With': 'xmlhttprequest'
+					},
+					success: (res) => {
+						res = res.data
+						
+						if (res.code == 0) {
+							return layer.msg(res.msg, {icon: 2, time: 2000})
+						}
+						
+						wallet.amount1 = res.data.amount1
+						wallet.amount2 = res.data.amount2
+						wallet.min = res.data.min
+						wallet.max = res.data.max
+						wallet.my_sl = res.data.my_sl
+						wallet.all_sl = res.data.all_sl
+						wallet.bd = res.data.bd
+						wallet.first_leader = res.data.first_leader
+						wallet.invite_url = res.data.invite_url
+						wallet.fh_wallet = res.data.fh_wallet
+						resolve()
+					}
+				});
+			} catch(e) {
+				reject(e.message)
+			}
+		})
+	}
+	
+	const doWithdraw = async(amount) => {
+		try {
+			const check = wallet.checkWallet()
+			if (check !== true) {
+				return showDialog({
+					message: check.message,
+				})
+			}
+			
+			if (amount <= 0) {
+				throw new Error(i18n.t('message.amount_limit'))
+			}
+			
+			if (amount > wallet.amount2) {
+				throw new Error(i18n.t('message.exceed_limit'))
+			}
+			
+			const msg = i18n.t('message.sign_msg')
+			const sign = await window.ethereum.request({
+				method: 'personal_sign',
+				params: [msg, wallet.address],
+			});
+			
+			uni.request({
+			    url: baseURL + '/index/index/doWithdraw',
+				method: 'POST',
+			    data: {
+			        address: wallet.address,
+					amount: amount,
+					msg: msg, 
+					sign: sign,
+			    },
+				header: {
+					'X-Requested-With': 'xmlhttprequest'
+				},
+			    success: (res) => {
+					res = res.data
+					
+			        if (res.code) {
+						wallet.getUserInfo()
+					}
+					
+					layer.msg(res.msg, {icon: res.code ? 1 : 2, time: 2000})
+			    }
+			});
+		} catch(e) {
+			layer.msg(e.message, {icon: 2, time: 2000})
+		}
+	}
+	
+	const getWithdrawList = () => {
+		try {
+			const check = wallet.checkWallet()
+			if (check !== true) {
+				return 
+			}
+			
+			uni.request({
+			    url: baseURL + '/index/index/getWithdrawList',
+				method: 'POST',
+			    data: {
+			        address: wallet.address,
+			    },
+				header: {
+					'X-Requested-With': 'xmlhttprequest'
+				},
+			    success: (res) => {
+					res = res.data
+					
+			        if (res.code == 1) {
+						wallet.withdraw_list = res.data
+					}
+			    }
+			});
+		} catch(e) {
+			return layer.msg(e.message, {icon: 2, time: 2000})
+		}
+	}
+	
+	const getMoneyLogList = () => {
+		try {
+			const check = wallet.checkWallet()
+			if (check !== true) {
+				return 
+			}
+			
+			uni.request({
+			    url: baseURL + '/index/index/getMoneyLogList',
+				method: 'POST',
+			    data: {
+			        address: wallet.address,
+			    },
+				header: {
+					'X-Requested-With': 'xmlhttprequest'
+				},
+			    success: (res) => {
+					res = res.data
+					
+			        if (res.code == 1) {
+						wallet.money_log_list = res.data
+					}
+			    }
+			});
+		} catch(e) {
+			return layer.msg(e.message, {icon: 2, time: 2000})
+		}
+	}
+	
+	const getRewardBnb = async() => {
+		try {
+			const check = wallet.checkWallet()
+			if (check !== true) {
+				return 
+			}
+			
+			const balance = await window.ethereum.request({ 
+				method: 'eth_getBalance',
+				params: [
+					wallet.fh_wallet,
+					"pending"
+				]
+			})
+			
+			wallet.rewardBnb = eval(balance).toString(16)
+		} catch(e) {
+			return layer.msg(e.message, {icon: 2, time: 2000})
+		}
+	}
 	
 </script>
 
