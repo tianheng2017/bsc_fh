@@ -52,5 +52,10 @@
 	"amount_float": "Amount to withdraw must be a float",
 	"amount_gt": "The withdrawal amount must be greater than 0",
 	"msg_require": "Message cannot be empty",
-	"sign_require": "Signature cannot be empty"
+	"sign_require": "Signature cannot be empty",
+	"mtype1": "BNB for holding currency dividends",
+	"mtype2": "Promote dividends to get BNB",
+	"mtype3": "Extract BNB",
+	"mtype4": "Extraction successful",
+	"mtype5": "Extraction rejected"
 }

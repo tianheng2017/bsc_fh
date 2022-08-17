@@ -580,7 +580,7 @@
 									class="text-center text-xs text-gray-500 py-0.5" align="center" justify="center">
 									<van-col span="6">{{ v.create_time }}</van-col>
 									<van-col span="6">{{ v.amount }}</van-col>
-									<van-col span="6" :class="v.status_class">{{ v.status }}</van-col>
+									<van-col span="6" :class="v.status_class">{{ $t(v.status) }}</van-col>
 									<van-col span="6">{{ v.remark || $t('message.none') }}</van-col>
 								</van-row>
 							</view>
@@ -595,7 +595,7 @@
 								</van-row>
 								<van-row v-for="v in wallet.money_log_list" :key="v.id"
 									class="text-center text-xs text-gray-500 py-0.5" align="center" justify="center">
-									<van-col span="8">{{ item.mtype }}</van-col>
+									<van-col span="8">{{ $t(item.mtype) }}</van-col>
 									<van-col span="8">{{ item.amount }}</van-col>
 									<van-col span="8">{{ item.create_time }}</van-col>
 								</van-row>

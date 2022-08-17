@@ -52,5 +52,10 @@
 	"amount_float": "提取金额必须为浮点数",
 	"amount_gt": "提取金额必须大于0",
 	"msg_require": "消息不能为空",
-	"sign_require": "签名不能为空"
+	"sign_require": "签名不能为空",
+	"mtype1": "持币分红获得BNB",
+	"mtype2": "推广分红获得BNB",
+	"mtype3": "提取BNB",
+	"mtype4": "提取成功",
+	"mtype5": "提取驳回"
 }

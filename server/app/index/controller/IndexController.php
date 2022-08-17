@@ -18,17 +18,25 @@ use Web3\Utils;
 
 class IndexController extends BaseController
 {
+    /** 注册|获取个人信息
+     * @return Json|void
+     */
     public function getUserInfo()
     {
         if ($this->request->isAjax()) {
             $post = $this->request->post();
             $rule = [
-                'address|钱包地址'  =>  'require|alphaNum|length:42'
+                'address'  =>  'require|alphaNum|length:42'
             ];
-            $this->validate($post, $rule);
+            $message = [
+                'address.require'   =>  'address_require',
+                'address.alphaNum'  =>  'address_alphaNum',
+                'address.length'    =>  'address_length',
+            ];
+            $this->validate($post, $rule, $message);
 
             if (!Utils::isAddress($post['address'])) {
-                return JsonService::fail('钱包地址格式不正确');
+                return JsonService::fail('message.address_format_error');
             }
 
             try {
@@ -84,21 +92,31 @@ class IndexController extends BaseController
         if ($this->request->isAjax()) {
             $post = $this->request->post();
             $rule = [
-                'address|钱包地址'  =>  'require|alphaNum|length:42',
-                'amount|提现金额'   =>  'require|float|gt:0',
-                'msg|消息'          =>  'require',
-                'sign|签名'         =>  'require',
+                'address'  =>  'require|alphaNum|length:42',
+                'amount'   =>  'require|float|gt:0',
+                'msg'      =>  'require',
+                'sign'     =>  'require',
             ];
-            $this->validate($post, $rule);
+            $message = [
+                'address.require'   =>  'address_require',
+                'address.alphaNum'  =>  'address_alphaNum',
+                'address.length'    =>  'address_length',
+                'amount.require'    =>  'amount_require',
+                'amount.float'      =>  'amount_float',
+                'amount.gt'         =>  'amount_gt',
+                'msg.require'       =>  'msg_require',
+                'sign.require'      =>  'sign_require',
+            ];
+            $this->validate($post, $rule, $message);
 
             if (!Utils::isAddress($post['address'])) {
-                return JsonService::fail('钱包地址格式不正确');
+                return JsonService::fail('message.address_format_error');
             }
 
             try {
                 $result = (new EthSign())->verify($post['msg'], $post['sign'], $post['address']);
                 if ($result === false) {
-                    throw new Exception('鉴权失败');
+                    throw new Exception('message.auth_failed');
                 }
             } catch (\Exception $e) {
                 return JsonService::fail($e->getMessage());
@@ -106,11 +124,11 @@ class IndexController extends BaseController
 
             $user = Users::where('address', $post['address'])->find();
             if (empty($user)) {
-                return JsonService::fail('用户不存在');
+                return JsonService::fail('message.user_none');
             }
 
             if ($user->amount2 <= 0 || $post['amount'] > $user->amount2) {
-                return JsonService::fail('BNB收益不足');
+                return JsonService::fail('message.bnb_lacking');
             }
 
             Db::startTrans();
@@ -131,7 +149,7 @@ class IndexController extends BaseController
                 Db::rollback();
                 return JsonService::fail($e->getMessage());
             }
-            return JsonService::success('申请成功，等待审核', []);
+            return JsonService::success('message.wait_review', []);
         }
     }
 
@@ -146,9 +164,14 @@ class IndexController extends BaseController
         if ($this->request->isAjax()) {
             $post = $this->request->post();
             $rule = [
-                'address|钱包地址'  =>  'require|alphaNum|length:42',
+                'address'  =>  'require|alphaNum|length:42',
             ];
-            $this->validate($post, $rule);
+            $message = [
+                'address.require'   =>  'address_require',
+                'address.alphaNum'  =>  'address_alphaNum',
+                'address.length'    =>  'address_length',
+            ];
+            $this->validate($post, $rule, $message);
 
             $post['address'] = strtolower($post['address']);
             $list = Withdraw::where('address', $post['address'])
@@ -158,14 +181,14 @@ class IndexController extends BaseController
                 ->select();
 
             if ($list->isEmpty()) {
-                return JsonService::fail('暂无记录');
+                return JsonService::fail('message.no_record');
             }
 
             foreach ($list as $k => $v) {
                 $status_class = [0 => 'text-blue-600', 1 => 'text-green-600', 2 => 'text-red-600'];
                 $list[$k]['status_class'] = $status_class[$v['status']];
 
-                $status = [0 => '待审核', 1 => '已通过', 2 => '已拒绝'];
+                $status = [0 => 'message.status0', 1 => 'message.status1', 2 => 'message.status2'];
                 $list[$k]['status'] = $status[$v['status']];
                 $list[$k]['amount'] = floatval($v['amount']);
             }
@@ -185,9 +208,14 @@ class IndexController extends BaseController
         if ($this->request->isAjax()) {
             $post = $this->request->post();
             $rule = [
-                'address|钱包地址'  =>  'require|alphaNum|length:42',
+                'address'  =>  'require|alphaNum|length:42',
             ];
-            $this->validate($post, $rule);
+            $message = [
+                'address.require'   =>  'address_require',
+                'address.alphaNum'  =>  'address_alphaNum',
+                'address.length'    =>  'address_length',
+            ];
+            $this->validate($post, $rule, $message);
 
             $post['address'] = strtolower($post['address']);
             $list = MoneyLog::where('uid', Users::address2id($post['address']))
@@ -197,7 +225,7 @@ class IndexController extends BaseController
                 ->select();
 
             if ($list->isEmpty()) {
-                return JsonService::fail('暂无记录');
+                return JsonService::fail('message.no_record');
             }
 
             foreach ($list as $k => $v) {
