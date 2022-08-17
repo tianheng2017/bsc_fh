@@ -283,7 +283,7 @@
 		})
 	}
 	
-	const doWithdraw = async(amount) => {
+	const doWithdraw = async(price) => {
 		try {
 			const check = checkWallet()
 			if (check !== true) {
@@ -292,11 +292,11 @@
 				})
 			}
 			
-			if (amount <= 0) {
+			if (price <= 0) {
 				throw new Error(i18n.t('message.amount_limit'))
 			}
 			
-			if (amount > wallet.amount2) {
+			if (price > wallet.amount2) {
 				throw new Error(i18n.t('message.exceed_limit'))
 			}
 			
@@ -311,7 +311,7 @@
 				method: 'POST',
 			    data: {
 			        address: wallet.address,
-					amount: amount,
+					amount: price,
 					msg: msg, 
 					sign: sign,
 			    },
@@ -327,7 +327,7 @@
 					
 					amount.value = ''
 					
-					layer.msg(res.msg, {icon: res.code ? 1 : 2, time: 2000})
+					layer.msg(i18n.t(res.msg), {icon: res.code ? 1 : 2, time: 2000})
 			    }
 			});
 		} catch(e) {

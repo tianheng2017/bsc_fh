@@ -35,5 +35,22 @@
 	"copy_success": "복사 성공",
 	"copy_error": "복사 실패",
 	"reason": "비고",
-	"copy_invite": "프로모션 링크 복사"
+	"copy_invite": "프로모션 링크 복사",
+	"bnb_locking": "BNB 수익이 충분하지 않음",
+	"wait_review": "성공적인 신청, 검토 대기 중",
+	"user_none": "사용자가 존재하지 않습니다",
+	"auth_failed": "인증 실패",
+	"address_format_error": "지갑 주소 형식이 잘못되었습니다",
+	"status0": "검토 대기 중",
+	"status1": "통과",
+	"status2": "거부됨",
+	"no_record": "아직 레코드가 없습니다",
+	"address_require": "지갑 주소는 비워둘 수 없습니다.",
+	"address_alphaNum": "지갑 주소는 영숫자여야 합니다",
+	"address_length": "지갑 주소의 길이는 42비트와 같아야 합니다.",
+	"mount_require": "출금할 금액은 비워둘 수 없습니다.",
+	"mount_float": "인출할 금액은 부동 소수점이어야 합니다.",
+	"amount_gt": "출금 금액은 0보다 커야 합니다",
+	"msg_require": "메시지는 비워둘 수 없습니다.",
+	"sign_require": "서명은 비워둘 수 없습니다."
 }

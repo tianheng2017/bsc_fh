@@ -35,5 +35,22 @@
 	"copy_success": "複製成功",
 	"copy_error": "複製失敗",
 	"reason": "备注",
-	"copy_invite": "複製推廣鏈接"
+	"copy_invite": "複製推廣鏈接",
+	"bnb_lacking": "BNB收益不足",
+	"wait_review": "申請成功，等待審核",
+	"user_none": "用戶不存在",
+	"auth_failed": "鑑權失敗",
+	"address_format_error": "錢包地址格式不正確",
+	"status0": "待審核",
+	"status1": "已通過",
+	"status2": "已拒絕",
+	"no_record": "暫無記錄",
+	"address_require": "錢包地址不能為空",
+	"address_alphaNum": "錢包地址必須為字母和數字",
+	"address_length": "錢包地址長度必須等於42位",
+	"amount_require": "提取金額不能為空",
+	"amount_float": "提取金額必須為浮點數",
+	"amount_gt": "提取金額必須大於0",
+	"msg_require": "消息不能為空",
+	"sign_require": "簽名不能為空"
 }

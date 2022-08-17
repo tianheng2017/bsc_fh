@@ -1,3 +1,6 @@
-export const baseURL = "http://localhost"
+const baseURLMap = {
+	development: "http://localhost",
+	production: location.origin,
+}
 
-// export const baseURL = ""
+export const baseURL = baseURLMap[process.env.NODE_ENV]

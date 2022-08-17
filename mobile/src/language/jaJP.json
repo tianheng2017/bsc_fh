@@ -35,5 +35,22 @@
 	"copy_success": "コピー成功",
 	"copy_error": "コピーに失敗しました",
 	"reason": "「備考」",
-	"copy_invite": "プロモーションリンクをコピー"
+	"copy_invite": "プロモーションリンクをコピー",
+	"bnb_locking": "BNB の収益が不十分",
+	"wait_review": "申請が完了しました。審査待ちです",
+	"user_none": "ユーザーが存在しません",
+	"auth_failed": "認証に失敗しました",
+	"address_format_error": "ウォレットアドレスの形式が正しくありません",
+	"status0": "審査待ち",
+	"status1": "合格",
+	"status2": "拒否",
+	"no_record": "まだ記録がありません",
+	"address_require": "ウォレットアドレスを空にすることはできません",
+	"address_alphaNum": "ウォレットのアドレスは英数字でなければなりません",
+	"address_length": "ウォレットアドレスの長さは42ビットでなければなりません",
+	"mount_require": "引き出し金額を空にすることはできません",
+	"amount_float": "出金額は浮動小数点でなければなりません",
+	"amount_gt": "出金額は 0 より大きくなければなりません",
+	"msg_require": "メッセージを空にすることはできません",
+	"sign_require": "署名を空にすることはできません"
 }

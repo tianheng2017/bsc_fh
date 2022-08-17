@@ -35,5 +35,22 @@
 	"copy_success": "复制成功",
 	"copy_error": "复制失败",
 	"reason": "备注",
-	"copy_invite": "复制推广链接"
+	"copy_invite": "复制推广链接",
+	"bnb_lacking": "BNB收益不足",
+	"wait_review": "申请成功，等待审核",
+	"user_none": "用户不存在",
+	"auth_failed": "鉴权失败",
+	"address_format_error": "钱包地址格式不正确",
+	"status0": "待审核",
+	"status1": "已通过",
+	"status2": "已拒绝",
+	"no_record": "暂无记录",
+	"address_require": "钱包地址不能为空",
+	"address_alphaNum": "钱包地址必须为字母和数字",
+	"address_length": "钱包地址长度必须等于42位",
+	"amount_require": "提取金额不能为空",
+	"amount_float": "提取金额必须为浮点数",
+	"amount_gt": "提取金额必须大于0",
+	"msg_require": "消息不能为空",
+	"sign_require": "签名不能为空"
 }

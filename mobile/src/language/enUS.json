@@ -35,5 +35,22 @@
 	"copy_success": "Copy succeeded",
 	"copy_error": "Copy failed",
 	"reason": "Remarks",
-	"copy_invite": "Copy promotion link"
+	"copy_invite": "Copy promotion link",
+	"bnb_locking": "Insufficient BNB revenue",
+	"wait_review": "Successful application, waiting for review",
+	"user_none": "User does not exist",
+	"auth_failed": "Authentication failed",
+	"address_format_error": "Wallet address format is incorrect",
+	"status0": "Pending review",
+	"status1": "Passed",
+	"status2": "Rejected",
+	"no_record": "No record yet",
+	"address_require": "Wallet address cannot be empty",
+	"address_alphaNum": "Wallet address must be alphanumeric",
+	"address_length": "The length of the wallet address must be equal to 42 bits",
+	"amount_require": "Amount to withdraw cannot be empty",
+	"amount_float": "Amount to withdraw must be a float",
+	"amount_gt": "The withdrawal amount must be greater than 0",
+	"msg_require": "Message cannot be empty",
+	"sign_require": "Signature cannot be empty"
 }
