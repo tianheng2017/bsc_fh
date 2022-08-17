@@ -42,6 +42,12 @@ class IndexController extends BaseController
                 }
 
                 $required_coin = ConfigService::get('website', 'required_coin');
+				
+				$all_min_performance = 0;
+				$user_ids = Users::column('id');
+				foreach($user_ids as $v) {
+					$all_min_performance += Regpath::getPerformance($v)[0];
+				}
 
                 $user->amount1 = floatval($user->amount1);
                 $user->amount2 = floatval($user->amount2);
@@ -50,7 +56,7 @@ class IndexController extends BaseController
                 $user->max = $performance[1];
                 $user->my_sl = $user->amount1 > $required_coin ? $user->amount1 : 0;
                 $user->all_sl = Users::where('amount1','>', $required_coin)->sum('amount1');
-                $user->bd = TransferLog::getTodayInAmount();
+                $user->bd = $all_min_performance;
                 $user->first_leader = Users::id2address($user->fid);
                 $user->invite_url = $this->request->domain().'/?invite='.$user->address;
                 $user->fh_wallet = ConfigService::get('website', 'fh_wallet');
