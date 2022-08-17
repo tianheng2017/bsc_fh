@@ -63,15 +63,15 @@
 		}
 
 		if (amount.value == '') {
-			return layer.msg("请输入提取数量", {
+			return layer.msg(i18n.t('message.please_take_number'), {
 				icon: 2,
 				time: 2000
 			})
 		}
 
 		showConfirmDialog({
-				title: '提示',
-				message: '确定提取 ' + amount.value + ' BNB收益？',
+				title: i18n.t('message.hint'),
+				message: i18n.t('message.sure_take', {number: amount.value}),
 			})
 			.then(() => {
 				wallet.doWithdraw(amount.value)
@@ -93,6 +93,7 @@
 		FieldTextAreaMinHeight: '300px',
 		CellHorizontalPadding: '5px',
 		DropdownItemZIndex: 999,
+		GridItemContentPadding: '8px'
 	}
 
 	const theme = ref(localStorage.getItem('theme') || 'dark')
@@ -162,7 +163,7 @@
 		<van-config-provider :theme-vars="themeVars" :theme="theme">
 			<van-nav-bar title="BSC Dapp" safe-area-inset-top>
 				<template #right>
-					<van-row gutter="15">
+					<van-row gutter="12">
 					  <van-col span="12">
 						  <van-popover v-model:show="showPopover" :actions="actions" @select="onSelect">
 						  	<template #reference>
@@ -180,13 +181,13 @@
 				<van-row align="center" :class="['px-2', darkWhite]" @click="copy(wallet.address)">
 					<van-image radius="50%" width="50px" height="50px" :src="walletImg" />
 					<view class="pl-2 text-xs">
-						{{ wallet.sortAddress || '加载中...' }}
+						{{ wallet.sortAddress || ($t('message.wait')+ '...') }}
 					</view>
 				</van-row>
 				<view class="mt-2">
 					<van-grid :column-num="2">
 						<van-grid-item>
-							<van-cell :title="$t('message.grid1')" title-class="text-xs" :value-class="darkWhite">
+							<van-cell center :title="$t('message.grid1')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.amount1 !== null"
 										class="text-ellipsis">{{ wallet.amount1 }}</span>
@@ -197,7 +198,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell :title="$t('message.grid2')" title-class="text-xs" :value-class="darkWhite">
+							<van-cell center :title="$t('message.grid2')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.my_sl !== null">{{ wallet.my_sl }}</span>
 									<span v-else>
@@ -207,7 +208,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell :title="$t('message.grid3')" title-class="text-xs" :value-class="darkWhite">
+							<van-cell center :title="$t('message.grid3')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.min !== null" class="text-ellipsis">{{ wallet.min }}</span>
 									<span v-else>
@@ -217,7 +218,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell :title="$t('message.grid4')" title-class="text-xs" :value-class="darkWhite">
+							<van-cell center :title="$t('message.grid4')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.max !== null" class="text-ellipsis">{{ wallet.max }}</span>
 									<span v-else>
@@ -227,7 +228,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell :title="$t('message.grid5')" title-class="text-xs" :value-class="darkWhite">
+							<van-cell center :title="$t('message.grid5')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.all_sl !== null">{{ wallet.all_sl }}</span>
 									<span v-else>
@@ -237,7 +238,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell :title="$t('message.grid6')" title-class="text-xs" :value-class="darkWhite">
+							<van-cell center :title="$t('message.grid6')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.bd !== null">{{ wallet.bd }}</span>
 									<span v-else>
@@ -247,7 +248,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell :title="$t('message.grid7')" title-class="text-xs" :value-class="darkWhite">
+							<van-cell center :title="$t('message.grid7')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.rewardBnb !== null">{{ wallet.rewardBnb }}</span>
 									<span v-else>
@@ -257,7 +258,7 @@
 							</van-cell>
 						</van-grid-item>
 						<van-grid-item>
-							<van-cell :title="$t('message.grid8')" title-class="text-xs" :value-class="darkWhite">
+							<van-cell center :title="$t('message.grid8')" title-class="text-xs" :value-class="darkWhite">
 								<template #value>
 									<span v-if="wallet.amount2 !== null">{{ wallet.amount2 }}</span>
 									<span v-else>
@@ -268,11 +269,11 @@
 						</van-grid-item>
 					</van-grid>
 					<van-row align="center">
-						<van-cell :title="$t('message.grid9')" style="padding-left: 13px;" title-class="" title-style="flex: 0.3"
+						<van-cell center :title="$t('message.grid9')" style="padding-left: 13px;" title-class="" title-style="flex: 0.3"
 							:value-class="darkWhite">
 							<template #value>
 								<view style="padding-right: 5px;">
-									<span v-if="wallet.first_leader !== null">{{ wallet.first_leader || '无' }}</span>
+									<span v-if="wallet.first_leader !== null">{{ wallet.first_leader || $t('message.none') }}</span>
 									<span v-else>
 										<van-loading type="spinner" size="24px" />
 									</span>
@@ -302,13 +303,13 @@
 				</view>
 				<view class="pb-32">
 					<van-tabs v-model:active="tab" @change="tabChange">
-						<van-tab title="提取收益">
+						<van-tab :title="$t('message.take_reward')">
 							<view class="mt-2.5 mb-2.5">
 								<van-cell-group>
-									<van-field type="number" :clearable="true" v-model="amount" label="提取数量"
-										placeholder="请输入提取数量" label-align="center" center>
+									<van-field type="number" :clearable="true" v-model="amount" :label="$t('message.take_number')"
+										:placeholder="$t('message.please_take_number')" label-align="center" center>
 										<template #button>
-										  <van-button size="small" plain type="default" @tap="allAmount">全部</van-button>
+										  <van-button size="small" plain type="default" @tap="allAmount">{{ $t('message.all') }}</van-button>
 										</template>
 									</van-field>
 								</van-cell-group>
@@ -316,36 +317,36 @@
 							<view class="text-center">
 								<van-row>
 									<van-col span="24">
-										<van-button type="primary" size="small" @tap="withdraw">立即提取</van-button>
+										<van-button type="primary" size="small" @tap="withdraw">{{ $t('message.take_now') }}</van-button>
 									</van-col>
 								</van-row>
 							</view>
 						</van-tab>
-						<van-tab title="提取记录">
-							<van-empty image-size="80" description="暂无数据" v-if="!wallet.withdraw_list" />
+						<van-tab :title="$t('message.extract_records')">
+							<van-empty image-size="80" :description="$t('message.no_data')" v-if="!wallet.withdraw_list" />
 							<view class="mt-2" v-else>
 								<van-row class="text-center text-xs text-gray-500">
-									<van-col span="6" class="text-ellipsis">时间</van-col>
-									<van-col span="6">数量</van-col>
-									<van-col span="6">状态</van-col>
-									<van-col span="6" class="text-ellipsis">理由</van-col>
+									<van-col span="6" class="text-ellipsis">{{ $t('message.time') }}</van-col>
+									<van-col span="6">{{ $t('message.number') }}</van-col>
+									<van-col span="6">{{ $t('message.status') }}</van-col>
+									<van-col span="6" class="text-ellipsis">{{ $t('message.reason') }}</van-col>
 								</van-row>
 								<van-row v-for="v in wallet.withdraw_list" :key="v.id"
 									class="text-center text-xs text-gray-500 py-0.5" align="center" justify="center">
 									<van-col span="6">{{ v.create_time }}</van-col>
 									<van-col span="6">{{ v.amount }}</van-col>
 									<van-col span="6" :class="v.status_class">{{ v.status }}</van-col>
-									<van-col span="6">{{ v.remark || '无' }}</van-col>
+									<van-col span="6">{{ v.remark || $t('message.none') }}</van-col>
 								</van-row>
 							</view>
 						</van-tab>
-						<van-tab title="收益明细">
-							<van-empty image-size="80" description="暂无数据" v-if="!wallet.money_log_list" />
+						<van-tab :title="$t('message.income_details')">
+							<van-empty image-size="80" :description="$t('message.no_data')" v-if="!wallet.money_log_list" />
 							<view class="mt-2" v-else>
 								<van-row class="text-center text-xs text-gray-500">
-									<van-col span="8">类型</van-col>
-									<van-col span="8">金额</van-col>
-									<van-col span="8">时间</van-col>
+									<van-col span="8">{{ $t('message.type') }}</van-col>
+									<van-col span="8">{{ $t('message.amount') }}</van-col>
+									<van-col span="8">{{ $t('message.time') }}</van-col>
 								</van-row>
 								<van-row v-for="v in wallet.money_log_list" :key="v.id"
 									class="text-center text-xs text-gray-500 py-0.5" align="center" justify="center">

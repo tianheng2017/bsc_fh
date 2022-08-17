@@ -2,10 +2,13 @@ import { defineStore } from "pinia"
 import { layer } from '@layui/layer-vue'
 import { showDialog } from 'vant'
 import { baseURL } from '@/config/app'
+import { useI18n } from 'vue-i18n'
 
-const undefinedMessage1 = '请在Dapp浏览环境中打开'
-const undefinedMessage2 = '请切换到币安智能链'
-const unlockMessage = '请解锁钱包'
+const i18n = useI18n()
+
+const undefinedMessage1 = i18n.t('message.in_dapp')
+const undefinedMessage2 = i18n.t('message.switch_bsc')
+const unlockMessage = i18n.t('message.unlock_wallet')
 
 export const useWallet = defineStore('wallet', {
     state: () => {
@@ -147,14 +150,14 @@ export const useWallet = defineStore('wallet', {
 				}
 				
 				if (amount <= 0) {
-					throw new Error("提取数量必须大于0")
+					throw new Error(i18n.t('message.amount_limit'))
 				}
 				
 				if (amount > this.amount2) {
-					throw new Error("不能超过可提取数量")
+					throw new Error(i18n.t('message.exceed_limit'))
 				}
 				
-				const msg = '您正在进行重要操作，为保障资金安全，需鉴权验证身份！';
+				const msg = i18n.t('message.sign_msg')
 				const sign = await window.ethereum.request({
 					method: 'personal_sign',
 					params: [msg, this.address],
