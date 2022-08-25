@@ -263,13 +263,13 @@
 							return layer.msg(res.msg, {icon: 2, time: 2000})
 						}
 						
-						wallet.amount1 = res.data.amount1
+						wallet.amount1 = res.data.amount1 > 0 ? res.data.amount1 + '' : res.data.amount1
 						wallet.amount2 = res.data.amount2
-						wallet.min = res.data.min
-						wallet.max = res.data.max
-						wallet.my_sl = res.data.my_sl
-						wallet.all_sl = res.data.all_sl
-						wallet.bd = res.data.bd
+						wallet.min = res.data.min > 0 ? res.data.min + '' : res.data.min
+						wallet.max = res.data.max > 0 ? res.data.max + '' : res.data.max
+						wallet.my_sl = res.data.my_sl > 0 ? res.data.my_sl + '' : res.data.my_sl
+						wallet.all_sl = res.data.all_sl > 0 ? res.data.all_sl + '' : res.data.all_sl
+						wallet.bd = res.data.bd > 0 ? res.data.bd + '' : res.data.bd
 						wallet.first_leader = res.data.first_leader
 						wallet.invite_url = res.data.invite_url
 						wallet.fh_wallet = res.data.fh_wallet
