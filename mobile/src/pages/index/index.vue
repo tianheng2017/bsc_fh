@@ -398,7 +398,7 @@
 <template>
 	<view :class="{'bg-black': theme == 'dark'}">
 		<van-config-provider :theme-vars="themeVars" :theme="theme">
-			<van-nav-bar title="BSC Dapp" safe-area-inset-top>
+			<van-nav-bar title="bnb defi ecology" safe-area-inset-top>
 				<template #right>
 					<van-row gutter="12">
 					  <van-col span="12">

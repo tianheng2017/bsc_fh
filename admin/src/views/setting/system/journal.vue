@@ -18,9 +18,9 @@
                     </el-select>
                 </el-form-item>
 
-                <el-form-item label="来源IP">
+                <!-- <el-form-item label="来源IP">
                     <el-input class="w-56" placeholder="请输入" v-model="formData.ip" />
-                </el-form-item>
+                </el-form-item> -->
 
                 <el-form-item label="访问时间">
                     <data-picker
@@ -50,7 +50,7 @@
                     <el-table-column label="访问链接" prop="url" min-width="160" />
                     <el-table-column label="访问方式" prop="type" />
                     <el-table-column label="访问参数" prop="params" min-width="160" />
-                    <el-table-column label="来源IP" prop="ip" min-width="160" />
+                    <!-- <el-table-column label="来源IP" prop="ip" min-width="160" /> -->
                     <el-table-column label="日志时间" prop="create_time" min-width="180" />
                 </el-table>
             </div>
@@ -68,7 +68,7 @@ import { usePaging } from '@/hooks/usePaging'
 interface formDataObj {
     admin_name?: string // 管理员
     url?: string // 访问链接
-    ip?: string // ip
+    // ip?: string // ip
     type?: string // 访问方式
     start_time?: string // 日志时间开始
     end_time?: string // 日志时间结束
@@ -78,7 +78,7 @@ interface formDataObj {
 const formData = ref<formDataObj>({
     admin_name: '',
     url: '',
-    ip: '',
+    // ip: '',
     type: '',
     start_time: '',
     end_time: ''

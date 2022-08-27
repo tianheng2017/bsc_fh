@@ -1,5 +1,5 @@
 {
-    "name" : "bsc",
+    "name" : "bnb defi ecology",
     "appid" : "__UNI__501BC51",
     "description" : "",
     "versionName" : "1.0.0",
@@ -74,7 +74,7 @@
             "mode" : "history",
             "base" : "/mobile/"
         },
-        "title" : "Tron Dapp",
+        "title" : "bnb defi ecology",
         "optimization" : {
             "treeShaking" : {
                 "enable" : true

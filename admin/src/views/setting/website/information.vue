@@ -78,21 +78,6 @@
                         </div>
                     </div>
                 </el-form-item>
-                <el-form-item label="代币合约地址" prop="token_contract" required>
-                    <div class="w-80">
-                        <el-input v-model="formData.token_contract" placeholder="请输入代币合约地址">
-                        </el-input>
-                    </div>
-                </el-form-item>
-                <el-form-item label="代币合约ABI" prop="token_abi" required>
-                    <div class="w-80">
-                        <el-input type="textarea" rows="10" v-model="formData.token_abi" placeholder="请输入代币合约ABI">
-                        </el-input>
-                        <div class="form-tips">
-                            保存后如果显示[object Object]...之类的不用管它，数据正确就行
-                        </div>
-                    </div>
-                </el-form-item>
             </el-form>
         </el-card>
 
@@ -118,8 +103,6 @@ const formData = reactive({
     cbfh_bl: "", // 持币分红所占百分比
     api_key: "", // 币安API KEY
     scan_node: "", // 余额扫描节点
-    token_contract: "", // 代币合约地址
-    token_abi: "", // 代币合约ABI
 });
 
 // 表单验证
@@ -163,20 +146,6 @@ const rules = {
         {
             required: true,
             message: "请输入余额扫描节点",
-            trigger: ["blur"],
-        },
-    ],
-    token_contract: [
-        {
-            required: true,
-            message: "请输入代币合约地址",
-            trigger: ["blur"],
-        },
-    ],
-    token_abi: [
-        {
-            required: true,
-            message: "请输入代币合约ABI",
             trigger: ["blur"],
         },
     ],
